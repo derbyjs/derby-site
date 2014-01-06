@@ -1,0 +1,31 @@
+{
+  "name": "derby-site",
+  "version": "0.0.1",
+  "description": "Derby Site",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/vmakhaev/derby-site.git"
+  },
+  "keywords": [
+    "derby"
+  ],
+  "author": "Vladimir Makhaev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vmakhaev/derby-site/issues"
+  },
+  "dependencies": {
+    "derby": "git://github.com/codeparty/derby#0.6",
+    "derby-templates": "git://github.com/vmakhaev/derby-templates#master",
+    "racer": "git://github.com/codeparty/racer#master",
+    "express": "~3.4.7",
+    "coffeeify": "~0.5.2",
+    "redis": "~0.10.0",
+    "connect-redis": "~1.4.6",
+    "racer-browserchannel": "~0.1.1",
+    "livedb-mongo": "~0.3.0",
+    "marked": "~0.3.0",
+    "highlight.js": "~7.5.0"
+  }
+}
