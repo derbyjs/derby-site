@@ -128,11 +128,14 @@ if (!fs.existsSync(genDir)) {
   fs.mkdirSync(genDir);
 }
 
+var githubPath = 'https://github.com/vmakhaev/derby-site/edit/master/md';
+
 // Replace tags in template with data from Markdown file
 function processTemplate (mdPath, content, navbar) {
   var file = fs.readFileSync(appDir + '/template.html', {encoding: 'utf8'});
-  var meta = parseMarkdown(mdPath);
+  var meta = parseMarkdown(mdDir + '/' + mdPath);
   file = file.replace('{{title}}', 'Derby | ' + meta.name);
+  file = file.replace('{{editLink}}', githubPath + '/' + mdPath);
   file = file.replace('{{name}}', meta.name);
   file = file.replace('{{description}}', marked(meta.description));
   var navbar = navbar || getNavbar(meta.levels);
@@ -163,13 +166,13 @@ function processMarkdownDir (from, to, dirName) {
     var meta = parseMarkdown(filePath);
     html += '<li><a href="/' + dirName + '/' + meta.link + '">' + meta.name + '</a></li>';
 
-    var file = processTemplate(filePath);
+    var file = processTemplate(dirName + '/' + fileName);
     var name = path.basename(filePath, '.md');
     fs.writeFileSync(to + '/' + name + '.html', file);
     addToImport(dirName + '/' + name, dirName + ':' + name);
   }
   html += '</ul>';
-  var file = processTemplate(from + '/index.md', html, ' ');
+  var file = processTemplate(dirName + '/index.md', html, ' ');
   fs.writeFileSync(to + '/index.html', file);
 }
 
@@ -189,7 +192,7 @@ for (var i = 0; i < fileNames.length; i++) {
 
   } else {
     var name = path.basename(filePath, '.md');
-    var file = processTemplate(filePath);
+    var file = processTemplate(fileName);
     fs.writeFileSync(genDir + '/' + name + '.html', file);
     addToImport(name);
   }
