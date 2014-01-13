@@ -134,7 +134,7 @@ function processTemplate (mdPath, content, navbar) {
   var meta = parseMarkdown(mdPath);
   file = file.replace('{{title}}', 'Derby | ' + meta.name);
   file = file.replace('{{name}}', meta.name);
-  file = file.replace('{{description}}', meta.description);
+  file = file.replace('{{description}}', marked(meta.description));
   var navbar = navbar || getNavbar(meta.levels);
   file = file.replace('{{navbar}}', navbar);
   var content = content || marked(meta.file);
