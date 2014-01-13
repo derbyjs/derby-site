@@ -1,5 +1,6 @@
 var marked = require('marked');
 var fs = require('fs');
+var path = require('path');
 
 // Synchronous highlighting with highlight.js
 marked.setOptions({
@@ -22,14 +23,15 @@ marked.setOptions({
   }
 });
 
+// Generate html from # Header levels
 function getNavbar(levels) {
   var html = '';
   var smallest = 5;
   for (var i = 0; i < levels.length; i++) {
     var level = levels[i][0];
-    var header = levels[i][1];
+    var link = levels[i][1];
+    var header = levels[i][2];
     if (level < smallest) smallest = level;
-    var link = header.toLowerCase().replace(/[^\w]+/g, '-');
     html += '<li><a href="#' + link + '">' + header + '</a>';
     if (i === levels.length - 1) {
       html += '</li>';
@@ -51,11 +53,33 @@ function getNavbar(levels) {
   return html;
 }
 
-function getLevels(mdPath) {
-  var lines = fs.readFileSync(mdPath).toString().split('\n');
+// Escape string
+function toLink (text) {
+  return text.toLowerCase().replace(/[^\w]+/g, '-');
+}
+
+// Parse markdown file
+function parseMarkdown(mdPath) {
+  var lines = fs.readFileSync(mdPath, {encoding: 'utf8'}).toString().split('\n');
+  if (lines[0].indexOf('# ') !== 0) {
+    throw new Error('No # Header in ' + mdPath);
+  }
+  var name = lines[0].substr(2);
+  var description = '';
+  var startLine = 0;
+  for (var i = 1; i < lines.length; i++) {
+    if (lines[i].indexOf('##') !== 0) {
+      description += lines[i];
+    } else {
+      startLine = i;
+      break;
+    }
+  }
+
   var isCode = false;
+  var file = '';
   var levels = [];
-  for (var i = 0; i < lines.length; i++) {
+  for (var i = startLine; i < lines.length; i++) {
     var line = lines[i];
     if (line.indexOf('```') === 0) {
       isCode = !isCode;
@@ -63,16 +87,26 @@ function getLevels(mdPath) {
     if (line[0] === '#' & !isCode) {
       var level = line.indexOf(' ');
       var header = line.substr(level + 1);
-      levels.push([level, header]);
+      var link = toLink(header);
+      levels.push([level, link, header]);
     }
+    file += line + '\n';
   }
-  return levels;
+
+  return {
+    file: file,
+    levels: levels,
+    link: toLink(name),
+    name: name,
+    description: description
+  }
 }
 
 var openTag = '{{markdown}}';
 var closeTag = '{{/markdown}}';
 
-function markdown (from, to) {
+// Replace Markdown tags with html
+function processTags (from) {
   var file = fs.readFileSync(from, {encoding: 'utf8'});
   while(true) {
     var startIndex = file.indexOf(openTag);
@@ -83,24 +117,85 @@ function markdown (from, to) {
     var html = marked(markdown);
     file = file.replace(openTag + markdown + closeTag, html);
   }
-
-  var names = ['docs', 'faq', 'learn', 'resources'];
-  for (var i = 0; i < names.length; i++) {
-    var name = names[i];
-    if (from === __dirname + '/views/app/' + name + '.html') {
-      var mdPath = __dirname + '/md/' + name + '.md';
-      var levels = getLevels(mdPath);
-      var navbar = getNavbar(levels);
-      file = file.replace('{{navbar}}', navbar);
-      var md = fs.readFileSync(mdPath, {encoding: 'utf8'});
-      var content = marked(md);
-      file = file.replace('{{content}}', content);
-    }
-  }
-  fs.writeFileSync(to, file);
+  return file;
 }
 
-function readPath (from, to) {
+var mdDir = __dirname + '/md';
+var appDir = __dirname + '/views/app';
+var genDir = __dirname + '/views/gen';
+
+if (!fs.existsSync(genDir)) {
+  fs.mkdirSync(genDir);
+}
+
+// Replace tags in template with data from Markdown file
+function processTemplate (mdPath, content, navbar) {
+  var file = fs.readFileSync(appDir + '/template.html', {encoding: 'utf8'});
+  var meta = parseMarkdown(mdPath);
+  file = file.replace('{{title}}', 'Derby | ' + meta.name);
+  file = file.replace('{{name}}', meta.name);
+  file = file.replace('{{description}}', meta.description);
+  var navbar = navbar || getNavbar(meta.levels);
+  file = file.replace('{{navbar}}', navbar);
+  var content = content || marked(meta.file);
+  file = file.replace('{{content}}', content);
+  return file;
+}
+
+
+var importHtml = '';
+
+function addToImport (name, ns) {
+  if (ns) {
+    importHtml += '<import: src="./' + name + '" ns="' + ns + '">\n';
+  } else {
+    importHtml += '<import: src="./' + name + '">\n';
+  }
+}
+
+function processMarkdownDir (from, to, dirName) {
+  var html = '<ul>';
+  var fileNames = fs.readdirSync(from);
+  for (var i = 0; i < fileNames.length; i++) {
+    var fileName = fileNames[i];
+    if (fileName === 'index.md') continue;
+    var filePath = from + '/' + fileName;
+    var meta = parseMarkdown(filePath);
+    html += '<li><a href="/' + dirName + '/' + meta.link + '">' + meta.name + '</a></li>';
+
+    var file = processTemplate(filePath);
+    var name = path.basename(filePath, '.md');
+    fs.writeFileSync(to + '/' + name + '.html', file);
+    addToImport(dirName + '/' + name, dirName + ':' + name);
+  }
+  html += '</ul>';
+  var file = processTemplate(from + '/index.md', html, ' ');
+  fs.writeFileSync(to + '/index.html', file);
+}
+
+// Process /md dir
+var fileNames = fs.readdirSync(mdDir);
+for (var i = 0; i < fileNames.length; i++) {
+  var fileName = fileNames[i];
+  var filePath = mdDir + '/' + fileName;
+  var stat = fs.statSync(filePath);
+  if (stat.isDirectory()) {
+    var to = genDir + '/' + fileName;
+    if (!fs.existsSync(to)) {
+      fs.mkdirSync(to);
+    }
+    processMarkdownDir(filePath, to, fileName);
+    addToImport(fileName);
+
+  } else {
+    var name = path.basename(filePath, '.md');
+    var file = processTemplate(filePath);
+    fs.writeFileSync(genDir + '/' + name + '.html', file);
+    addToImport(name);
+  }
+}
+
+function processViewsDir (from, to) {
   var stat = fs.statSync(from);
   if (stat.isDirectory()) {
     if (!fs.existsSync(to)) {
@@ -108,11 +203,17 @@ function readPath (from, to) {
     }
     var fileNames = fs.readdirSync(from);
     for (var i = 0; i < fileNames.length; i++) {
-      readPath(from + '/' + fileNames[i], to + '/' + fileNames[i]);
+      var fileName = fileNames[i];
+      processViewsDir(from + '/' + fileName, to + '/' + fileName);
     }
   } else {
-    markdown(from, to);
+    var file = processTags(from);
+    if (from === appDir + '/index.html') {
+      file = importHtml + file;
+    }
+    fs.writeFileSync(to, file);
   }
 }
 
-readPath(__dirname + '/views/app', __dirname + '/views/gen');
+// Process /views dir
+processViewsDir(appDir, genDir);

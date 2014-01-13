@@ -3,6 +3,8 @@
 <p class="promo">MVC framework making it easy to write realtime, collaborative
 applications that run in both Node.js and browsers.</p>
 
+### Hello World
+
 <h3 class="javascript">hello.js</h3>
 ```javascript
 var app = require('derby').createApp(module);
