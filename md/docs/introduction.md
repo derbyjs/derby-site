@@ -1,5 +1,8 @@
 # Introduction
 
+
+## Intro
+
 Derby includes a powerful data synchronization engine called
 [Racer](http://racerjs.com/). While it works differently, Racer is to Derby
 somewhat like ActiveRecord is to Rails. Racer automatically syncs data between

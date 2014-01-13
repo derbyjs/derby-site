@@ -1,4 +1,26 @@
-# Apps
+# App
+
+Derby application
+
+## App
+
+There can be one or more apps. Each one consist of:
+- Templates
+- Styles
+- Model
+- Router
+- Application Logic
+
+App provides Router Express Middleware, which renders html server-side and packages up all app parts to send them to client.
+
+While in browser, app handles URL and renders html client-side.
+
+There can be only one app in browser at any moment of time.
+
+If app cannot handle a URL, it will fall through to server.
+
+
+
 
 Derby projects support one or more single-page apps as well as static pages.
 Apps have a full MVC structure, including a model provided by
@@ -62,6 +84,29 @@ that handles all of the app's routes.
 The server also needs to create a `store` object, which is what creates models,
 coordinates data syncing, and interfaces with databases. Stores are created via
 the `derby.createStore()` method. See [Creating stores](#creating_stores).
+
+## Application logic
+
+Application logic executes in response to routes, user events, and model events. Code that responds to user events and model events should be placed within an `app.enter()` callback. This provides the model object for the client and makes sure that the code is only executed on the client.
+
+> ### app.enter` ( routePattern, callback(model) )`
+> ### app.exit` ( routePattern, callback(model) )`
+>
+> **routePattern:** A string containing a literal URL, an Express route pattern, or a regular expression. See [Express's routing documentation](http://expressjs.com/guide.html#routing) for more info.
+>
+> **callback:** Function called as soon as the Derby app is loaded on the client. Note that any code within this callback is only executed on the client and not on the server.
+>
+> **model:** The Derby model object for the given client
+
+There is also an `app.ready()` method, which is only called on the very first page load and not after any client-side rendered page transitions.
+
+> ### app.ready` ( callback(model) )`
+>
+> **callback:** Function called as soon as the Derby app is loaded on the client. Note that any code within this callback is only executed on the client and not on the server.
+>
+> **model:** The Derby model object for the given client
+
+Application logic should be written to share as much code between servers and clients as possible. For security reasons or for direct access to backend services, it may be necessary to only perform certain functions on servers. However, placing as much code as possible in a shared location allows Derby apps to be extremely responsive and work offline by default.
 
 ## Static pages
 
