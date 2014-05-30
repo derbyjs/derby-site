@@ -1,0 +1,27 @@
+{
+    "port": 3000,
+    "environment": "development",
+    "mongodb": {
+        "uri": "mongodb://192.168.193.129:27017/derby-site"
+    },
+    "redis": {
+        "host": "192.168.193.129",
+        "port": "6379",
+        "ttl": "",
+        "db": "1",
+        "user": "",
+        "pass": "",
+        "prefix": "sess:"
+    },
+    "session": {
+        "secret": "KillerIsJim",
+        "key": "sid",
+        "cookie": {
+            "path": "/",
+            "httpOnly": true,
+            "maxAge": null,
+            "domain": ".",
+            "secure": false
+        }
+    }
+}

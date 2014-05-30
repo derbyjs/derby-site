@@ -1,0 +1,96 @@
+var express = require('express');
+var session = require('express-session');
+var favicon = require('serve-favicon');
+var serveStatic = require('serve-static');
+var compression = require('compression');
+var bodyParser = require('body-parser');
+var derbyLogin = require('derby-login');
+
+var connectStore, sessionStore;
+if (process.env.REDIS_HOST) {
+    var redis = require('redis');
+
+    var redisClient;
+    redisClient = redis.createClient(process.env.REDIS_PORT, process.env.REDIS_HOST);
+    if (process.env.REDIS_PASSWORD) redisClient.auth(process.env.REDIS_PASSWORD);
+
+    connectStore = require('connect-redis')(session);
+    sessionStore = new connectStore({host: process.env.REDIS_HOST, port: process.env.REDIS_PORT, pass: process.env.REDIS_PASSWORD});
+} else {
+    connectStore = require('connect-mongo')(session);
+    sessionStore = new connectStore({url: process.env.MONGO_URL});
+}
+
+var midError = require('./error');
+var derby = require('derby');
+var racerBrowserChannel = require('racer-browserchannel');
+var liveDbMongo = require('livedb-mongo');
+derby.use(require('racer-bundle'));
+
+exports.setup = function setup(app, options, cb) {
+    var store = derby.createStore({
+        db: liveDbMongo(process.env.MONGO_URL + '?auto_reconnect', {safe: true}),
+        redis: redisClient
+    });
+
+    var publicDir = __dirname + '/../../public';
+
+    var expressApp = express()
+        .use(favicon(publicDir + '/images/favicon.ico'))
+        .use(compression())
+        .use(app.scripts(store))
+        .use(serveStatic(publicDir));
+
+    if (options && options.static) {
+        if (Array.isArray(options.static)) {
+            for (var i = 0; i < options.static.length; i++) {
+                var o = options.static[i];
+                expressApp.use(o.route, serveStatic(o.dir));
+            }
+        } else {
+            expressApp.use(serveStatic(publicDir));
+        }
+    }
+
+
+    store.on('bundle', function(browserify){
+        browserify.add(publicDir + '/js/jquery.min.js');
+        //browserify.add(__dirname + './../../public/js/bootstrap.min.js');
+    });
+
+    expressApp.use(racerBrowserChannel(store));
+    expressApp.use(store.modelMiddleware());
+
+    expressApp.use(require('cookie-parser')(process.env.SESSION_COOKIE));
+    expressApp.use(session({
+        secret: process.env.SESSION_SECRET,
+        store: sessionStore
+    }));
+
+    expressApp
+        .use(bodyParser())
+        .use(createUserId)
+        .use(derbyLogin.middleware(options))
+        .use(app.router());
+
+    // Если бы у на были обычные экспрессовские роуты - мы бы положили их СЮДА
+    derbyLogin.routes(expressApp, store);
+
+    expressApp.all('*', function (req, res, next) {
+        next('404: ' + req.url);
+    });
+
+    expressApp.use(midError());
+
+    return expressApp;
+}
+
+function createUserId(req, res, next) {
+    var model = req.getModel();
+    var userId = req.session.userId;
+    if (!userId) userId = req.session.userId = model.id();
+    model.set('_session.userId', userId);
+    next();
+}
+
+
