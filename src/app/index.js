@@ -3,11 +3,11 @@ var app = module.exports = derby.createApp('site', __filename);
 
 global.app = app;
 
-app.loadViews (__dirname+'/../../views');
-app.loadStyles(__dirname+'/../../styles');
+app.loadViews(__dirname+'/../../views/app');
+app.loadStyles(__dirname+'/../../styles/app');
 
 app.get('/', function getPage(page, model){
-  page.render();
+  page.render('home');
 });
 
 app.get('/:name/:sub?', function(page, model, params, next) {

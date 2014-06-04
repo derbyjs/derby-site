@@ -120,15 +120,15 @@ function processTags (from) {
   return file;
 }
 
-var mdDir = __dirname + '/md';
-var appDir = __dirname + '/views/app';
-var genDir = __dirname + '/views/gen';
+var mdDir = __dirname + '/../../md';
+var appDir = __dirname + '/../../views/app';
+var genDir = __dirname + '/../../views/gen';
 
 if (!fs.existsSync(genDir)) {
   fs.mkdirSync(genDir);
 }
 
-var githubPath = 'https://github.com/vmakhaev/derby-site/edit/master/md';
+var githubPath = 'https://github.com/derbyparty/derby-site/tree/master/md';
 
 // Replace tags in template with data from Markdown file
 function processTemplate (mdPath, content, navbar) {

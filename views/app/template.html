@@ -1,0 +1,84 @@
+<Title:>
+  {{title}}
+
+<Head:>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<Body:>
+
+  <!-- Navbar -->
+
+    <div class="navbar navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><img src="/img/logo.png"/></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/learn">Learn</a></li>
+            <li><a href="/docs">Docs</a></li>
+            <li><a href="/faq">FAQ</a></li>
+            <li><a href="http://blog.derbyjs.com">Blog</a></li>
+            <li><a href="/resources">Resources</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="#" class="github">
+              <iframe src="http://ghbtns.com/github-btn.html?user=codeparty&repo=derby&type=watch&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="30"></iframe>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Label -->
+
+    <div class="navbar navbar-static-top">
+      <div class="container">
+
+        <div class="starter-template">
+          <a href="{{editLink}}" class="btn btn-default pull-right">
+            <span class="glyphicon glyphicon-pencil"></span> Edit
+          </a>
+          <br>
+          <h1>{{name}}</h1>
+          <p class="lead">{{description}}</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Content -->
+
+    <div class="container">
+
+      <div class="row">
+        <div class="col-md-3 sidebar">
+          <div class="bs-sidebar hidden-print" role="complementary">
+            <ul class="nav bs-sidenav">
+              {{navbar}}
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-9 main">
+          {{content}}
+        </div>
+
+      </div>
+
+      <!-- /END THE FEATURETTES -->
+
+
+      <!-- FOOTER -->
+      <footer>
+        <p class="pull-right">&copy; 2014 <a href="http://lever.co"> Lever, Inc.</a></p>
+      </footer>
+
+    </div><!-- /.container -->
