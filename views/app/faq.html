@@ -10,90 +10,65 @@
     </div>
 
     <div class="container">
-
         <div class="row">
             <div class="col-md-3 sidebar">
                 <div class="bs-docs-sidebar hidden-print" role="complementary">
                     <ul class="nav bs-docs-sidenav">
-                        <li><a href="#what-if-i-have-not-found-an-answer-">What if I have not found an answer?
-                        </a></li>
-                        <li><a href="#what-is-derby-application-">What is Derby application?
-                        </a></li>
-                        <li><a href="#how-request-is-processed-">How request is processed?
-                        </a></li>
-                        <li><a href="#what-if-js-is-disabled-">What if js is disabled?
-                        </a></li>
-                        <li><a href="#what-is-model-">What is Model?
-                        </a></li>
-                        <li><a href="#what-is-fetch-and-subscribe-">What is fetch and subscribe?
-                        </a></li>
-                        <li><a href="#what-is-store-">What is Store?
-                        </a></li>
-                        <li><a href="#what-is-racer-">What is Racer?
-                        </a></li>
-                        <li><a href="#what-is-ot-">What is OT?
-                        </a></li>
-                        <li><a href="#why-do-we-need-two-databases-">Why do we need two databases?
-                        </a></li>
-                        <li><a href="#why-racer-browserchanel-uses-long-pooling-and-not-web-sockets-">Why
-                            racer-browserchanel uses long pooling and not web sockets?
-                        </a></li>
-                        <li><a href="#what-kind-of-projects-derby-is-suitable-for-">What kind of projects Derby is
-                            suitable for?
-                        </a></li>
-                        <li><a href="#how-can-we-limit-access-to-data-">How can we limit access to data?
-                        </a></li>
-                        <li><a href="#what-about-authorization-">What about authorization?
-                        </a></li>
-                        <li><a href="#why-there-are-two-collections-in-derby-auth-">Why there are two collections in
-                            derby-auth?
-                        </a></li>
-                        <li><a href="#can-i-use-derby-in-phonegap-">Can I use Derby in Phonegap?
-                        </a></li>
-                        <li><a href="#is-there-way-to-run-server-code-from-client-">Is there way to run server code from
-                            client?
-                        </a></li>
+                        <li><a href="#what-if-i-have-not-found-an-answer">What if I have not found an answer?</a></li>
+                        <li><a href="#what-is-derby-application">What is Derby application?</a></li>
+                        <li><a href="#how-request-is-processed">How request is processed?</a></li>
+                        <li><a href="#what-if-js-is-disabled">What if js is disabled?</a></li>
+                        <li><a href="#what-is-model">What is Model?</a></li>
+                        <li><a href="#what-is-fetch-and-subscribe">What is fetch and subscribe?</a></li>
+                        <li><a href="#what-is-store">What is Store?</a></li>
+                        <li><a href="#what-is-racer">What is Racer?</a></li>
+                        <li><a href="#what-is-ot">What is OT?</a></li>
+                        <li><a href="#why-do-we-need-two-databases">Why do we need two databases?</a></li>
+                        <li><a href="#why-racer-browserchanel-uses-long-pooling-and-not-web-sockets">Why racer-browserchanel uses long pooling and not web sockets?</a></li>
+                        <li><a href="#what-kind-of-projects-derby-is-suitable-for">What kind of projects Derby is suitable for?</a></li>
+                        <li><a href="#how-can-we-limit-access-to-data">How can we limit access to data?</a></li>
+                        <li><a href="#what-about-authorization">What about authorization?</a></li>
+                        <li><a href="#why-there-are-two-collections-in-derby-auth">Why there are two collections in derby-auth?</a></li>
+                        <li><a href="#can-i-use-derby-in-phonegap">Can I use Derby in Phonegap?</a></li>
+                        <li><a href="#is-there-way-to-run-server-code-from-client">Is there way to run server code from client?</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-md-9 main">
-                <h3 id="what-if-i-have-not-found-an-answer-">What if I have not found an answer?</h3>
+                <h3 id="what-if-i-have-not-found-an-answer">What if I have not found an answer?</h3>
                 <p>These are just a few of the frequently asked questions. This is a work in progress. If your question is not answered here, please search over on the <a href="https://groups.google.com/forum/?fromgroups#!forum/derbyjs">Google Group</a>. If you don&#39;t see an existing question, then let us know what is wrong. Please be as straightforward as possible, and provide any related code snippets.</p>
-                <h3 id="what-is-derby-application-">What is Derby application?</h3>
+                <h3 id="what-is-derby-application">What is Derby application?</h3>
                 <p>Derby app is extended Express app. You can use Connect, Express router, etc, as you do in common Express app. Some of Connect modules are parts of Derby app - this is the way Derby extends Express.<br>Also Derby app has one or more client apps. Each client app has its own router, templates, styles, browserify modules, Model. Client app executes on server while first request and also its uploads to client and executes in browser. Only one client app can be in browser at unit of time.</p>
-                <h3 id="how-request-is-processed-">How request is processed?</h3>
+                <h3 id="how-request-is-processed">How request is processed?</h3>
                 <p>Client app router is located above Express router in Connect middleware. If request is catched by client app router, client app executes on server, generates html and sends it back to browser with styles and client app js. As soon as client app js is uploaded to browser, all next url changes catched by client app router in browser and html generates also there.<br>If client app router can not catch request url, request falls down to Express router. Client app router has only GET method, Experss app router has all methods. Usually Express router is used for uploading files, POST requests, showing errors etc.</p>
-                <h3 id="what-if-js-is-disabled-">What if js is disabled?</h3>
+                <h3 id="what-if-js-is-disabled">What if js is disabled?</h3>
                 <p>If js is disabled in browser, client app router triggers on server for every url change. In this case site looks more like static one.<br>Search engine spiders also get html which is good for SEO.</p>
-                <h3 id="what-is-model-">What is Model?</h3>
+                <h3 id="what-is-model">What is Model?</h3>
                 <p>Model is js-object that provides us api for data. All data manipulations are done through it. Model can exist on server and on client. While processing request from client, Derby creates Model, use it in client app router on server, serializes Model, upload JSON to client, deserializes it and recreates Model with state equal to those on server. Models are created on server for each request and also you can create any number of Models directly from Store anytime, but there is only one Model on client.</p>
-                <h3 id="what-is-fetch-and-subscribe-">What is fetch and subscribe?</h3>
+                <h3 id="what-is-fetch-and-subscribe">What is fetch and subscribe?</h3>
                 <p>Once created Model is empty. It means that there is no data in it. Before you can use any data from database, you should fill it into Model. There are two ways: fetch - just fills Model with some data, subscribe - dynamically binds Model with some data in database, if this data changes in database, data in your Model will be updated. You can fetch/subscribe whole collection, particular document, just one field in document. There are also ways to fetch/subscribe certain documents with use of Queries.</p>
-                <h3 id="what-is-store-">What is Store?</h3>
+                <h3 id="what-is-store">What is Store?</h3>
                 <p>Store is singular js-object on server. All Models are created from Store. Store connected to all Models. If Model is on client, connection established by racer-browserchannel. Store is wrapper on ShareJS and a place where all OT conflict resolution magic is happen.</p>
-                <h3 id="what-is-racer-">What is Racer?</h3>
+                <h3 id="what-is-racer">What is Racer?</h3>
                 <p>Racer is data manipulation layer in Derby, wrapper on ShareJS. Model and Store are parts of Racer. You can use Racer without Derby.</p>
-                <h3 id="what-is-ot-">What is OT?</h3>
+                <h3 id="what-is-ot">What is OT?</h3>
                 <p>OT - Operational Transformation - conflict resolution technique used in ShareJS. Main idea is that each operation recieved from client before being executed on data, transforms according to previous operations for this data (if there were any). If two clients send operations on same data at same time, ShareJS will execute first recieved operation and before executing second, it will transform second operation according to first operation, so second operation data changes will consider that data was already changed by first operation.<br>OT is different for different data types. ShareJS uses json data type in Racer. Also there is text data type in ShareJS and plans to add rich text data type.<br>Using Derby you can treat OT like black box with some magic. ShareJS will merge operations for arrays, strings, number increments &#39;out of the box&#39;, but if two clients make set operation for same data at same time (data with same version) there is no way to capture this correcly and one of two operations will be lost. If it is critical (and you have a big head), you can create application specific data types for ShareJS.</p>
-                <h3 id="why-do-we-need-two-databases-">Why do we need two databases?</h3>
+                <h3 id="why-do-we-need-two-databases">Why do we need two databases?</h3>
                 <p>For data synchronization between clients we need some kind of database events to be aware if data is changed. If we implement these events in app code, there would not be way to scale app to more than one process. Another way is to use database PubSub. Mongo has limited PubSub, so there is no way to use it for most of applications. Another story is Redis - fast, full PubSub. So LiveDB (data store for ShareJS) stores data in Mongo, but uses Redis PubSub to synchronize clients. Also there is cache of last operations in Redis. And we can store history of all operations in same Mongo database as data (by default), in another one or do not store operations at all.<br>There is easy way to change Mongo to something else, you just need to write adapter like livedb-mongo. Changing Redis is not trivial thing.</p>
-                <h3 id="why-racer-browserchanel-uses-long-pooling-and-not-web-sockets-">Why racer-browserchanel uses long pooling and not web sockets?</h3>
+                <h3 id="why-racer-browserchanel-uses-long-pooling-and-not-web-sockets">Why racer-browserchanel uses long pooling and not web sockets?</h3>
                 <p>Web sockets does not guarantee order of messages between client and server, which is critical for OT.</p>
-                <h3 id="what-kind-of-projects-derby-is-suitable-for-">What kind of projects Derby is suitable for?</h3>
+                <h3 id="what-kind-of-projects-derby-is-suitable-for">What kind of projects Derby is suitable for?</h3>
                 <p>Derby is good for most kinds of projects. You can use it for static sites without database as for multiplayer real-time games and big interactive sites.</p>
-                <h3 id="how-can-we-limit-access-to-data-">How can we limit access to data?</h3>
+                <h3 id="how-can-we-limit-access-to-data">How can we limit access to data?</h3>
                 <p>There is Racer plugin: racer-access. You can restrict access to collection and document. There is no way to limit access to particular fields of document.</p>
-                <h3 id="what-about-authorization-">What about authorization?</h3>
+                <h3 id="what-about-authorization">What about authorization?</h3>
                 <p>Derby + Everyauth have some problems with login/password authorization. So recomendation - to use Passport. There are derby-auth and derby-passport modules, which are suitable for most Derby apps.</p>
-                <h3 id="why-there-are-two-collections-in-derby-auth-">Why there are two collections in derby-auth?</h3>
+                <h3 id="why-there-are-two-collections-in-derby-auth">Why there are two collections in derby-auth?</h3>
                 <p>There is no way to restrict access in Derby for some fields of documents and allow it for another fields of same documents. So there is no way to restrict access to user password and allow access to user name using one collection. So derby-auth uses two collections: auth - for passwords, users - for everything else.</p>
-                <h3 id="can-i-use-derby-in-phonegap-">Can I use Derby in Phonegap?</h3>
+                <h3 id="can-i-use-derby-in-phonegap">Can I use Derby in Phonegap?</h3>
                 <p>Starting from version 0.6 - yes, you can.</p>
-                <h3 id="is-there-way-to-run-server-code-from-client-">Is there way to run server code from client?</h3>
+                <h3 id="is-there-way-to-run-server-code-from-client">Is there way to run server code from client?</h3>
                 <p>You can use server-hooks (events for data changes) or send post request to express router to execute some code.</p>
-
             </div>
-
         </div>
-
     </div>

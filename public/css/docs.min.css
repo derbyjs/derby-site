@@ -492,7 +492,7 @@ body {
 }
 
 .bs-docs-sidebar .nav .nav {
-    display: none;
+    display: block;
     padding-bottom: 10px
 }
 
