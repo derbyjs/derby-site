@@ -99,6 +99,8 @@ exports.setup = function setup(app, options, cb) {
 
     expressApp.use(midError());
 
+    app.writeScripts(store, publicDir, {}, function() {});
+
     return expressApp;
 }
 
