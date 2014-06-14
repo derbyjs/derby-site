@@ -43,7 +43,8 @@ var options = {
             displayName: true,
             username: true,
             profileUrl: true,
-            emails: true
+            emails: true,
+            online: true
         }
     }
 }

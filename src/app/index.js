@@ -20,8 +20,16 @@ app.get('*', function(page, model, params, next) {
   }
 });
 
-app.get('/', function getPage(page, model){
+app.get('/', function (page, model){
   page.render('home');
+});
+
+app.get('/chat', function (page, model){
+  var $usersQuery = model.query('users', {online: true});
+  model.subscribe($usersQuery, function() {
+    $usersQuery.ref('_page.users');
+    page.render('chat');
+  });
 });
 
 app.get('/:name/:sub?', function(page, model, params, next) {

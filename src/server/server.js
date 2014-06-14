@@ -75,14 +75,37 @@ exports.setup = function setup(app, options, cb) {
         //browserify.add(publicDir + '/js/app.js');
     });
 
-    expressApp.use(racerBrowserChannel(store));
-    expressApp.use(store.modelMiddleware());
+    store.shareClient.use('connect', function (shareRequest, next) {
+        if (!shareRequest.agent.stream.isServer) {
+            var userId = shareRequest.req.session.passport.user;
+            if (userId) {
+                var sessionId = shareRequest.agent.sessionId;
+                var model = store.createModel();
+                var $user = model.at('auths.' + userId);
+                model.subscribe($user, function() {
+                    $user.set('sessionId', sessionId);
+                    $user.set('online', true);
+                });
+                shareRequest.agent.stream.on('end', function() {
+                    var lastSessionId = $user.get('sessionId');
+                    if (sessionId === lastSessionId) {
+                        $user.set('online', false);
+                    }
+                });
+            }
+        }
+
+        next();
+    });
 
     expressApp.use(require('cookie-parser')(process.env.SESSION_COOKIE));
+
     expressApp.use(session({
         secret: process.env.SESSION_SECRET,
         store: sessionStore
     }));
+    expressApp.use(racerBrowserChannel(store));
+    expressApp.use(store.modelMiddleware());
 
     expressApp
         .use(bodyParser())
