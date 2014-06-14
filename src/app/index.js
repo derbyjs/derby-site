@@ -3,6 +3,7 @@ var app = module.exports = derby.createApp('site', __filename);
 
 global.app = app;
 
+app.serverUse(module, 'derby-stylus');
 app.loadViews(__dirname+'/../../views/app');
 app.loadStyles(__dirname+'/../../styles/app');
 

@@ -1,47 +1,48 @@
 {
-    "name": "derby-site",
-    "version": "0.0.2",
-    "description": "Derby Site",
-    "main": "server.js",
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/derbyparty/derby-site.git"
-    },
-    "keywords": [
-        "derby"
-    ],
-    "author": "Vladimir Makhaev",
-    "contributors": [
-        "Eric Samatov <Skarm>"
-    ],
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/derbyparty/derby-site/issues"
-    },
-    "dependencies": {
-        "derby": "0.6.0-alpha8",
-        "express": "~4.3.2",
-        "cookie-parser": "~1.1.0",
-        "body-parser": "~1.2.0",
-        "express-session": "~1.2.1",
-        "serve-static": "~1.1.0",
-        "racer-browserchannel": "~0.2.0",
-        "livedb-mongo": "~0.3.2",
-        "racer-bundle": "~0.1.1",
-        "compression": "~1.0.2",
-        "connect-mongo": "~0.4.1",
-        "nconf": "~0.6.9",
-        "redis": "~0.10.3",
-        "connect-redis": "~2.0.0",
-        "derby-login": "~0.1.1",
-        "coffeeify": "~0.6.0",
-        "marked": "~0.3.0",
-        "highlight.js": "~8.0.0",
-        "passport-github": "~0.1.5",
-        "serve-favicon": "~2.0.0",
-        "d-bootstrap": "~0.1.0",
-        "d-connection-alert": "~0.1.0"
-    },
-    "readme": "Derby Site\n",
-    "readmeFilename": "README.md"
+  "name": "derby-site",
+  "version": "0.0.2",
+  "description": "Derby Site",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/derbyparty/derby-site.git"
+  },
+  "keywords": [
+    "derby"
+  ],
+  "author": "Vladimir Makhaev",
+  "contributors": [
+    "Eric Samatov <Skarm>"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/derbyparty/derby-site/issues"
+  },
+  "dependencies": {
+    "derby": "0.6.0-alpha19",
+    "express": "~4.3.2",
+    "cookie-parser": "~1.1.0",
+    "body-parser": "~1.2.0",
+    "express-session": "~1.2.1",
+    "serve-static": "~1.1.0",
+    "racer-browserchannel": "~0.2.0",
+    "livedb-mongo": "~0.3.2",
+    "racer-bundle": "~0.1.1",
+    "compression": "~1.0.2",
+    "connect-mongo": "~0.4.1",
+    "nconf": "~0.6.9",
+    "redis": "~0.10.3",
+    "connect-redis": "~2.0.0",
+    "derby-login": "~0.1.1",
+    "coffeeify": "~0.6.0",
+    "marked": "~0.3.0",
+    "highlight.js": "~8.0.0",
+    "passport-github": "~0.1.5",
+    "serve-favicon": "~2.0.0",
+    "d-bootstrap": "~0.1.0",
+    "d-connection-alert": "~0.1.0",
+    "derby-stylus": "~0.1.0"
+  },
+  "readme": "Derby Site\n",
+  "readmeFilename": "README.md"
 }

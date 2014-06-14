@@ -39,7 +39,7 @@ exports.setup = function setup(app, options, cb) {
     var expressApp = express()
         .use(favicon(publicDir + '/images/favicon.ico'))
         .use(compression())
-        .use(app.scripts(store))
+        //.use(app.scripts(store))
         .use(serveStatic(publicDir));
 
     if (options && options.static) {
