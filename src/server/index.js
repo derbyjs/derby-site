@@ -19,32 +19,39 @@ var options = {
                 var model = req.getModel();
                 var $user = model.at('auths.' + user.id);
                 model.fetch($user, function() {
-                    $user.set('email', $user.get('local.email'), done);
+                    $user.set('displayName', $user.get('github.displayName'));
+                    $user.set('username', $user.get('github.username'));
+                    $user.set('profileUrl', $user.get('github.profileUrl'));
+                    $user.set('emails', $user.get('github.emails'));
+                    done();
                 })
-            }
+            },
+            failureRedirect: '/'
         },
         strategies: {
             github: {
                 strategy: require('passport-github').Strategy,
                 conf: {
-                    clientID: '8861a280d53fd012268d',
-                    clientSecret: 'e15e3913804057cfa1b0cdf63e1946e6da7f8378',
+                    clientID: 'aa90d8e73471ac8b8949',
+                    clientSecret: '34a0d145dec4358a0b55a6e84e3977c07ee4afbe',
                     callbackURL: 'http://localhost:3000/auth/github/callback'
                 }
             }
         },
         user: {
             id: true,
-            email: true,
-            github: true
+            displayName: true,
+            username: true,
+            profileUrl: true,
+            emails: true
         }
     }
 }
 
 
-exports.run = function (app, options, cb) {
+exports.run = function (app, opts, cb) {
 
-    options = options || {};
+    //options = options || {};
 
     derby.run(createServer);
 

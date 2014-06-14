@@ -44,7 +44,12 @@
                     <nav-link href="/resources" caption="Resources"></nav-link>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Login</a></li>
+                    {{if _session.loggedIn}}
+                        <li><p class="navbar-text">{{_session.user.displayName || _session.user.username}}</p></li>
+                        <li><a href="/auth/logout">Logout</a></li>
+                    {{else}}
+                        <li><a href="/auth/github">Login</a></li>
+                    {{/}}
                 </ul>
             </nav>
         </div>

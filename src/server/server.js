@@ -87,7 +87,7 @@ exports.setup = function setup(app, options, cb) {
     expressApp
         .use(bodyParser())
         .use(createUserId)
-        .use(derbyLogin.middleware(options))
+        .use(derbyLogin.middleware(options.auth))
         .use(app.router());
 
     // Если бы у на были обычные экспрессовские роуты - мы бы положили их СЮДА
