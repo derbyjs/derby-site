@@ -15,6 +15,6 @@ app.get('/:name/:sub?', function(page, model, params, next) {
     var name = params.name;
     var sub = params.sub;
     var viewName = sub ? name + ':' + sub : name;
-    console.log('render', viewName);
+
     page.render(viewName);
 });
