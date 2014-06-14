@@ -2,7 +2,7 @@
     "port": 3000,
     "environment": "development",
     "mongodb": {
-        "uri": "mongodb://192.168.193.129:27017/derby-site"
+        "uri": "mongodb://localhost:27017/derby-site"
     },
     "redis": {
         "host": "localhost",
