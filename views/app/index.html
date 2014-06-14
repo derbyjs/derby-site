@@ -5,90 +5,90 @@
 <import: src="./resources">
 
 <Head:>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/docs.min.css" rel="stylesheet">
-    <link href="/css/github.min.css" rel="stylesheet">
-    <link href="/css/rainbow.css" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/docs.min.css" rel="stylesheet">
+  <link href="/css/github.min.css" rel="stylesheet">
+  <link href="/css/rainbow.css" rel="stylesheet">
 
 <Title:>
-    Derby Party
+  Derby Party
 
 <Body:>
-    <div class="bs-docs-home">
-        <view name="header"/>
-        <view name="{{$render.ns}}"/>
-        <view name="footer"/>
-    </div>
+  <div class="bs-docs-home">
+    <view name="header"/>
+    <view name="{{$render.ns}}"/>
+    <view name="footer"/>
+  </div>
 
 <header:>
-    <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
-        <div class="container">
-            <div class="navbar-header">
-                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="/" class="navbar-brand"><img src="/images/logo.png"/></a>
-            </div>
-            <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-                <ul class="nav navbar-nav">
-                    <nav-link href="/learn" caption="Learn"></nav-link>
-                    <nav-link href="/faq" caption="FAQ"></nav-link>
-                    <nav-link href="/resources" caption="Resources"></nav-link>
-                    <nav-link href="/chat" caption="Chat"></nav-link>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    {{if _session.loggedIn}}
-                        <li><p class="navbar-text">{{_session.user.displayName || _session.user.username}}</p></li>
-                        <li><a href="/auth/logout">Logout</a></li>
-                    {{else}}
-                        <li><a href="/auth/github">Login</a></li>
-                    {{/}}
-                </ul>
-            </nav>
-        </div>
-    </header>
+  <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+    <div class="container">
+      <div class="navbar-header">
+        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="/" class="navbar-brand"><img src="/images/logo.png"/></a>
+      </div>
+      <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+        <ul class="nav navbar-nav">
+          <nav-link href="/learn" caption="Learn"></nav-link>
+          <nav-link href="/faq" caption="FAQ"></nav-link>
+          <nav-link href="/resources" caption="Resources"></nav-link>
+          <nav-link href="/chat" caption="Chat"></nav-link>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          {{if _session.loggedIn}}
+          <li><p class="navbar-text">{{_session.user.displayName || _session.user.username}}</p></li>
+          <li><a href="/auth/logout">Logout</a></li>
+          {{else}}
+          <li><a href="/auth/github">Login</a></li>
+          {{/}}
+        </ul>
+      </nav>
+    </div>
+  </header>
 
 <footer:>
-    <footer class="bs-docs-footer" role="contentinfo">
-        <div class="container">
-            <div class="bs-docs-social">
-                <ul class="bs-docs-social-buttons">
-                    <li>
-                        <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=codeparty&repo=derby&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20" title="Star on GitHub"></iframe>
-                    </li>
-                    <li>
-                        <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=codeparty&repo=derby&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20" title="Fork on GitHub"></iframe>
-                    </li>
-                </ul>
-            </div>
+  <footer class="bs-docs-footer" role="contentinfo">
+    <div class="container">
+      <div class="bs-docs-social">
+        <ul class="bs-docs-social-buttons">
+          <li>
+            <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=codeparty&repo=derby&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20" title="Star on GitHub"></iframe>
+          </li>
+          <li>
+            <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=codeparty&repo=derby&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20" title="Fork on GitHub"></iframe>
+          </li>
+        </ul>
+      </div>
 
-            <ul class="bs-docs-footer-links muted">
-                <li><a href="https://groups.google.com/forum/#!forum/derbyjs" target="_blank">Google Group</a></li>
-                <li>&middot;</li>
-                <li><a href="http://blog.derbyjs.com" target="_blank">Blog</a></li>
-                <li>&middot;</li>
-                <li><a href="https://github.com/codeparty/derby" target="_blank">GitHub</a></li>
-                <li>&middot;</li>
-                <li><a href="https://github.com/codeparty/derby/issues?state=open" target="_blank">Issues</a></li>
-                <li>&middot;</li>
-                <li><a href="https://github.com/codeparty/derby/releases" target="_blank">Releases</a></li>
-            </ul>
+      <ul class="bs-docs-footer-links muted">
+        <li><a href="https://groups.google.com/forum/#!forum/derbyjs" target="_blank">Google Group</a></li>
+        <li>&middot;</li>
+        <li><a href="http://blog.derbyjs.com" target="_blank">Blog</a></li>
+        <li>&middot;</li>
+        <li><a href="https://github.com/codeparty/derby" target="_blank">GitHub</a></li>
+        <li>&middot;</li>
+        <li><a href="https://github.com/codeparty/derby/issues?state=open" target="_blank">Issues</a></li>
+        <li>&middot;</li>
+        <li><a href="https://github.com/codeparty/derby/releases" target="_blank">Releases</a></li>
+      </ul>
 
-            <p>Code licensed under <a href="http://opensource.org/licenses/MIT" target="_blank">MIT</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>.</p>
-        </div>
-    </footer>
+      <p>Code licensed under <a href="http://opensource.org/licenses/MIT" target="_blank">MIT</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>.</p>
+    </div>
+  </footer>
 
 
 <nav-link: element="nav-link">
-    <li class="{{if $render.url === @href}}active{{/}}">
-        <a href="{{@href}}">{{@caption}}</a>
-    </li>
+  <li class="{{if $render.url === @href}}active{{/}}">
+    <a href="{{@href}}">{{@caption}}</a>
+  </li>

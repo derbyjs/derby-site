@@ -1,29 +1,29 @@
 <Title:>
-    Derby Party - Chat
+  Derby Party - Chat
 
 <index:>
-    <div class="bs-docs-header" id="content">
-        <div class="container">
-            <h1>Chat</h1>
-            <p></p>
-        </div>
-    </div>
-
+  <div class="bs-docs-header" id="content">
     <div class="container">
-
-        <div class="row">
-            <div class="col-md-3 sidebar">
-                <div class="bs-docs-sidebar hidden-print" role="complementary">
-                    <ul class="nav bs-docs-sidenav">
-                        {{each _page.users as #user}}
-                            <li><a href="{{#user.profileUrl}}" target="_blank">{{#user.displayName || #user.username}}</a></li>
-                        {{/each}}
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-9 main">
-                <h2 id="links">Messages</h2>
-            </div>
-
-        </div>
+      <h1>Chat</h1>
+      <p></p>
     </div>
+  </div>
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-3 sidebar">
+        <div class="bs-docs-sidebar hidden-print" role="complementary">
+          <ul class="nav bs-docs-sidenav">
+            {{each _page.users as #user}}
+            <li><a href="{{#user.profileUrl}}" target="_blank">{{#user.displayName || #user.username}}</a></li>
+            {{/each}}
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-9 main">
+        <h2 id="links">Messages</h2>
+      </div>
+
+    </div>
+  </div>
