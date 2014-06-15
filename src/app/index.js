@@ -40,3 +40,9 @@ app.get('/:name/:sub?', function(page, model, params, next) {
     if (name === 'auth') return next();
     page.render(viewName);
 });
+
+app.proto.message = function(element, e) {
+  if (e.keyCode === 13 && !e.shiftKey) {
+    console.log('message', element.value);
+  }
+}
