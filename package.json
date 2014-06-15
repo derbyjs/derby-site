@@ -44,7 +44,8 @@
     "derby-stylus": "~0.1.0",
     "derby-hook": "0.0.3",
     "nodejs-gravatar": "~1.0.2",
-    "moment": "~2.7.0"
+    "moment": "~2.7.0",
+    "derby-markdown": "~0.1.0"
   },
   "readme": "Derby Site\n",
   "readmeFilename": "README.md"

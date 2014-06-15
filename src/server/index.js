@@ -1,6 +1,7 @@
 var derby = require('derby');
 var config = require('./config');
 var marked = require('marked');
+var markedOptions = require('./config/markedOptions');
 var gravatar = require('nodejs-gravatar');
 
 process.env.NODE_ENV = config.get('environment');
@@ -58,25 +59,7 @@ var options = {
   }
 }
 
-marked.setOptions({
-  breaks: true,
-  highlight: function (code, lang) {
-    if (lang) {
-      // highlight.js does not know html, but xml
-      if (lang === 'html') lang = 'xml';
-      code = require('highlight.js').highlight(lang, code).value;
-    } else {
-      code = require('highlight.js').highlightAuto(code).value;
-    }
-
-    // replace Derby template engine brackets in code examples
-    code = code.replace(/\{\{/g, '&#123;'); //actually &#123;&#123;
-    code = code.replace(/\}\}/g, '&#125;&#125;');
-
-    // new lines
-    return code.replace(/\n/g, '<br>');
-  }
-});
+marked.setOptions(markedOptions);
 
 
 exports.run = function (app, opts, cb) {

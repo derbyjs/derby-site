@@ -1,12 +1,15 @@
 var derby = require('derby');
+var markedOptions = require('../server/config/markedOptions');
 var app = module.exports = derby.createApp('site', __filename);
 
 global.app = app;
 
+app.serverUse(module, 'derby-markdown', markedOptions);
 app.serverUse(module, 'derby-stylus');
 app.loadViews(__dirname+'/../../views/app');
 app.loadStyles(__dirname+'/../../styles/app');
 app.component(require('../../components/chat'));
+app.component(require('../../components/sidebar'));
 
 app.get('*', function(page, model, params, next) {
   if (model.get('_session.loggedIn')) {

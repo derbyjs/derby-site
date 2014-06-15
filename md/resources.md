@@ -1,7 +1,3 @@
-# Resources
-
-Useful links and projects from community
-
 ## Plugins, Extensions
 
 ### Auth

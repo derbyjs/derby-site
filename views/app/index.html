@@ -3,6 +3,9 @@
 <import: src="./learn">
 <import: src="./faq">
 <import: src="./resources">
+<import: src="../../md/faq" ns="md:faq">
+<import: src="../../md/learn" ns="md:learn">
+<import: src="../../md/resources" ns="md:resources">
 
 <Head:>
   <meta charset="utf-8">
@@ -92,3 +95,15 @@
   <li class="{{if $render.url === @href}}active{{/}}">
     <a href="{{@href}}">{{@caption}}</a>
   </li>
+
+<markdown: element="markdown">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 sidebar">
+        <view name="sidebar"/>
+      </div>
+      <div class="col-md-9 main">
+        <view name="md:{{$render.ns}}"/>
+      </div>
+    </div>
+  </div>

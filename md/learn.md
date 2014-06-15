@@ -1,7 +1,3 @@
-# Learn
-
-Some tutorials to help you start
-
 ## Environment
 
 For Derby you need: [Node](http://nodejs.org) (>=0.10), [MongoDB](http://www.mongodb.org/), [Redis](http://redis.io/) (>=2.6).
