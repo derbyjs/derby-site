@@ -6,6 +6,7 @@ global.app = app;
 app.serverUse(module, 'derby-stylus');
 app.loadViews(__dirname+'/../../views/app');
 app.loadStyles(__dirname+'/../../styles/app');
+app.component(require('../../components/chat'));
 
 app.get('*', function(page, model, params, next) {
   if (model.get('_session.loggedIn')) {
@@ -25,9 +26,8 @@ app.get('/', function (page, model){
 });
 
 app.get('/chat', function (page, model){
-  var $usersQuery = model.query('users', {online: true});
-  model.subscribe($usersQuery, function() {
-    $usersQuery.ref('_page.users');
+  var $messagesQuery = model.query('messages', {});
+  model.subscribe($messagesQuery, 'users', function() {
     page.render('chat');
   });
 });
@@ -41,8 +41,12 @@ app.get('/:name/:sub?', function(page, model, params, next) {
     page.render(viewName);
 });
 
-app.proto.message = function(element, e) {
-  if (e.keyCode === 13 && !e.shiftKey) {
-    console.log('message', element.value);
-  }
-}
+
+app.on('model', function(model) {
+  model.fn('all', function(doc) {
+    return true;
+  });
+  model.fn('online', function(doc) {
+    return doc.online;
+  });
+});

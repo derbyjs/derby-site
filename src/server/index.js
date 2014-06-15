@@ -1,5 +1,7 @@
 var derby = require('derby');
 var config = require('./config');
+var marked = require('marked');
+var gravatar = require('nodejs-gravatar');
 
 process.env.NODE_ENV = config.get('environment');
 process.env.MONGO_URL = config.get('mongodb:uri');
@@ -22,10 +24,16 @@ var options = {
           $user.set('displayName', $user.get('github.displayName'));
           $user.set('username', $user.get('github.username'));
           $user.set('profileUrl', $user.get('github.profileUrl'));
-          $user.set('emails', $user.get('github.emails'));
+          var emails = $user.get('github.emails');
+          if (emails && emails[0] && emails[0].value) {
+            var email = emails[0].value;
+            $user.set('email', email);
+            $user.set('avatar', gravatar.imageUrl(email));
+          }
           done();
         })
       },
+      successRedirect: '/chat',
       failureRedirect: '/'
     },
     strategies: {
@@ -43,11 +51,32 @@ var options = {
       displayName: true,
       username: true,
       profileUrl: true,
-      emails: true,
+      email: true,
+      avatar: true,
       online: true
     }
   }
 }
+
+marked.setOptions({
+  breaks: true,
+  highlight: function (code, lang) {
+    if (lang) {
+      // highlight.js does not know html, but xml
+      if (lang === 'html') lang = 'xml';
+      code = require('highlight.js').highlight(lang, code).value;
+    } else {
+      code = require('highlight.js').highlightAuto(code).value;
+    }
+
+    // replace Derby template engine brackets in code examples
+    code = code.replace(/\{\{/g, '&#123;'); //actually &#123;&#123;
+    code = code.replace(/\}\}/g, '&#125;&#125;');
+
+    // new lines
+    return code.replace(/\n/g, '<br>');
+  }
+});
 
 
 exports.run = function (app, opts, cb) {

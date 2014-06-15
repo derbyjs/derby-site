@@ -12,19 +12,6 @@
   <div class="container">
 
     <div class="row">
-      <div class="col-md-3 sidebar">
-        <div class="bs-docs-sidebar hidden-print" role="complementary">
-          <ul class="nav bs-docs-sidenav">
-            {{each _page.users as #user}}
-            <li><a href="{{#user.profileUrl}}" target="_blank">{{#user.displayName || #user.username}}</a></li>
-            {{/each}}
-          </ul>
-        </div>
-      </div>
-      <div class="col-md-9 main">
-        <h2 id="links">Messages</h2>
-        <textarea on-keyup="message($element, $event)"></textarea>
-      </div>
-
+      <view name="chat"/>
     </div>
   </div>

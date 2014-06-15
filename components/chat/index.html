@@ -1,0 +1,44 @@
+<chat:>
+  <div class="col-md-3 sidebar">
+    <div class="bs-docs-sidebar hidden-print" role="complementary">
+      <ul class="nav bs-docs-sidenav">
+        {{each users as #user}}
+          <li>
+            <a href="{{#user.profileUrl}}" target="_blank">
+              <img src="{{#user.avatar}}" height=50 /> {{#user.displayName}}
+            </a>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-9 main">
+    <table class="table">
+      <tbody>
+        {{each messages as #message}}
+          <tr>
+            <td class="col-md-2 text-right">
+              <a on-click="username(#message.userId)">
+                <small>{{#root.users[#message.userId].username}} </small>
+                <img src="{{#root.users[#message.userId].avatar}}" height=30 />
+              </a>
+            </td>
+            <td>{{unescaped #message.html}}</td>
+            <td class="col-md-1">{{date(#message.date)}}</td>
+          </tr>
+        {{/each}}
+        <tr>
+          <td></td>
+          <td>
+            {{if #root._session.loggedIn}}
+              <textarea class="text" as="text" on-keydown="message($event)" autofocus="true">{{text}}</textarea>
+            {{else}}
+              To write messages, please <a href="/auth/github">log in</a>
+            {{/if}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    
+  </div>

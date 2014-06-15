@@ -41,7 +41,10 @@
     "serve-favicon": "~2.0.0",
     "d-bootstrap": "~0.1.0",
     "d-connection-alert": "~0.1.0",
-    "derby-stylus": "~0.1.0"
+    "derby-stylus": "~0.1.0",
+    "derby-hook": "0.0.3",
+    "nodejs-gravatar": "~1.0.2",
+    "moment": "~2.7.0"
   },
   "readme": "Derby Site\n",
   "readmeFilename": "README.md"
