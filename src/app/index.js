@@ -13,44 +13,44 @@ app.component(require('../../components/chat'));
 app.component(require('../../components/sidebar'));
 
 app.get('*', function (page, model, params, next) {
-    if (model.get('_session.loggedIn')) {
-        var userId = model.get('_session.userId');
-        $user = model.at('users.' + userId);
-        model.subscribe($user, function () {
-            model.ref('_session.user', $user);
-            next();
-        });
-    } else {
-        next();
-    }
+  if (model.get('_session.loggedIn')) {
+    var userId = model.get('_session.userId');
+    $user = model.at('users.' + userId);
+    model.subscribe($user, function () {
+      model.ref('_session.user', $user);
+      next();
+    });
+  } else {
+    next();
+  }
 });
 
 app.get('/', function (page, model) {
-    page.render('home');
+  page.render('home');
 });
 
 app.get('/chat', function (page, model) {
-    var $messagesQuery = model.query('messages', {});
-    model.subscribe($messagesQuery, 'users', function () {
-        page.render('chat');
-    });
+  var $messagesQuery = model.query('messages', {});
+  model.subscribe($messagesQuery, 'users', function () {
+    page.render('chat');
+  });
 });
 
 app.get('/:name/:sub?', function (page, model, params, next) {
-    var name = params.name;
-    var sub = params.sub;
-    var viewName = sub ? name + ':' + sub : name;
+  var name = params.name;
+  var sub = params.sub;
+  var viewName = sub ? name + ':' + sub : name;
 
-    if (name === 'auth') return next();
-    page.render(viewName);
+  if (name === 'auth') return next();
+  page.render(viewName);
 });
 
 
 app.on('model', function (model) {
-    model.fn('all', function (doc) {
-        return true;
-    });
-    model.fn('online', function (doc) {
-        return doc.online;
-    });
+  model.fn('all', function (doc) {
+    return true;
+  });
+  model.fn('online', function (doc) {
+    return doc.online;
+  });
 });
