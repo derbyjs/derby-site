@@ -5,7 +5,7 @@
         {{each users as #user}}
           <li>
             <a href="{{#user.profileUrl}}" target="_blank">
-              <img src="{{#user.avatar}}" height=50 /> {{#user.displayName}}
+              <img src="{{#user.avatar}}" class="navbar-avatar"/> {{#user.displayName}}
             </a>
           </li>
         {{/each}}
@@ -20,7 +20,7 @@
             <td class="col-md-2 text-right">
               <a on-click="username(#message.userId)">
                 <small>{{#root.users[#message.userId].username}} </small>
-                <img src="{{#root.users[#message.userId].avatar}}" height=30 />
+                <img src="{{#root.users[#message.userId].avatar}}" class="navbar-avatar"/>
               </a>
             </td>
             <td>{{unescaped #message.html}}</td>

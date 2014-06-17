@@ -8,29 +8,29 @@
 <import: src="../../md/resources" ns="md:resources">
 
 <Head:>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="keywords" content="">
-  <meta name="author" content="">
-  <link href="/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/css/docs.min.css" rel="stylesheet">
-  <link href="/css/github.min.css" rel="stylesheet">
-  <link href="/css/rainbow.css" rel="stylesheet">
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="description" content=""/>
+  <meta name="keywords" content=""/>
+  <meta name="author" content=""/>
+  <link href="/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="/css/docs.min.css" rel="stylesheet"/>
+  <link href="/css/github.min.css" rel="stylesheet"/>
+  <link href="/css/rainbow.css" rel="stylesheet"/>
 
 <Title:>
   Derby Party
 
 <Body:>
   <div class="bs-docs-home">
-    <view name="header"/>
+    <view name="mainheader"/>
     <view name="{{$render.ns}}"/>
-    <view name="footer"/>
+    <view name="mainfooter"/>
   </div>
 
-<header:>
-  <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+<mainheader:>
+  <div class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
     <div class="container">
       <div class="navbar-header">
         <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
@@ -50,18 +50,27 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           {{if _session.loggedIn}}
-          <li><p class="navbar-text">{{_session.user.displayName || _session.user.username}}</p></li>
-          <li><a href="/auth/logout">Logout</a></li>
+            <li>
+                <p class="navbar-text">
+                    <img src="{{_session.user.avatar}}" class="navbar-avatar"/>
+                    {{_session.user.displayName || _session.user.username}}
+                </p>
+            </li>
+            <li>
+                <a href="/auth/logout">Logout</a>
+            </li>
           {{else}}
-          <li><a href="/auth/github">Login</a></li>
+            <li>
+                <a href="/auth/github">Login</a>
+            </li>
           {{/}}
         </ul>
       </nav>
     </div>
-  </header>
+  </div>
 
-<footer:>
-  <footer class="bs-docs-footer" role="contentinfo">
+<mainfooter:>
+  <div class="bs-docs-footer" role="contentinfo">
     <div class="container">
       <div class="bs-docs-social">
         <ul class="bs-docs-social-buttons">
@@ -88,7 +97,7 @@
 
       <p>Code licensed under <a href="http://opensource.org/licenses/MIT" target="_blank">MIT</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>.</p>
     </div>
-  </footer>
+  </div>
 
 
 <nav-link: element="nav-link">
