@@ -5,7 +5,7 @@
     "uri": "mongodb://localhost:27017/derby-site"
   },
   "redis": {
-    "host": "localhost",
+    "host": "",
     "port": "6379",
     "ttl": "",
     "db": "10",
