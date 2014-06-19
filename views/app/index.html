@@ -18,6 +18,7 @@
   <link href="/css/docs.min.css" rel="stylesheet"/>
   <link href="/css/github.min.css" rel="stylesheet"/>
   <link href="/css/rainbow.css" rel="stylesheet"/>
+  <link href="/css/font-awesome.min.css" rel="stylesheet"/>
 
 <Title:>
   Derby Party
@@ -26,11 +27,11 @@
   <div class="bs-docs-home">
     <view name="mainheader"/>
     <view name="{{$render.ns}}"/>
-    <view name="mainfooter"/>
   </div>
+  <view name="mainfooter"/>
 
 <mainheader:>
-  <div class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+  <div class="navbar navbar-static-top navbar-fixed-top bs-docs-nav" id="top" role="banner">
     <div class="container">
       <div class="navbar-header">
         <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
@@ -70,7 +71,7 @@
   </div>
 
 <mainfooter:>
-  <div class="bs-docs-footer" role="contentinfo">
+  <div class="bs-docs-footer footer" role="contentinfo">
     <div class="container">
       <div class="bs-docs-social">
         <ul class="bs-docs-social-buttons">

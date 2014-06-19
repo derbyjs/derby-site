@@ -57,14 +57,8 @@ exports.setup = function setup(app, options, cb) {
   hooks(store);
 
   store.on('bundle', function (browserify) {
-    // Add support for directly requiring coffeescript in browserify bundles
     browserify.transform({global: true}, coffeeify);
 
-    // HACK: In order to use non-complied coffee node modules, we register it
-    // as a global transform. However, the coffeeify transform needs to happen
-    // before the include-globals transform that browserify hard adds as the
-    // first trasform. This moves the first transform to the end as a total
-    // hack to get around this
     var pack = browserify.pack;
     browserify.pack = function (opts) {
       var detectTransform = opts.globalTransform.shift();
@@ -78,10 +72,11 @@ exports.setup = function setup(app, options, cb) {
   });
 
   expressApp
-    .use(require('cookie-parser')(process.env.SESSION_COOKIE))
+    .use(require('cookie-parser')())
     .use(session({
       secret: process.env.SESSION_SECRET,
-      store: sessionStore
+      store: sessionStore,
+      cookie: process.env.SESSION_COOKIE
     }))
     .use(racerBrowserChannel(store))
     .use(store.modelMiddleware())

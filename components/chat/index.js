@@ -39,5 +39,5 @@ Chat.prototype.username = function (userId) {
 }
 
 Chat.prototype.date = function (date) {
-  return moment(date).format('H:m');
+  return moment(date).format('DD.MM.YY, H:mm');
 }

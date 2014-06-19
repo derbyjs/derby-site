@@ -4,9 +4,6 @@
  * Licensed under the Creative Commons Attribution 3.0 Unported License. For
  * details, see http://creativecommons.org/licenses/by/3.0/.
  */
-body {
-    position: relative
-}
 
 .table code {
     font-size: 13px;
@@ -106,9 +103,9 @@ body {
 }
 
 .bs-docs-footer {
-    padding-top: 40px;
-    padding-bottom: 40px;
-    margin-top: 100px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    /*margin-top: 50px;*/
     color: #777;
     text-align: center;
     border-top: 1px solid #e5e5e5
@@ -116,7 +113,7 @@ body {
 
 .bs-docs-footer-links {
     padding-left: 0;
-    margin-top: 20px;
+    margin-top: 10px;
     color: #999
 }
 
@@ -136,7 +133,7 @@ body {
 }
 
 .bs-docs-social {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     text-align: center
 }
 

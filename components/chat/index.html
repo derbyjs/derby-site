@@ -1,32 +1,44 @@
 <chat:>
-  <div class="bs-docs-header" id="content">
-    <div class="container">
-      {{each users as #user}}
-      <a href="{{#user.profileUrl}}" target="_blank">
-        <img src="{{#user.avatar}}" class="navbar-avatar" title="{{#user.displayName}}">
-      </a>
-      {{/each}}
-    </div>
-  </div>
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
-      <div class="col-md-12">
-        <div class="media">
-          {{each messages as #message}}
-          <a class="pull-left" on-click="username(#message.userId)">
-            <img class="media-object navbar-avatar" src="{{#root.users[#message.userId].avatar}}"
-                 alt="{{#root.users[#message.userId].username}}">
+      <div class="sidebar">
+        <div class="wrapper text-up"><strong>Online</strong></div>
+        <ul class="list-group no-borders">
+          <li class="list-group-item active">
+            <div class="media">
+              {{each users as #user}}
+                  <span class="pull-left thumb-sm avatar">
+                    <img src="{{#user.avatar}}" alt="..." class="img-circle"> <i class="on b-white bottom"></i> </span>
+
+              <div class="media-body">
+                <div><a href="#">{{#user.displayName}}</a></div>
+                <small class="text-muted">14 sec ago</small>
+              </div>
+              {{/each}}
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-10 col-sm-offset-2 main">
+
+        {{each messages as #message}}
+        <div class="chat-item left">
+          <a on-click="username(#message.userId)" class="pull-left thumb-sm avatar"
+             title="{{#root.users[#message.userId].username}}">
+            <img src="{{#root.users[#message.userId].avatar}}">
           </a>
 
-          <div class="media-body">
-            <h5 class="media-heading"><i>{{#root.users[#message.userId].username}}</i>
-              <small> {{date(#message.date)}}</small>
-            </h5>
-            <div>{{unescaped #message.html}}</div>
-            <hr/>
+          <div class="chat-body">
+            <div class="panel b-light text-sm m-b-none">
+              <div class="panel-body"><span class="arrow left"></span>
+                <div class="m-b-none">{{unescaped #message.html}}</div>
+              </div>
+            </div>
+            <small class="text-muted"><i class="fa fa-ok text-success"></i> {{date(#message.date)}}</small>
           </div>
-          {{/each}}
         </div>
+        {{/each}}
+
         <div>
           {{if #root._session.loggedIn}}
           <textarea class="text" as="text" on-keydown="message($event)" autofocus="true">{{text}}</textarea>
