@@ -1,11 +1,9 @@
 var derby = require('derby');
-var markedOptions = require('../server/config/markedOptions');
-var app = module.exports = derby.createApp('site', __filename);
+var markedOptions = require('./../../config/markedOptions');
 var path = require('path');
+var app = module.exports = derby.createApp('site', __filename);
 
-if (!derby.util.isProduction) {
-  global.app = app;
-}
+if (!derby.util.isProduction) global.app = app;
 
 app.serverUse(module, 'derby-markdown', markedOptions);
 app.serverUse(module, 'derby-stylus');

@@ -1,4 +1,2 @@
 derby-site
 =============
-
-Derby Site
