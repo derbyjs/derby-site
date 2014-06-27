@@ -21,7 +21,8 @@ module.exports = function (store) {
   });
 
   store.shareClient.use('connect', function (shareRequest, next) {
-    if (!shareRequest.agent.stream.isServer && shareRequest.req && shareRequest.req.session.passport.user) {
+    if (!shareRequest.agent.stream.isServer && shareRequest.req &&
+        shareRequest.req.session && shareRequest.req.session.passport.user) {
       var userId = shareRequest.req.session.passport.user;
       var sessionId = shareRequest.agent.sessionId;
       var model = store.createModel();

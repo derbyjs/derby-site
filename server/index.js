@@ -39,13 +39,13 @@ var expressApp = module.exports = express()
   .use(favicon(path.join(publicDir, '/images/favicon.ico')))
   .use(compression())
   .use(serveStatic(publicDir))
-  .use(racerBrowserChannel(store))
-  .use(store.modelMiddleware())
   .use(cookieParser(process.env.SESSION_COOKIE))
   .use(session({
     secret: process.env.SESSION_SECRET,
     store: sessionStore
   }))
+  .use(racerBrowserChannel(store))
+  .use(store.modelMiddleware())
   .use(bodyParser.urlencoded({ extended: false }))
   .use(createUserId)
   .use(derbyLogin.middleware(loginOptions))
