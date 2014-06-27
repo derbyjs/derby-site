@@ -1,0 +1,5 @@
+- inline componenets
+- template syntax
+- constructor
+- element, attributes, arrays
+- inheritance

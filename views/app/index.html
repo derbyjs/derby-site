@@ -1,11 +1,24 @@
 <import: src="./chat">
 <import: src="./home">
+<import: src="./docs">
 <import: src="./learn">
 <import: src="./faq">
 <import: src="./resources">
+<import: src="./docs/application" ns="docs:application">
+<import: src="./docs/components" ns="docs:components">
+<import: src="./docs/model" ns="docs:model">
+<import: src="./docs/routes" ns="docs:routes">
+<import: src="./docs/store" ns="docs:store">
+<import: src="./docs/views" ns="docs:views">
 <import: src="../../md/faq" ns="md:faq">
 <import: src="../../md/learn" ns="md:learn">
 <import: src="../../md/resources" ns="md:resources">
+<import: src="../../md/docs/application" ns="md:docs:application">
+<import: src="../../md/docs/components" ns="md:docs:components">
+<import: src="../../md/docs/model" ns="md:docs:model">
+<import: src="../../md/docs/routes" ns="md:docs:routes">
+<import: src="../../md/docs/store" ns="md:docs:store">
+<import: src="../../md/docs/views" ns="md:docs:views">
 
 <Head:>
   <meta charset="utf-8"/>
@@ -44,6 +57,7 @@
       </div>
       <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
         <ul class="nav navbar-nav">
+          <nav-link href="/docs" caption="Docs"></nav-link>
           <nav-link href="/learn" caption="Learn"></nav-link>
           <nav-link href="/faq" caption="FAQ"></nav-link>
           <nav-link href="/resources" caption="Resources"></nav-link>
