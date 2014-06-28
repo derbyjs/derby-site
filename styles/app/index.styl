@@ -1,3 +1,8 @@
+@import '../libs/bootstrap.min.css'
+@import '../libs/docs.min.css'
+@import '../libs/github.min.css'
+@import '../libs/rainbow.css'
+@import '../libs/font-awesome.min.css'
 @import '../../components/**/'
 
 html {
@@ -309,3 +314,18 @@ body {
 ::-webkit-scrollbar-track {
   background-color: rgba(50, 50, 50, 0.05);
 }
+
+blockquote
+  h3
+    margin: 12px 0
+    font-size: 18px
+    font-weight: 600
+
+  code
+    font-size: 18px
+    font-weight: 600
+    padding: 0
+    background-color: #fff
+    color: #333
+    /* marked trim spaces around code blockes, try to compensate it at least at right side */
+    padding-right: 10px

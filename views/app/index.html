@@ -29,11 +29,6 @@
   <meta name="description" content=""/>
   <meta name="keywords" content=""/>
   <meta name="author" content=""/>
-  <link href="/css/bootstrap.min.css" rel="stylesheet"/>
-  <link href="/css/docs.min.css" rel="stylesheet"/>
-  <link href="/css/github.min.css" rel="stylesheet"/>
-  <link href="/css/rainbow.css" rel="stylesheet"/>
-  <link href="/css/font-awesome.min.css" rel="stylesheet"/>
 
 <Title:>
   Derby
@@ -66,6 +61,7 @@
           <nav-link href="/resources" caption="Resources"></nav-link>
           <nav-link href="/chat" caption="Chat"></nav-link>
         </ul>
+        <view name="preferences"/>
         <ul class="nav navbar-nav navbar-right">
           {{if _session.loggedIn}}
             <li>
@@ -116,7 +112,6 @@
       <p>Code licensed under <a href="http://opensource.org/licenses/MIT" target="_blank">MIT</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>.</p>
     </div>
   </div>
-
 
 <nav-link: element="nav-link">
   <li class="{{if $render.url === @href}}active{{/}}">

@@ -10,6 +10,7 @@ app.serverUse(module, 'derby-stylus');
 app.loadViews(path.join(__dirname, '/../../views/app'));
 app.loadStyles(path.join(__dirname, '/../../styles/app'));
 app.component(require('../../components/chat'));
+app.component(require('../../components/preferences'));
 app.component(require('../../components/sidebar'));
 
 app.get('*', function (page, model, params, next) {
