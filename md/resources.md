@@ -96,7 +96,7 @@ Bla bla bla
 [Stackoverflow Chat (Ru)](http://chat.stackoverflow.com/rooms/41934/derbyjs-ru)
 Бла бла бла
 
-[Github Issues](http://github.com/codeparty/derby/issues)
+[Github Issues](http://github.com/derbyjs/derby/issues)
 Submit a problem
 
 [YouTube Lever](https://www.youtube.com/user/LeverApp)
