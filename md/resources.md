@@ -1,3 +1,31 @@
+## Links
+
+[Google Groups](http://groups.google.com/group/derbyjs)
+Mailing list
+
+[Stackoverflow DerbyJS tag](http://stackoverflow.com/questions/tagged/derbyjs)
+Best place for questions
+
+[Stackoverflow Chat](http://chat.stackoverflow.com/rooms/41933/derbyjs)
+Bla bla bla
+
+[Stackoverflow Chat (Ru)](http://chat.stackoverflow.com/rooms/41934/derbyjs-ru)
+Бла бла бла
+
+[Github Issues](http://github.com/derbyjs/derby/issues)
+Submit a problem
+
+[YouTube Lever](https://www.youtube.com/user/LeverApp)
+Some videos
+
+[Twitter](https://twitter.com/derbyjs)
+
+IRC  
+#derbyjs on irc.freenode.net
+
+[Habr](http://habrahabr.ru/hub/derbyjs/)
+Habrahabr.ru Derby Hub
+
 ## Plugins, Extensions
 
 ### Auth
@@ -62,7 +90,7 @@ Racer
 [ShareJS](https://github.com/share/ShareJS)
 ShareJS
 
-More repos in [codeparty](https://github.com/codeparty) and [share](https://github.com/share)
+More repos in the [DerbyJS](https://github.com/derbyjs) and [share](https://github.com/share) GitHub organizations.
 
 
 ## Projects in production
@@ -82,29 +110,4 @@ Multiplayer Typing Game - [source code](https://github.com/cray0000/type4fame)
 Bible translation app.
 
 
-## Links
 
-[Google Groups](http://groups.google.com/group/derbyjs)
-Mailing list
-
-[Stackoverflow DerbyJS tag](http://stackoverflow.com/questions/tagged/derbyjs)
-Best place for questions
-
-[Stackoverflow Chat](http://chat.stackoverflow.com/rooms/41933/derbyjs)
-Bla bla bla
-
-[Stackoverflow Chat (Ru)](http://chat.stackoverflow.com/rooms/41934/derbyjs-ru)
-Бла бла бла
-
-[Github Issues](http://github.com/derbyjs/derby/issues)
-Submit a problem
-
-[YouTube Lever](https://www.youtube.com/user/LeverApp)
-Some videos
-
-[Twitter](https://twitter.com/derbyjs)
-
-Irc: #derbyjs on irc.freenode.net
-
-[Habr](http://habrahabr.ru/hub/derbyjs/)
-Habrahabr.ru Derby Hub
