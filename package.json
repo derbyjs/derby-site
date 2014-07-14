@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "derby": "0.6.0-alpha23",
-    "racer-browserchannel": "^0.2",
+    "racer-browserchannel": "^0.3",
     "livedb-mongo": "^0.3",
     "derby-stylus": "^0.1",
     "racer-bundle": "^0.1",
@@ -35,7 +35,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/derbyparty/derby-site.git"
+    "url": "git://github.com/derbyjs/derby-site.git"
   },
   "keywords": [
     "derby"
@@ -45,7 +45,7 @@
     "Eric Samatov <Skarm>"
   ],
   "bugs": {
-    "url": "https://github.com/derbyparty/derby-site/issues"
+    "url": "https://github.com/derbyjs/derby-site/issues"
   },
   "license": "MIT",
   "readme": "derby-site\n",
