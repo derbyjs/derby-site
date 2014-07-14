@@ -25,6 +25,6 @@ RUN npm install
 
 # expose any ports we need
 EXPOSE 80
-
+ENV PORT 80
 # the command that gets run inside the docker container
 CMD ["/usr/local/bin/node", "/var/derby-site/server.js"]
