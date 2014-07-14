@@ -1,6 +1,6 @@
 ## Links
 
-[Google Groups](http://groups.google.com/group/derbyjs)
+[Google Groups](https://groups.google.com/group/derbyjs)
 Mailing list
 
 [Stackoverflow DerbyJS tag](http://stackoverflow.com/questions/tagged/derbyjs)
@@ -12,7 +12,7 @@ Bla bla bla
 [Stackoverflow Chat (Ru)](http://chat.stackoverflow.com/rooms/41934/derbyjs-ru)
 Бла бла бла
 
-[Github Issues](http://github.com/derbyjs/derby/issues)
+[Github Issues](https://github.com/derbyjs/derby/issues)
 Submit a problem
 
 [YouTube Lever](https://www.youtube.com/user/LeverApp)
@@ -21,10 +21,10 @@ Some videos
 [Twitter](https://twitter.com/derbyjs)
 
 IRC  
-#derbyjs on irc.freenode.net
+derbyjs on [freenode.net](http://freenode.net)
 
-[Habr](http://habrahabr.ru/hub/derbyjs/)
-Habrahabr.ru Derby Hub
+[Habrahabr.ru](http://habrahabr.ru/hub/derbyjs/)
+Habr Derby Hub
 
 ## Plugins, Extensions
 
