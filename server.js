@@ -8,6 +8,9 @@ var markedOptions = require('./config/markedOptions');
 for(var key in defaults) {
   process.env[key] = process.env[key] || defaults[key];
 }
+if(process.env.MONGO_PORT_27017_TCP_ADDR != void 0 && process.env.MONGO_PORT_27017_TCP_PORT != void 0) {
+  process.env.MONGO_URL = 'mongodb://'+process.env.MONGO_PORT_27017_TCP_ADDR+':'+process.env.MONGO_PORT_27017_TCP_PORT+'/';
+}
 
 marked.setOptions(markedOptions);
 
