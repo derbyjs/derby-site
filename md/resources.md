@@ -1,4 +1,4 @@
-## Links
+## Community
 
 [Google Groups](https://groups.google.com/group/derbyjs)
 Mailing list
@@ -15,8 +15,8 @@ Bla bla bla
 [Github Issues](https://github.com/derbyjs/derby/issues)
 Submit a problem
 
-[YouTube Lever](https://www.youtube.com/user/LeverApp)
-Some videos
+[Lever YouTube](https://www.youtube.com/user/LeverApp)
+Lever uses derby in production and puts out some tutorial and meetup videos about Derby and ShareJS
 
 [Twitter](https://twitter.com/derbyjs)
 
@@ -26,22 +26,18 @@ derbyjs on [freenode.net](http://freenode.net)
 [Habrahabr.ru](http://habrahabr.ru/hub/derbyjs/)
 Habr Derby Hub
 
-## Plugins, Extensions
 
 ### Auth
 
-[derby-auth](https://github.com/lefnire/derby-auth/tree/0.5)
-Provides authentication middleware (using Passport) for use in your Derby projects (Use branch 0.5)
-
-[derby-passport](https://github.com/Exegra/derby-passport)
-Fork of derby-auth 0.5 branch
+[derby-login](https://github.com/derbyparty/derby-login)
+Provides authentication middleware (using Passport) for use in your Derby projects
 
 [derby-user](https://npmjs.org/package/derby-user)
 A user library for Derby
 
 ### Components
 
-[Derby UI Boot](https://github.com/codeparty/derby-ui-boot)
+[Derby UI Boot](https://github.com/derbyjs/derby-ui-boot)
 A Derby component library based on Twitter Bootstrap
 
 [derby-autosuggest](https://github.com/1N50MN14/derby-autosuggest)
@@ -56,47 +52,30 @@ Modal dialog
 ### Other
 
 [i18n](https://github.com/jamesknelson/derby-i18n)
-Simple filesystem-based i18n support for derby, a node.js MVC framework. It is planned to support interpolation and plurals in the near future.
+Simple filesystem-based i18n support for derby. It is planned to support interpolation and plurals in the near future.
 
 
 ## Example app sources
 
-[Derby Examples](https://github.com/codeparty/derby-examples)
+[Derby Examples](https://github.com/derbyjs/derby-examples)
 Example applications for the Derby framework
 
 [Phish Vids](https://github.com/switz/phishvids)
 Interactive drill-down searching for Phish videos
 
-[HabitRPG](https://github.com/HabitRPG/habitrpg/tree/challenges-and-0.5)
-A habit tracker app which treats your goals like a Role Playing Game
-
-Old Version (Derby 0.3):
-
-[Derby Boilerplate](https://github.com/switz/derby-boilerplate)
-A saner starting point for new projects than `derby new first-project`
-
-[Type4Fame](https://github.com/cray0000/type4fame)
-Multiplayer Typing Game - [demo](http://type4fame.com/)
-
 
 ## Derby Sources
 
-[Derby](https://github.com/codeparty/derby)
-Derby
-
-[Racer](https://github.com/codeparty/racer)
-Racer
-
-[ShareJS](https://github.com/share/ShareJS)
-ShareJS
-
+[Derby](https://github.com/codeparty/derby)  
+[Racer](https://github.com/codeparty/racer)    
+[ShareJS](https://github.com/share/ShareJS)  
 More repos in the [DerbyJS](https://github.com/derbyjs) and [share](https://github.com/share) GitHub organizations.
 
 
 ## Projects in production
 
 [Lever](https://lever.co/)
-A modern web app for hiring
+A modern web app for enterprise hiring.
 
 [Unroll.me](https://unroll.me)
 Life is busy. Your inbox shouldn't be.  
@@ -105,9 +84,3 @@ action, you'll need to log in or sign up.
 
 [Type4Fame](http://type4fame.com/)
 Multiplayer Typing Game - [source code](https://github.com/cray0000/type4fame)
-
-[Bible Reading](http://bibliaolvaso.hu/ujforditas/1moz/1)
-Bible translation app.
-
-
-
