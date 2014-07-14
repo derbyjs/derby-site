@@ -48,10 +48,8 @@ var expressApp = module.exports = express()
   .use(store.modelMiddleware())
   .use(bodyParser.urlencoded({ extended: false }))
   .use(createUserId)
-  .use(derbyLogin.middleware(loginOptions))
+  .use(derbyLogin.middleware(store, loginOptions))
   .use(app.router());
-
-derbyLogin.routes(expressApp, store);
 
 expressApp.all('*', function (req, res, next) {
   next('404: ' + req.url);
