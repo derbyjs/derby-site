@@ -6,9 +6,6 @@ Mailing list
 [Stackoverflow DerbyJS tag](http://stackoverflow.com/questions/tagged/derbyjs)
 Best place for questions
 
-[Stackoverflow Chat](http://chat.stackoverflow.com/rooms/41933/derbyjs)
-Bla bla bla
-
 [Stackoverflow Chat (Ru)](http://chat.stackoverflow.com/rooms/41934/derbyjs-ru)
 Бла бла бла
 
@@ -27,60 +24,70 @@ derbyjs on [freenode.net](http://freenode.net)
 Habr Derby Hub
 
 
-### Auth
+### Modules
+
+[generator-derby](https://github.com/derbyparty/generator-derby)
+Yeoman Generator
 
 [derby-login](https://github.com/derbyparty/derby-login)
-Provides authentication middleware (using Passport) for use in your Derby projects
+Auth
 
-[derby-user](https://npmjs.org/package/derby-user)
-A user library for Derby
+[racer-schema](https://github.com/derbyparty/racer-schema)
+Schema Validation
 
-### Components
+[racer-ws](https://github.com/derbyparty/racer-ws)
+Web Sockets
 
-[Derby UI Boot](https://github.com/derbyjs/derby-ui-boot)
-A Derby component library based on Twitter Bootstrap
+[racer-highway](https://github.com/derbyparty/racer-highway)
+Web Sockets which downgrandes to Browser Channel
 
-[derby-autosuggest](https://github.com/1N50MN14/derby-autosuggest)
-Multi auto suggest component & code example for Derby
+[livedb-foundation](https://github.com/josephg/livedb-foundation)
+LiveDB implementation based on Foundation DB
 
-[derby-ui-toast](https://github.com/ile/derby-ui-toast)
-Notification messages (toasts)
+[derby-hook](https://github.com/derbyparty/derby-hook)
+After submit hook wrapper
 
-[derby-ui-modal](https://github.com/ile/derby-ui-modal)
-Modal dialog
-
-### Other
-
-[i18n](https://github.com/jamesknelson/derby-i18n)
-Simple filesystem-based i18n support for derby. It is planned to support interpolation and plurals in the near future.
+[derby-i18n](https://github.com/jamesknelson/derby-i18n)
+Simple filesystem-based i18n support for derby
 
 
-## Example app sources
+### Compilers
+
+[derby-jade](https://github.com/derbyparty/derby-jade)
+Jade
+
+[derby-less](https://github.com/derbyjs/derby-less)
+Less
+
+[derby-markdown](https://github.com/derbyparty/derby-markdown)
+Markdown
+
+[derby-stylus](https://github.com/derbyjs/derby-stylus)
+Stylus
+
+
+## Sources
+
+[Derbyjs Github](https://github.com/derbyjs)
+Derby, Racer, etc sources
+
+[Share Github](https://github.com/share)
+ShareJS, LiveDB, etc sources
+
+[Derbyparty Github](https://github.com/derbyparty)
+Modules from Community
 
 [Derby Examples](https://github.com/derbyjs/derby-examples)
-Example applications for the Derby framework
+Example applications
 
-[Phish Vids](https://github.com/switz/phishvids)
-Interactive drill-down searching for Phish videos
-
-
-## Derby Sources
-
-[Derby](https://github.com/codeparty/derby)  
-[Racer](https://github.com/codeparty/racer)    
-[ShareJS](https://github.com/share/ShareJS)  
-More repos in the [DerbyJS](https://github.com/derbyjs) and [share](https://github.com/share) GitHub organizations.
+[Derby Site](https://github.com/derbyjs/derby-site)
+This site
 
 
 ## Projects in production
 
 [Lever](https://lever.co/)
-A modern web app for enterprise hiring.
-
-[Unroll.me](https://unroll.me)
-Life is busy. Your inbox shouldn't be.  
-Note that the front pages are currently all static views and do not showcase Derby; to see Derby apps in 
-action, you'll need to log in or sign up.
+A modern web app for enterprise hiring
 
 [Type4Fame](http://type4fame.com/)
 Multiplayer Typing Game - [source code](https://github.com/cray0000/type4fame)
