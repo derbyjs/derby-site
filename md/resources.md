@@ -27,7 +27,7 @@ Habr Derby Hub
 ### Modules
 
 [generator-derby](https://github.com/derbyparty/generator-derby)
-Yeoman Generator
+Yeoman generator that scaffolds out a Derby 0.6 app
 
 [derby-login](https://github.com/derbyparty/derby-login)
 Auth
@@ -91,3 +91,6 @@ A modern web app for enterprise hiring
 
 [Type4Fame](http://type4fame.com/)
 Multiplayer Typing Game - [source code](https://github.com/cray0000/type4fame)
+
+[gameOfbombs](http://gameofbombs.com/community/)
+Realtime forum for [bombermine](http://bombermine.com/) players

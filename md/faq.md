@@ -32,7 +32,6 @@ Once created Model is empty. It means that there is no data in it. Before you ca
 
 Store is singular js-object on server. All Models are created from Store. Store connected to all Models. If Model is on client, connection established by racer-browserchannel. Store is wrapper on ShareJS and a place where all OT conflict resolution magic is happen.
 
-
 ### What is OT?
 
 OT - Operational Transformation - conflict resolution technique used in ShareJS. The main idea is that each operation recieved from client before being executed on data, transforms according to previous operations for this data (if there were any). If two clients send operations on same data at same time, ShareJS will execute first recieved operation and before executing second, it will transform second operation according to first operation, so second operation data changes will consider that data was already changed by first operation.  
@@ -44,10 +43,9 @@ Using Derby you can treat OT like black box with some magic. ShareJS will merge 
 Derby, and hence Racer, are powered by [livedb](https://github.com/share/livedb). Live DB currently only has a production ready adapter for Mongo, and optionally uses Redis to enable scaling past a single node process. More backends can be added to livedb by writing adapters, see [livedb-mongo](https://github.com/share/livedb-mongo) for example.
 
 
-### Why does Racer use long pooling and not web sockets?
+### How can I use web sockets with Racer instead of long pooling?
 
-Web socket support is in development for racer
-
+Use [racer-ws](https://github.com/derbyparty/racer-ws) or [racer-highway](https://github.com/derbyparty/racer-highway) module.
 
 ### Can I use Derby in Phonegap?
 

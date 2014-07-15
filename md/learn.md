@@ -52,7 +52,7 @@ Be sure to check out the [Docs](docs) to get a deeper understanding of how Derby
 
 ## Environment
 
-For Derby you need: [Node](http://nodejs.org) (>=0.10), [MongoDB](http://www.mongodb.org/), [Redis](http://redis.io/) (>=2.6).
+For Derby you need: [Node](http://nodejs.org) (>=0.10), [MongoDB](http://www.mongodb.org/), [Redis](http://redis.io/) (>=2.6) - it's optional.
 
 ### Mac OS
 
