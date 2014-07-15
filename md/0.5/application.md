@@ -1,4 +1,4 @@
-# Apps and static pages
+## Apps and static pages
 
 Derby projects support one or more single-page apps as well as static pages.
 Apps have a full MVC structure, including a model provided by

@@ -1,4 +1,4 @@
-# Models
+## Models
 
 Derby models are powered by [Racer](http://racerjs.com/), a realtime model synchronization engine. Racer enables multiple users to interact with the same data objects via sophisticated conflict detection and resolution algorithms. At the same time, it provides a simple object accessor and event interface for writing application logic.
 

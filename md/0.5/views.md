@@ -1,4 +1,4 @@
-# Views
+## Views
 
 Typically, writing Derby apps begins with HTML templates. These templates define
 the rendered HTML as well as model-view bindings.

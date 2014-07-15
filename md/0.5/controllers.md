@@ -1,4 +1,4 @@
-# Controllers
+## Controllers
 
 Derby controllers are defined in the script file that invokes `derby.createApp()`. Typically, controllers are located at `lib\app_name\index.js` or `src\app_name\index.coffee`. See [Creating apps](#creating_apps).
 
