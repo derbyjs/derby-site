@@ -1,29 +1,36 @@
-### What is Derby?
+### What is DerbyJS?
 
-Derby is a framework for developing web applications, making it much easier to build real-time collaborative functionality.
+DerbyJS is a framework for developing web applications, making it much easier to build real-time collaborative functionality.  
 
-Derby app is extended Express app. You can use Connect, Express router, etc, as you do in common Express app. Some of Connect modules are parts of Derby app - this is the way Derby extends Express.  
-Also Derby app has one or more client apps. Each client app has its own router, templates, styles, browserify modules, Model. Client app executes on server while first request and also its uploads to client and executes in browser. Only one client app can be in browser at unit of time.
+Built from a collection of standard node.js modules, DerbyJS can be brought into existing projects, or existing node modules can easily be brought into a DerbyJS project.  
+
+Derby provides server-side rendering through it's HTML-like templating language. Templates can be organized into components for better code reuse and faster application development. 
+Templates and components are backed by a real-time data model called Racer.
 
 
 ### What is Racer?
 
-Racer is data manipulation layer in Derby, wrapper on ShareJS. Model and Store are parts of Racer. You can use Racer without Derby.
+Racer is the data manipulation layer in Derby, it wraps the [ShareJS](http://sharejs.org) library. Racer provides a consistent API for managing data on the server and client, and seemlessly syncs the two with little thought from the user.
+
+
+### How does Racer compare to Firebase?
+
+Racer provides a lot of the same functionality as Firebase. Besides the obvious tradeoffs between open source and proprietary (supported) software, Racer has more granular update information, while Firebase has more mature solutions around authentication and documentation. 
 
 
 ### What is a Racer Model?
 
-Model is js object that provides us api for data. All data manipulations are done through it. Model can exist on server and on client. While processing request from client, Derby creates Model, use it in client app router on server, serializes Model, upload JSON to client, deserializes it and recreates Model with state equal to those on server. Models are created on server for each request and also you can create any number of Models directly from Store anytime, but there is only one Model on client.
+The Model is a JavaScript object that provides an api for real-time data. All data manipulations are done through it, and the model is synced on both the server and the client. Models are created on server for each request and also you can create any number of Models directly from a Store anytime, but there is only one Model on client.
 
 
-### What is a Store?
+### What is a Racer Store?
 
-Store is singular js-object on server. All Models are created from Store. Store connected to all Models. If Model is on client, connection established by racer-browserchannel. Store is wrapper on ShareJS and a place where all OT conflict resolution magic is happen.
+Store is singular JavaScript object on the server for managing database connections. All Models are created from Store. If a Model is on the client, a connection to the store is established by racer-browserchannel. The Store is wrapper on [ShareJS](http://sharejs.org) and a place where all OT conflict resolution magic is happen.
 
 ### What is OT?
 
-OT - Operational Transformation - conflict resolution technique used in ShareJS. The main idea is that each operation recieved from client before being executed on data, transforms according to previous operations for this data (if there were any). If two clients send operations on same data at same time, ShareJS will execute first recieved operation and before executing second, it will transform second operation according to first operation, so second operation data changes will consider that data was already changed by first operation.  
-OT is different for different data types. ShareJS uses json data type in Racer. Also there is text data type in ShareJS and plans to add rich text data type.
+OT - [Operational Transformation](http://en.wikipedia.org/wiki/Operational_transformation) - is a conflict resolution technique used in [ShareJS](http://sharejs.org). The main idea is to resolve conflicts created by multiple clients trying to modify the same data in a distributed system.
+OT is different for different data types. ShareJS uses a json data type in Racer. There is also a text data type in ShareJS and plans to add a rich text data type.
 Using Derby you can treat OT like black box with some magic. ShareJS will merge operations for arrays, strings, number increments 'out of the box', but if two clients make set operation for same data at same time (data with same version) there is no way to capture this correcly and one of two operations will be lost. If it is critical (and you have a big head), you can create application specific data types for ShareJS.
 
 ### Why do we need Mongo and Redis?
@@ -37,12 +44,8 @@ Use [racer-ws](https://github.com/derbyparty/racer-ws) or [racer-highway](https:
 
 ### What is fetch and subscribe?
 
-Once created Model is empty. It means that there is no data in it. Before you can use any data from database, you should fill it into Model. There are two ways: fetch - just fills Model with some data, subscribe - dynamically binds Model with some data in database, if this data changes in database, data in your Model will be updated. You can fetch/subscribe whole collection, particular document, just one field in document. There are also ways to fetch/subscribe certain documents with use of Queries.
+A newly created Model has no data in it. Before you can use any data from the database, you need to bring it into Model. There are two methods: fetch - simply queries the database and loads it into the Model, subscribe - similarly queries the database and loads the data into the Model, but if this data changes in the database, data in your Model will be updated. You can fetch/subscribe whole collections, particular documents, or even just one field in a document.
 
-### How are requests processed?
-
-Client app router is located above Express router in Connect middleware. If request is catched by client app router, client app executes on server, generates html and sends it back to browser with styles and client app js. As soon as client app js is uploaded to browser, all next url changes catched by client app router in browser and html generates also there.  
-If client app router can not catch request url, request falls down to Express router. Client app router has only GET method, Experss app router has all methods. Usually Express router is used for uploading files, POST requests, showing errors etc.
 
 ### What if JavaScript is disabled?
 
