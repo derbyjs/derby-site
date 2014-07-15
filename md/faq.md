@@ -10,23 +10,11 @@ Also Derby app has one or more client apps. Each client app has its own router, 
 
 Racer is data manipulation layer in Derby, wrapper on ShareJS. Model and Store are parts of Racer. You can use Racer without Derby.
 
-### How are requests processed?
-
-Client app router is located above Express router in Connect middleware. If request is catched by client app router, client app executes on server, generates html and sends it back to browser with styles and client app js. As soon as client app js is uploaded to browser, all next url changes catched by client app router in browser and html generates also there.  
-If client app router can not catch request url, request falls down to Express router. Client app router has only GET method, Experss app router has all methods. Usually Express router is used for uploading files, POST requests, showing errors etc.
-
-### What if JavaScript is disabled?
-
-If js is disabled in browser, client app router triggers on server for every url change. In this case site looks more like static one.  
-Search engine spiders also get html which is good for SEO.
 
 ### What is a Racer Model?
 
 Model is js object that provides us api for data. All data manipulations are done through it. Model can exist on server and on client. While processing request from client, Derby creates Model, use it in client app router on server, serializes Model, upload JSON to client, deserializes it and recreates Model with state equal to those on server. Models are created on server for each request and also you can create any number of Models directly from Store anytime, but there is only one Model on client.
 
-### What is fetch and subscribe?
-
-Once created Model is empty. It means that there is no data in it. Before you can use any data from database, you should fill it into Model. There are two ways: fetch - just fills Model with some data, subscribe - dynamically binds Model with some data in database, if this data changes in database, data in your Model will be updated. You can fetch/subscribe whole collection, particular document, just one field in document. There are also ways to fetch/subscribe certain documents with use of Queries.
 
 ### What is a Store?
 
@@ -46,6 +34,20 @@ Derby, and hence Racer, are powered by [livedb](https://github.com/share/livedb)
 ### How can I use web sockets with Racer instead of long pooling?
 
 Use [racer-ws](https://github.com/derbyparty/racer-ws) or [racer-highway](https://github.com/derbyparty/racer-highway) module.
+
+### What is fetch and subscribe?
+
+Once created Model is empty. It means that there is no data in it. Before you can use any data from database, you should fill it into Model. There are two ways: fetch - just fills Model with some data, subscribe - dynamically binds Model with some data in database, if this data changes in database, data in your Model will be updated. You can fetch/subscribe whole collection, particular document, just one field in document. There are also ways to fetch/subscribe certain documents with use of Queries.
+
+### How are requests processed?
+
+Client app router is located above Express router in Connect middleware. If request is catched by client app router, client app executes on server, generates html and sends it back to browser with styles and client app js. As soon as client app js is uploaded to browser, all next url changes catched by client app router in browser and html generates also there.  
+If client app router can not catch request url, request falls down to Express router. Client app router has only GET method, Experss app router has all methods. Usually Express router is used for uploading files, POST requests, showing errors etc.
+
+### What if JavaScript is disabled?
+
+If js is disabled in browser, client app router triggers on server for every url change. In this case site looks more like static one.  
+Search engine spiders also get html which is good for SEO.
 
 ### Can I use Derby in Phonegap?
 

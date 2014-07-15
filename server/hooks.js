@@ -21,6 +21,9 @@ module.exports = function (store) {
   });
 
   store.shareClient.use('connect', function (shareRequest, next) {
+    if(!shareRequest || !shareRequest.req || !shareRequest.req.session || !shareRequest.req.session.passport){
+      return next();
+    }
     if (!shareRequest.agent.stream.isServer && shareRequest.req &&
         shareRequest.req.session && shareRequest.req.session.passport.user) {
       var userId = shareRequest.req.session.passport.user;
