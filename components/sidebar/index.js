@@ -19,7 +19,7 @@ Sidebar.prototype.create = function (model, dom) {
     var header = headers[i];
     var level = +header.nodeName[1];
     var link = header.id;
-    var text = header.innerText;
+    var text = header.innerText || header.textContent;
     if (level < smallest) smallest = level;
     html += '<li><a href="#' + link + '">' + text + '</a>';
     if (i === headers.length - 1) {
