@@ -454,7 +454,7 @@ app.proto.refresh = function(){
 }
 ```
 ---
-#### How to bind a reactive variable to the <select> element?
+#### How to bind a reactive variable to the select element?
 
 No events required, derby does it for you. Learn from the example:
 
@@ -472,10 +472,11 @@ No events required, derby does it for you. Learn from the example:
 
 After selection _page.filteredId will have an id of the selected filter.
 
-When binding to <option>, derby expects to meet an equity check in the 'selected' attribute (equities itself are needed for initial value setting). It's assumed that the left parameter of the check would be a path that will take a value from the <option>'s value attribute when selected.
+When binding to option, derby expects to meet an equity check in the 'selected' attribute (equities itself are needed for initial value setting). It's assumed that the left parameter of the check would be a path that will take a value from the option's value attribute when selected.
 
 ---
-#### How to bind a reactive variable to the <input type="radio"> element?
+
+#### How to bind a reactive variable to the input type="radio" element?
 
 No need in catching events, derby does it for you:
 
@@ -493,10 +494,13 @@ No need in catching events, derby does it for you:
 
 Eventually _page.radioVal will contain either 'one', 'two' or 'three' depending on what user's selected.
 
-When binding to <input type="radio">, derby expects to meet an equity check in a checked attribute (equities itself are required for initial value setting). It's assumed that the left parameter of the check would be a path that will update from the <option>'s value attribute when selected. 
+When binding to 
+```html
+<input type="radio">
+```, derby expects to meet an equity check in a checked attribute (equities itself are required for initial value setting). It's assumed that the left parameter of the check would be a path that will update from the option's value attribute when selected. 
 
 ---
-#### How to bind a reactive variable to the <textarea> element?
+#### How to bind a reactive variable to the textarea element?
 
 Very simple:
 
@@ -655,3 +659,4 @@ Demo.prototype.create = function (model, dom) {
     });
 };
 ```
+
