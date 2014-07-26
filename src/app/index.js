@@ -14,6 +14,8 @@ app.component(require('../../components/preferences'));
 app.component(require('../../components/sidebar'));
 
 app.get('*', function (page, model, params, next) {
+  // it`s used to cheat template engine in derby-template examples
+  model.set('_session.openBrackets', '{{');
   if (model.get('_session.loggedIn')) {
     var userId = model.get('_session.userId');
     $user = model.at('users.' + userId);

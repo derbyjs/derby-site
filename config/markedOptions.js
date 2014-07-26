@@ -10,7 +10,7 @@ module.exports = {
     }
 
     // replace Derby template engine brackets in code examples
-    code = code.replace(/\{\{/g, '&#123;'); //actually &#123;&#123;
+    code = code.replace(/\{\{/g, '{{unbound #root._session.openBrackets}}'); // &#123;&#123;
     code = code.replace(/\}\}/g, '&#125;&#125;');
 
     // new lines
