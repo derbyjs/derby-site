@@ -51,7 +51,7 @@ yo derby --coffee
 
 ---
 
-## Referrence
+## Reference
 
 Be sure to check out the [Docs](docs) to get a deeper understanding of how DerbyJS makes developing apps easier!
 
