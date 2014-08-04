@@ -53,7 +53,13 @@ yo derby --coffee
 
 ## Reference
 
-Be sure to check out the [Docs](docs) to get a deeper understanding of how DerbyJS makes developing apps easier!
+Be sure to check out the [Docs](docs) to get a deeper understanding of how DerbyJS makes developing apps easier!  
+See more links in the [Resources](resources) section.
+
+
+## Tutorials
+
+There are some [great tutorials](http://decisionmapper.com/tutorials/derby1) available from the community.
 
 ---
 
