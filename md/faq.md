@@ -38,7 +38,7 @@ Using Derby you can treat OT like black box with some magic. ShareJS will merge 
 Derby, and hence Racer, are powered by [livedb](https://github.com/share/livedb). Live DB currently only has a production ready adapter for Mongo, and optionally uses Redis to enable scaling past a single node process. More backends can be added to livedb by writing adapters, see [livedb-mongo](https://github.com/share/livedb-mongo) for example.
 
 
-### How can I use web sockets with Racer instead of long pooling?
+### How can I use web sockets with Racer instead of long polling?
 
 Use [racer-ws](https://github.com/derbyparty/racer-ws) or [racer-highway](https://github.com/derbyparty/racer-highway) module.
 
