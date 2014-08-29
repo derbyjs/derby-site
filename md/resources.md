@@ -3,6 +3,9 @@
 [Google Groups](https://groups.google.com/group/derbyjs)
 Mailing list
 
+[Gitter Chat](https://gitter.im/derbyjs/derby)
+GitHub chat for derby community
+
 [Stackoverflow DerbyJS tag](http://stackoverflow.com/questions/tagged/derbyjs)
 Best place for questions
 
