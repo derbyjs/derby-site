@@ -1,5 +1,5 @@
 # BUILD-USING: docker build -t derbyjs/derby-site .
-# RUN-USING: docker run -p 80:80 --name derby-site --rm derbyjs/derby-site
+# RUN-USING: docker run -p 4000:4000 --name derby-site --rm derbyjs/derby-site
 
 # specify base docker image
 FROM dockerfile/nodejs
@@ -24,7 +24,7 @@ WORKDIR /var/derby-site
 RUN npm install
 
 # expose any ports we need
-EXPOSE 80
-ENV PORT 80
+EXPOSE 4000
+ENV PORT 4000
 # the command that gets run inside the docker container
 CMD ["/usr/local/bin/node", "/var/derby-site/server.js"]
