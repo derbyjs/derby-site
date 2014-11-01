@@ -87,9 +87,9 @@ Example applications
 This site
 
 
-## Demos
+## Component demos
 
-https://derby-demos.herokuapp.com
+http://derby-demos.ilkkah.com
 Derby components from [ile](https://github.com/ile/)
 
 ## Projects in production
