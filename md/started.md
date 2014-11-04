@@ -8,7 +8,7 @@ In order to get started writing your first DerbyJS app, you need to have node.js
 
 ## Run Examples
 
-There are several examples in the [derby-examples](https://github.com/derbyjs/derby-examples) repository.  
+There are several examples in the [derby-examples](https://github.com/derbyjs/derby-examples) repository.
 You can clone the repo and install:
 ```
 git clone https://github.com/derbyjs/derby-examples.git
@@ -53,13 +53,15 @@ yo derby --coffee
 
 ## Reference
 
-Be sure to check out the [Docs](docs) to get a deeper understanding of how DerbyJS makes developing apps easier!  
+Be sure to check out the [Docs](docs) to get a deeper understanding of how DerbyJS makes developing apps easier!
 See more links in the [Resources](resources) section.
 
 
 ## Tutorials
 
-There are some [great tutorials](http://decisionmapper.com/tutorials/derby1) available from the community.
+[Introductory tutorials](http://decisionmapper.com/tutorials) take you from getting started to a multi-player game.
+
+[Add authentication](http://www.glkn.ru/blog/2014/10/26/creating-private-todos-app/) to a simple Todo app.
 
 ---
 
@@ -69,8 +71,8 @@ For Derby you need: [Node](http://nodejs.org) (>=0.10), [MongoDB](http://www.mon
 
 ### Mac OS
 
-We recommend installing node.js from [the official site](http://nodejs.org)  
-You can install mongodb and redis using [homebrew](http://brew.sh/)  
+We recommend installing node.js from [the official site](http://nodejs.org)
+You can install mongodb and redis using [homebrew](http://brew.sh/)
 
 ```bash
 brew update
@@ -105,5 +107,5 @@ sudo apt-get -y install redis-server
 
 ### Windows
 
-We currently recommend developing in a *nix environment. 
+We currently recommend developing in a *nix environment.
 You can use a free VM like [VirtualBox](https://www.virtualbox.org/) to run a Linux environment or tools like [Vagrant](http://www.vagrantup.com/) or [Docker](http://www.docker.com/).
