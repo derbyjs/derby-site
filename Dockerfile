@@ -10,14 +10,12 @@ RUN mkdir derby-site
 
 ADD package.json /var/derby-site/
 ADD server.js /var/derby-site/
-ADD config /var/derby-site/config
+
+ADD md /var/derby-site/md
 ADD public /var/derby-site/public
 ADD src /var/derby-site/src
 ADD styles /var/derby-site/styles
 ADD views /var/derby-site/views
-ADD md /var/derby-site/md
-ADD components /var/derby-site/components
-ADD server /var/derby-site/server
 
 # npm install all the things
 WORKDIR /var/derby-site
