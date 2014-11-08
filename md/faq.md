@@ -1,10 +1,10 @@
 ### What is DerbyJS?
 
-DerbyJS is a framework for developing web applications, making it much easier to build real-time collaborative functionality.  
+DerbyJS is a framework for developing web applications, making it much easier to build real-time collaborative functionality.
 
-Built from a collection of standard node.js modules, DerbyJS can be brought into existing projects, or existing node modules can easily be brought into a DerbyJS project.  
+Built from a collection of standard node.js modules, DerbyJS can be brought into existing projects, or existing node modules can easily be brought into a DerbyJS project.
 
-Derby provides server-side rendering through it's HTML-like templating language. Templates can be organized into components for better code reuse and faster application development. 
+Derby provides server-side rendering through it's HTML-like templating language. Templates can be organized into components for better code reuse and faster application development.
 Templates and components are backed by a real-time data model called Racer.
 
 
@@ -15,7 +15,7 @@ Racer is the data manipulation layer in Derby, it wraps the [ShareJS](http://sha
 
 ### How does Racer compare to Firebase?
 
-Racer provides a lot of the same functionality as Firebase. Besides the obvious tradeoffs between open source and proprietary (supported) software, Racer has more granular update information, while Firebase has more mature solutions around authentication and documentation. 
+Racer provides a lot of the same functionality as Firebase. Besides the obvious tradeoffs between open source and proprietary (supported) software, Racer has more granular update information, while Firebase has more mature solutions around authentication and documentation.
 
 
 ### What is a Racer Model?
@@ -49,7 +49,7 @@ A newly created Model has no data in it. Before you can use any data from the da
 
 ### What if JavaScript is disabled?
 
-If js is disabled in browser, client app router triggers on server for every url change. In this case site looks more like static one.  
+If js is disabled in browser, client app router triggers on server for every url change. In this case site looks more like static one.
 Search engine spiders also get html which is good for SEO.
 
 ### Can I use Derby in Phonegap?

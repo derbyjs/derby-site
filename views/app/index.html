@@ -1,59 +1,43 @@
-<import: src="./chat">
+<import: src="../../md" ns="">
 <import: src="./home">
-<import: src="./compare">
-<import: src="./started">
-<import: src="./faq">
-<import: src="./faq/en">
-<import: src="./faq/ru">
-<import: src="./resources">
-<import: src="./0.5">
-<import: src="./0.5/application" ns="0.5:application">
-<import: src="./0.5/controllers" ns="0.5:controllers">
-<import: src="./0.5/model" ns="0.5:model">
-<import: src="./0.5/views" ns="0.5:views">
-<import: src="./docs">
-<import: src="./docs/application" ns="docs:application">
-<import: src="./docs/components" ns="docs:components">
-<import: src="./docs/model" ns="docs:model">
-<import: src="./docs/routes" ns="docs:routes">
-<import: src="./docs/store" ns="docs:store">
-<import: src="./docs/views" ns="docs:views">
-<import: src="../../md/compare" ns="md:compare">
-<import: src="../../md/faq" ns="md:faq">
-<import: src="../../md/faq/faq_en" ns="md:faq:en">
-<import: src="../../md/faq/faq_ru" ns="md:faq:ru">
-<import: src="../../md/resources" ns="md:resources">
-<import: src="../../md/started" ns="md:started">
-<import: src="../../md/0.5/application" ns="md:0.5:application">
-<import: src="../../md/0.5/controllers" ns="md:0.5:controllers">
-<import: src="../../md/0.5/model" ns="md:0.5:model">
-<import: src="../../md/0.5/views" ns="md:0.5:views">
-<import: src="../../md/docs/application" ns="md:docs:application">
-<import: src="../../md/docs/components" ns="md:docs:components">
-<import: src="../../md/docs/model" ns="md:docs:model">
-<import: src="../../md/docs/routes" ns="md:docs:routes">
-<import: src="../../md/docs/store" ns="md:docs:store">
-<import: src="../../md/docs/views" ns="md:docs:views">
 
 <Head:>
-  <meta charset="utf-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="description" content=""/>
-  <meta name="keywords" content=""/>
-  <meta name="author" content=""/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <Title:>
   Derby
 
 <Body:>
   <div class="bs-docs-home">
-    <view name="mainheader"/>
-    <view name="{{$render.ns}}"/>
+    <view is="main-header"></view>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 sidebar">
+          <view is="{{$render.ns}}:sidebar" optional></view>
+        </div>
+        <div class="col-md-9 main">
+          <view is="{{$render.ns}}"></view>
+          {{if _page.links[$render.ns]}}
+            <a class="btn btn-outline btn-lg" href="{{this}}">Next&nbsp; &#10132;</a>
+          {{/if}}
+        </div>
+      </div>
+    </div>
   </div>
-  <view name="mainfooter"/>
+  <view is="main-footer"></view>
 
-<mainheader:>
+<sidebar-outline:>
+  <div class="list-group">
+    {{each @items as #item}}
+      {{if #item.name === $render.ns}}
+        <a class="list-group-item level-{{#item.level}} active">{{#item.title}}</a>
+      {{else}}
+        <a class="list-group-item level-{{#item.level}}" href="{{#item.href}}">{{#item.title}}</a>
+      {{/if}}
+    {{/each}}
+  </div>
+
+<main-header:>
   <div class="navbar navbar-static-top navbar-fixed-top bs-docs-nav" id="top" role="banner">
     <div class="container">
       <div class="navbar-header">
@@ -63,42 +47,25 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a href="/" class="navbar-brand"><img src="/images/logo.png"/></a>
+        <a href="/" class="navbar-brand"><img width="45" height="30" src="/images/logo.png"></a>
       </div>
       <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
         <ul class="nav navbar-nav">
-          <nav-link href="/started" caption="Get Started"></nav-link>
-          <nav-link href="/docs" caption="Docs"></nav-link>
-          <nav-link href="/faq" caption="FAQ"></nav-link>
-          <nav-link href="/resources" caption="Resources"></nav-link>
-          <!--<nav-link href="/compare" caption="Compare"></nav-link>-->
-          <!--<nav-link href="/chat" caption="Chat"></nav-link>-->
+          <view is="nav-link" href="/started">Get Started</view>
+          <view is="nav-link" href="/docs/derby-0.6">Docs</view>
+          <view is="nav-link" href="/faq">FAQ</view>
+          <view is="nav-link" href="/resources">Resources</view>
         </ul>
-        <!--
-        <view name="preferences"/>
-        <ul class="nav navbar-nav navbar-right">
-          {{if _session.loggedIn}}
-            <li>
-                <p class="navbar-text">
-                    <img src="{{_session.user.avatar}}" class="navbar-avatar"/>
-                    <span> {{_session.user.displayName || _session.user.username}}</span>
-                </p>
-            </li>
-            <li>
-                <a href="/auth/logout">Logout</a>
-            </li>
-          {{else}}
-            <li>
-                <a href="/auth/github">Login</a>
-            </li>
-          {{/}}
-        </ul>
-        -->
       </nav>
     </div>
   </div>
 
-<mainfooter:>
+<nav-link:>
+  <li class="{{if $render.url === @href}}active{{/}}">
+    <a href="{{@href}}">{{@content}}</a>
+  </li>
+
+<main-footer:>
   <div class="bs-docs-footer footer" role="contentinfo">
     <div class="container">
       <div class="bs-docs-social">
@@ -111,7 +78,6 @@
           </li>
         </ul>
       </div>
-
       <ul class="bs-docs-footer-links muted">
         <li><a href="https://groups.google.com/forum/#!forum/derbyjs" target="_blank">Google Group</a></li>
         <li>&middot;</li>
@@ -123,24 +89,9 @@
         <li>&middot;</li>
         <li><a href="https://github.com/derbyjs/derby/releases" target="_blank">Releases</a></li>
       </ul>
-
-      <p>Code licensed under <a href="http://opensource.org/licenses/MIT" target="_blank">MIT</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>.</p>
-    </div>
-  </div>
-
-<nav-link: element="nav-link">
-  <li class="{{if $render.url === @href}}active{{/}}">
-    <a href="{{@href}}">{{@caption}}</a>
-  </li>
-
-<markdown: element="markdown">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3 sidebar">
-        <view name="sidebar"/>
-      </div>
-      <div class="col-md-9 main">
-        <view name="md:{{$render.ns}}"/>
-      </div>
+      <p>
+        Code licensed under <a href="http://opensource.org/licenses/MIT" target="_blank">MIT</a>,&sp;
+        documentation under <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>.
+      </p>
     </div>
   </div>

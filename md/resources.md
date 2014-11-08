@@ -20,7 +20,7 @@ Lever uses derby in production and puts out some tutorial and meetup videos abou
 
 [Twitter](https://twitter.com/derbyjs)
 
-IRC  
+IRC
 derbyjs on [freenode.net](http://freenode.net)
 
 [Habrahabr.ru](http://habrahabr.ru/hub/derbyjs/)

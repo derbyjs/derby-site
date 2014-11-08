@@ -8,30 +8,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "derby": "0.6.0-alpha23",
-    "racer-browserchannel": "^0.3",
-    "livedb-mongo": "^0.3",
+    "derby": "0.6.0-alpha26",
     "derby-stylus": "^0.1",
-    "racer-bundle": "^0.1",
-    "connect-mongo": "^0.4",
     "express": "^4.4",
-    "cookie-parser": "^1.3",
-    "express-session": "^1.5",
-    "serve-static": "^1.2",
-    "body-parser": "^1.4",
-    "compression": "^1.0",
     "serve-favicon": "^2.0",
-    "derby-hook": "0.0.4",
-    "nodejs-gravatar": "^1.0",
-    "moment": "^2.7",
-    "derby-markdown": "^0.1",
-    "d-bootstrap": "^0.1",
-    "d-connection-alert": "^0.1",
-    "derby-login": "^0.2",
-    "coffeeify": "^0.6",
     "marked": "^0.3",
-    "highlight.js": "^8.0",
-    "passport-github": "~0.1.5"
+    "highlight.js": "^8.3"
   },
   "repository": {
     "type": "git",

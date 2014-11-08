@@ -1,3 +1,4 @@
+<index:>
 FAQ for Derby 0.6
 =================
 
@@ -493,10 +494,10 @@ No need in catching events, derby does it for you:
 
 Eventually _page.radioVal will contain either 'one', 'two' or 'three' depending on what user's selected.
 
-When binding to 
+When binding to
 ```html
 <input type="radio">
-```, derby expects to meet an equity check in a checked attribute (equities itself are required for initial value setting). It's assumed that the left parameter of the check would be a path that will update from the option's value attribute when selected. 
+```, derby expects to meet an equity check in a checked attribute (equities itself are required for initial value setting). It's assumed that the left parameter of the check would be a path that will update from the option's value attribute when selected.
 
 ---
 #### How to bind a reactive variable to the textarea element?
@@ -556,7 +557,7 @@ index.js
 // ...
 
 // Called only once in a browser after the first page rendering
-app.proto.create = function(model){ 
+app.proto.create = function(model){
   // Initializing jQuery AJAX
   $.ajaxSetup({
     dataType: 'json',
@@ -582,7 +583,7 @@ index.html
 
 <Body:>
   <!-- place for a header -->
-  
+
   <!-- pages content goes here -->
   <view name="{{$render.ns}}"/>
 
@@ -842,9 +843,9 @@ for (var id in app.clients) {
 
 Handling of myEvent on the client would be:
 ```js
-this.model.channel.on('myEvent', function(data) {  
+this.model.channel.on('myEvent', function(data) {
   // The event reaction
 });
 ```
 
-Note, that when sending the message we can also pass a callback, which will contain a response from the client. On the client the response should be sent via `return` statement. 
+Note, that when sending the message we can also pass a callback, which will contain a response from the client. On the client the response should be sent via `return` statement.

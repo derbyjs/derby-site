@@ -1,9 +1,7 @@
-@import '../libs/bootstrap.min.css'
-@import '../libs/docs.min.css'
-@import '../libs/github.min.css'
-@import '../libs/rainbow.css'
-@import '../libs/font-awesome.min.css'
-@import '../../components/**/'
+@require '../libs/bootstrap.min.css'
+@require '../libs/docs.min.css'
+@require './colors'
+@require './syntax'
 
 html {
   position: relative;
@@ -27,7 +25,6 @@ body {
   display: inline-block;
 }
 
-
 .navbar-text {
   margin-bottom: 0 !important;
 }
@@ -41,21 +38,6 @@ body {
   border: 0;
   box-shadow: 0 2px 2px -1px rgba(0,0,0,.1);
   -webkit-box-shadow: 0 2px 2px -1px rgba(0,0,0,.1);
-}
-
-.chat-sidebar {
-  position: fixed;
-  top: 50px;
-  bottom: 0;
-  left: 0;
-  z-index: 1000;
-  display: block;
-  /*padding: 20px;*/
-  overflow-x: hidden;
-  overflow-y: auto;
-  background-color: #f5f5f5;
-  border-right: 1px solid #eee;
-  width: 16.66666667%;
 }
 
 .nav-sidebar {
@@ -74,22 +56,6 @@ body {
 .nav-sidebar > .active > a:focus {
   color: #fff;
   background-color: #428bca;
-}
-
-.chat-main {
-  padding: 20px;
-  background-color: #f2f4f8;
-}
-
-@media (min-width: 768px) {
-  .chat-main {
-    padding-right: 40px;
-    padding-left: 40px;
-  }
-}
-
-.chat-main .page-header {
-  margin-top: 0;
 }
 
 .list-group-item {
@@ -235,33 +201,6 @@ body {
   bottom: -7px;
 }
 
-
-.chat-item:before, .chat-item:after {
-  content: " ";
-  display: table;
-}
-
-.chat-item:after {
-  clear: both;
-}
-
-.chat-item .arrow {
-  top: 20px;
-}
-.chat-item .arrow.right:after {
-  border-left-color: #f2f4f8;
-}
-.chat-item .chat-body {
-  position: relative;
-  margin-left: 45px;
-  min-height: 30px;
-}
-.chat-item .chat-body .panel {
-  margin: 0 -1px;
-}
-.chat-item + .chat-item {
-  margin-top: 15px;
-}
 .text-sm {
   font-size: 12px !important;
 }
@@ -317,20 +256,13 @@ body {
 }
 
 blockquote
-  h3
-    margin: 12px 0
-    font-size: 18px
-    font-weight: 600
-
+  border-color: derbyTealLight
+  font-size: 1em
+  background: derbyTealLighter
   code
-    font-size: 18px
-    font-weight: 600
-    padding: 0
-    background-color: #fff
     color: #333
-    /* marked trim spaces around code blockes, try to compensate it at least at right side */
-    padding-right: 10px
-
+    font-weight: bold
+    background: transparent
 
 .bs-docs-featurette
   p.subtitle
@@ -343,4 +275,11 @@ blockquote
   }
 .lang {
   font-size: 13px;
+}
+
+.list-group-item {
+  padding: 8px 12px;
+}
+.list-group-item.level-2 {
+  padding-left: 24px;
 }
