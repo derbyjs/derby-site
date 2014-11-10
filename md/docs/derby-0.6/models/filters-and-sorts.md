@@ -2,24 +2,24 @@
 
 Filters create a live-updating list from items in an object. The results automatically update as the input items change.
 
-> `filter = model.filter(inputPath, [additionalInputPaths...], [options], [fn])`
+> `filter = model.filter(inputPath, [additionalInputPaths...], [options], fn)`
 > * `inputPath` A path pointing to an object or array. The path's values will be retrieved from the model via `model.get()`, and then each item will be checked against the filter function
 > * `additionalInputPaths` *(optional)* Other parameters can be set in the model, and the filter function will be re-evaluated when these parameters change as well
 > * `options:`
 >   * `skip` The number of first results to skip
 >   * `limit` The maximum number of results. A limit of zero is equivalent to no limit
-> * `fn` *(optional)* A function or the name of a function defined via `model.fn()`. The function should have the arguments `function(item, key, object, additionalInputs...)`. Like functions for [`array.filter()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter), the function should return true for values that match the filter
+> * `fn` A function or the name of a function defined via `model.fn()`. The function should have the arguments `function(item, key, object, additionalInputs...)`. Like functions for [`array.filter()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter), the function should return true for values that match the filter
 
-If `model.filter()` is called without a filter function, it will create a list out of all items in the input object. This can be handy as a way to render all subscribed items in a collection, since only arrays can be used as an input to `{{each}}` template tags.
+If `model.filter()` is called with `null` for the function, it will create a list out of all items in the input object. This can be handy as a way to render all subscribed items in a collection, since only arrays can be used as an input to `{{each}}` template tags.
 
-> `filter = model.sort(inputPath, [options], [fn])`
+> `filter = model.sort(inputPath, [options], fn)`
 > * `inputPath` A path pointing to an object or array. The path's values will be retrieved from the model via `model.get()`, and then each item will be checked against the filter function
 > * `options:`
 >   * `skip` The number of first results to skip
 >   * `limit` The maximum number of results. A limit of zero is equivalent to no limit
-> * `fn` *(optional)* A function or the name of a function defined via `model.fn()`. The function should should be a compare function with the arguments `function(a, b)`. It should return the same values as compare functions for [`array.sort()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
+> * `fn` A function or the name of a function defined via `model.fn()`. The function should should be a compare function with the arguments `function(a, b)`. It should return the same values as compare functions for [`array.sort()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
 
-There are two default named functions defined for sorting, `'asc'` and `'desc'`. If sort is called without a function name, it defaults to using the `'asc'` function. These functions compare each item with Javascript's less than and greater than operators. See MDN for more info on [sorting non-ASCII characters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#Sorting_non-ASCII_characters).
+There are two default named functions defined for sorting, `'asc'` and `'desc'`. These functions compare each item with Javascript's less than and greater than operators. See MDN for more info on [sorting non-ASCII characters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#Sorting_non-ASCII_characters).
 
 You may define functions to be used in `model.filter()` and `model.sort()` via [`model.fn()`](functions#named-functions).
 
