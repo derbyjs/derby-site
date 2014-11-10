@@ -5,15 +5,15 @@ var derbyLanguage = require('./derbyLanguage');
 highlight.registerLanguage('derby', derbyLanguage);
 
 var renderer = new marked.Renderer();
-renderer.code = function(code, language){
+renderer.code = function(code, language) {
+  var highlighted = (language) ?
+    '<pre class="hljs"><code class="hljs ' + language + '">' +
+      highlight.highlight(language, code).value +
+    '</code></pre>' :
+    '<pre><code>' + code + '</code></pre>';
+
   // Replace double braces in code examples
-  code = code.replace(/\{\{/g, '&#123;&#123;');
-
-  if (!language) return '<pre><code>' + code + '</code></pre>';
-
-  return '<pre class="hljs"><code class="hljs ' + language + '">' +
-    highlight.highlight(language, code).value +
-    '</code></pre>';
+  return highlighted.replace(/\{\{/g, '&#123;&#123;');
 };
 
 function markdownCompiler(file) {
