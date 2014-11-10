@@ -27,8 +27,8 @@ HTML comments are removed, expect for those with square brackets immediately ins
 
 ```derby
 <Body:>
-  <!-- The following comment is not removed: -->
-  <!--[if IE]><p>You are using Internet Explorer.</p><![endif]-->
+  <!-- This comment is removed from the template output -->
+  <!--[if IE]><p>This comment is not removed</p><![endif]-->
   <!--[Neither is this one]-->
 ```
 
