@@ -54,7 +54,7 @@ The output of a filter is typically used by creating a reference from it. This s
 > * `path` The path at which to create a refList of the filter's output
 > * `scoped` Returns a model scoped to the output path of the ref
 
-The filter's value can also be retrieved directly via `filter.get()`.
+The filter's current value can also be retrieved directly via `filter.get()`.
 
 > `results = filter.get()`
 > * `results` Returns an array of results matching the filter

@@ -68,39 +68,7 @@ Views may be looked up dynamically with an expression. If the name of a view isn
   <!-- Dynamic view lookup based on an expression -->
   <view is="{{type}}-title"></view>
   {{view type + '-title'}}
-  <!-- Specify `optional` to not throw if view isn't found -->
+  <!-- Specify `optional` to avoid throwing when view isn't found -->
   <view is="{{type}}-title" optional></view>
   {{view type + '-title', {optional: true}}}
 ```
-
-## View namespaces
-
-View names have colon (`:`) separated namespaces. Lookups of views are relative to the namespace in which they are used. Thus, sub-views within components or different sections of large applications are well encapsulated and won't run into naming conflicts.
-
-```derby
-<home:stuff:>
-  ...
-
-<about:stuff:>
-  ...
-
-<about:Body:>
-  <!-- Outputs stuff for the about page -->
-  <view is="stuff"></view>
-```
-
-In addition, similar to the way that CSS allows overriding of styles by using a more specific selector, you can define views at a more general namespace and then redefine them at a more specific namespace.
-
-```derby
-<Title:>
-  App
-
-<about:Title:>
-  About - App
-
-<about:mission:Title:>
-  Mission statement - App
-```
-
-## Breaking views into multiple files
-
