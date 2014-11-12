@@ -64,7 +64,7 @@ If you do want whitespace at the beginning or end or a line, add the non-standar
   </script>
 ```
 
-HTML comments are removed, expect for those with square brackets immediately inside of them. This syntax is used by Internet Explorer's conditional comments. It can also be used to include comments for copyright notices or the like.
+HTML comments are removed, except for those with square brackets immediately inside of them. This syntax is used by Internet Explorer's conditional comments. It can also be used to include comments for copyright notices or the like.
 
 ```derby
 <Body:>
