@@ -25,10 +25,10 @@ HTML attribute values only need to be quoted if they are the empty string or if 
 <b {{attrName}}="confused" {{booleanAttr}}>Bad bad!</b>
 
 <!-- INVALID: Splitting an html tag -->
-<b{{if maybe}}>Bad bad!</b{{/}}>
+<b{{if maybe}}>Bad bad!</b{{/if}}>
 
 <!-- INVALID: Splitting an element -->
-{{if maybe}}<b>{{/}}Bad bad!</b>
+{{if maybe}}<b>{{/if}}Bad bad!</b>
 ```
 
 #### Valid placements

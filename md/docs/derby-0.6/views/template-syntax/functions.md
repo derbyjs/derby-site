@@ -16,12 +16,12 @@ Functions are looked up on the current component's controller, the page, and the
 ```
 
 ```js
-<!-- component prototypes are where most functions are defined -->
+// component prototypes are where most functions are defined
 UserList.prototype.delUser = function(userId) {
   this.users.del(userId);
 };
 
-<!-- app.proto is the prototype for all pages created by the app -->
+// app.proto is the prototype for all pages created by the app
 app.proto.sum = function() {
   var sum = 0;
   for (var i = 0; i < arguments.length; i++) {
@@ -29,6 +29,23 @@ app.proto.sum = function() {
   }
   return sum;
 };
+```
+
+## Calling peer component methods
+
+Components and elements can be set as a property on the current controller with the `as=` HTML attribute. This paired with how controller properties are looked up on function calls makes it easy to connect events on components or elements to methods on other components.
+
+```derby
+<!-- Connecting an instance of a component to an event -->
+<modal as="modal"></modal>
+<button on-click="modal.open()"></button>
+```
+
+```derby
+<!-- `page` is shared on all controllers, even in separate components -->
+<flash as="page.flash"></flash>
+...
+<button on-click="page.flash.show('Clicked')"></button>
 ```
 
 ## DOM Event arguments

@@ -75,7 +75,7 @@ Aliases are more explicit than relative paths and make it possible to refer to t
 
 ## Attributes
 
-Views can be passed values as attributes. These attributes are accessed via paths that start with an at sign (`@`). By default, there is an `{{@content}}`
+Views can be passed values as attributes. These attributes are accessed via paths that start with an at sign (`@`). By default, there is an `@content`
 attribute for the content within the view tag.
 
 ```derby

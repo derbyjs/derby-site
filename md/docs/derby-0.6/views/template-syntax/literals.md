@@ -22,9 +22,9 @@ Derby supports creating JavaScript literals in templates. The syntax is identica
 <!-- undefined -->
 {{undefined}}
 <!-- Arrays -->
-[0, 1, 2]
+{{ [0, 1, 2] }}
 <!-- Objects -->
-{name: 'Jim'}
+{{ {name: 'Jim'} }}
 ```
 
 For greater efficiency, simple literals are instantiated at the time of parsing. Object literals created at parse time will be passed by reference to controller functions, so be careful not to modify them.
