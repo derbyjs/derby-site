@@ -96,7 +96,7 @@ As well, the name `index` can be used for a view that is returned for just the n
 ```derby
 <index:>
   <h1>
-    <view name="message"></view>
+    <view is="message"></view>
   </h1>
 
 <message:>
