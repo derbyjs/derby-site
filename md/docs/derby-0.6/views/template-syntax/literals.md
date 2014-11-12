@@ -1,6 +1,6 @@
 # Literals
 
-Derby supports creating JavaScript literals in templates. The syntax is identical to JavaScript, except that identifiers within literals are parsed as [view paths](/paths) instead of JavaScript variables. Derby parses template expressions with Esprima, so its coverage of JavaScript expression syntax is comprehensive. Technically, `undefined` is an unmodifiable global property and not a literal value. For simplicity, Derby treats it as a literal.
+Derby supports creating JavaScript literals in templates. The syntax is identical to JavaScript, except that identifiers within literals are parsed as [view paths](paths) instead of JavaScript variables. Derby parses template expressions with Esprima, so its coverage of JavaScript expression syntax is comprehensive. Technically, `undefined` is an unmodifiable global property and not a literal value. For simplicity, Derby treats it as a literal.
 
 ## Simple literals
 

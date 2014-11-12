@@ -84,7 +84,7 @@ UserList.prototype.clickRow = function(e, tr) {
 
 ## Scoped model arguments
 
-Functions can be passed the value of any view path. In some cases, it can be convenient to get a [scoped model](../../model/paths#scoped-models) to the view name instead. To pass a scoped model, you can wrap the view path in `$at()`. Instead of getting the value for a view path, this will return a scoped model. It will return undefined if no scoped model can be created for a view path.
+Functions can be passed the value of any view path. In some cases, it can be convenient to get a [scoped model](../../models/paths#scoped-models) to the view name instead. To pass a scoped model, you can wrap the view path in `$at()`. Instead of getting the value for a view path, this will return a scoped model. It will return undefined if no scoped model can be created for a view path.
 
 ```derby
 <button on-click="toggle($at(showDetail))"></button>
