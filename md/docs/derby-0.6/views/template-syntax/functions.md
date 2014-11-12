@@ -1,6 +1,6 @@
 # Functions
 
-Functions defined on a property of a controller can be invoked from view expressions or in response to events. As a general pattern, paths refer to the model when getting values and to the controller when calling functions.
+Functions defined on a property of a controller can be invoked from view expressions or in response to events. As a general pattern, view paths refer to the model when getting values and to the controller when calling functions.
 
 ## Controller property lookup
 
