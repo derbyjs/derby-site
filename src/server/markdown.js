@@ -15,6 +15,9 @@ renderer.code = function(code, language) {
   // Replace double braces in code examples
   return highlighted.replace(/\{\{/g, '&#123;&#123;');
 };
+renderer.codespan = function(code) {
+  return '<code>' + code.replace(/\{\{/g, '&#123;&#123;') + '</code>';
+};
 
 function markdownCompiler(file) {
   return '<index: unminified>' + marked(file, {renderer: renderer});
