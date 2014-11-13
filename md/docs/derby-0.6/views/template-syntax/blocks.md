@@ -2,7 +2,7 @@
 
 Blocks are template expressions that start with special keywords. They are used to conditionally render, repeat, or control the way in which sections of a template are rendered.
 
-Similar to HTML tags, blocks end in a forward slash followed by the same keyword that started them. The closing keyword is optional but recommended for clarity. Both `{{with}}...{{/with}}` and `{{with}}...{{/}}` are parsed correctly.
+Similar to HTML tags, blocks end in a forward slash followed by the same keyword that started them. The closing keyword is optional but recommended for clarity. For example, both `{{with}}...{{/with}}` and `{{with}}...{{/}}` are parsed correctly.
 
 # Conditionals
 
