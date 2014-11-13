@@ -18,7 +18,7 @@ Conditional blocks use the `if`, `else if`, `else`, and `unless` keywords. They 
 {{/if}}
 ```
 
-The inverse of `if` is `unless`. For clarity, unless should only be used when there is no `else` condition. A block that has an unless and else condition can be more clearly written as an if and else.
+The inverse of `if` is `unless`. For clarity, unless should only be used when there is no `else` condition. A block that has an unless and else condition can usually be writtern more clearly as an if and else.
 
 ```derby
 {{unless items}}
@@ -26,10 +26,74 @@ The inverse of `if` is `unless`. For clarity, unless should only be used when th
 {{/unless}}
 ```
 
+The contents of a conditional block are only re-rendered when a different condition starts to match. If the values in the conditional change, the condition expression is evaluated, but the DOM is not updated if the same section matches.
+
 # Each
+
+Each blocks repeat for each of the items in an array. They cannot iterate over objects.
+
+```derby
+{{each items}}
+  <p>{{this.text}}</p>
+{{else}}
+  No items
+{{/each}}
+```
+
+In addition to an alias to the array item, eaches support an alias for the index of the item. This index alias supports binding and will be updated as the array changes.
+
+```derby
+{{each items as #item, #i}}
+  {{#i + 1}}. {{#item.text}}
+{{/each}}
+```
+
+Derby has very granular model events to describe array mutations as inserts, removes, and moves. It maps these directly into efficient DOM mutations of just what changed.
 
 # With
 
+With blocks set the path context of a block, but they do not trigger re-rendering. Their primary use is to set an alias to a path inside of their contents.
+
+Aliases can be a convenient way to set a name that can be used throughout a section of a template or many nested views and/or components.
+
+```derby
+<Body:>
+  {{with _session.user as #user}}
+    <view is="user-profile"></view>
+  {{/with}}
+
+  {{with {name: 'Jim', age: 32} as #user}}
+    <view is="user-profile"></view>
+  {{/with}}
+
+<user-profile:>
+  <h1>{{#user.name}}</h1>
+  <p class="age">{{#user.age}}</p>
+
 # On
 
-# Unbound
+To clear UI state, to optimize performance by rendering larger sections, or to work around issues with template bindings not rendering often enough, an `{{on}}` block can provide more control. Its contents will re-render whenever any of its paths change.
+
+```derby
+{{on #profile.id}}
+  <h1>{{#profile.name}}</h1>
+  <!-- Re-render entire section whenever #profile.id changes -->
+{{/on}}
+
+{{on first, second, third}}
+  <!-- Re-render entire section when one of multiple dependencies changes -->
+{{/on}}
+```
+
+# Unbound and bound
+
+Bindings are created by default for all template expressions. To render an initial value only and and not create bindings, the `{{unbound}}` block may be wrapped around a template section. Bindings can be toggled back on with a `{{bound}}` block.
+
+```derby
+{{unbound}}
+  <!-- Disable creation of bindings and only render initial value -->
+  {{bound}}
+    <!-- But do bind tags inside here -->
+  {{/bound}}
+{{/unbound}}
+```
