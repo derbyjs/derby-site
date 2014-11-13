@@ -93,7 +93,7 @@ Bindings are created by default for all template expressions. To render an initi
 {{unbound}}
   <!-- Disable creation of bindings and only render initial value -->
   {{bound}}
-    <!-- But do bind tags inside here -->
+    <!-- But do bind expressions inside here -->
   {{/bound}}
 {{/unbound}}
 ```

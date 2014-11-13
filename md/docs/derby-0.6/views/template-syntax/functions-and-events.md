@@ -1,4 +1,4 @@
-# Functions
+# Functions and events
 
 Functions defined on a property of a controller can be invoked from view expressions or in response to events. As a general pattern, view paths refer to the model when getting values and to the controller when calling functions.
 
@@ -42,13 +42,69 @@ Components and elements can be set as a property on the current controller with 
 ```
 
 ```derby
-<!-- `page` is shared on all controllers, even in separate components -->
+<!-- `page` is available on all controllers, even in separate components -->
 <flash as="page.flash"></flash>
 ...
 <button on-click="page.flash.show('Clicked')"></button>
 ```
 
-## DOM Event arguments
+## Events
+
+Attributes beginning with `on-` add listeners to DOM events and component events. Under the hood, events on elements are added with `element.addEventListener()` and events on components are added with `component.on()`. Adding events declaritively with attributes is easier than CSS selectors and less prone to unexpectedly breaking when refactoring templates or classes for styling.
+
+```derby
+<!-- Any event name can be added to an element -->
+<input on-mousedown="mousedownInput($event)" on-blur="blurInput(), update()">
+```
+
+```js
+// Equivalent to:
+input.addEventListener('mousedown', function(event) {
+  self.mousedownInput(event);
+}, false);
+input.addEventListener('blur', function(event) {
+  self.blurInput();
+  self.update();
+}, false);
+```
+
+```derby
+<!-- Components support custom events. Dashes are transformed into camelCase -->
+<modal on-close="reset()" on-full-view="back.fade()"></modal>
+```
+
+```js
+// Equivalent to:
+modal.on('close', function() {
+  self.reset();
+});
+modal.on('fullView', function() {
+  back.fade();
+});
+```
+
+### Special HTML rules
+
+As a convenience, an `on-click` listener can be added to a link without an `href`. Derby will add an `href="#"` and cancel the default action automatically if no href is specified.
+
+```derby
+<!-- Derby will add an href="#" when there is a click handler -->
+<a on-click="alert('hi')">Hi</a>
+```
+
+HTML forms have very useful behavior, but their default action on submit will navigate away from the current page. If an `on-submit` handler is added to a form with no `action` attribute, the default will be prevented.
+
+```derby
+<form on-submit="console.log()">
+  <input value="{{newValue}}">
+  <button type="submit">Add</button>
+  <button type="reset">Reset</button>
+  <!-- Note that HTML buttons default to type="submit" -->
+  <button type="button">Cancel</button>
+</form>
+```
+
+### DOM event arguments
 
 For functions invoked by DOM events only, the special arguments `$event` or `$element` may be specified. The `$event` argument is the DOM Event object passed to the listener function for `addEventListener()`. The `$element` argument is a reference to the element on which the listener attribute is specified. These arguments are only passed to functions if explicitly specified.
 
@@ -80,6 +136,17 @@ UserList.prototype.clickRow = function(e, tr) {
   var link = tr.querySelector('a');
   if (link) link.dispatchEvent(event);
 };
+```
+
+### Component event arguments
+
+Component events implicitly pass through any emitted arguments. These arguments are added after any explicitly specified arguments in the expression.
+
+```derby
+<!-- Will log any arguments emitted by the submit event -->
+<dropdown on-submit="console.log()"></dropdown>
+<!-- Will log 'dropdown' followed by any emitted arguments -->
+<dropdown on-submit="console.log('dropdown')"></dropdown>
 ```
 
 ## Scoped model arguments
