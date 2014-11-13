@@ -85,7 +85,7 @@ modal.on('fullView', function() {
 
 ### Special HTML rules
 
-As a convenience, an `on-click` listener can be added to a link without an `href`. Derby will add an `href="#"` and cancel the default action automatically if no href is specified.
+As a convenience, an `on-click` listener can be added to a link without an `href`. Derby will add an `href="#"` and prevent the default action automatically if no href is specified.
 
 ```derby
 <!-- Derby will add an href="#" when there is a click handler -->
