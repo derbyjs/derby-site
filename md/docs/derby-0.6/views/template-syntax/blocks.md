@@ -69,6 +69,7 @@ Aliases can be a convenient way to set a name that can be used throughout a sect
 <user-profile:>
   <h1>{{#user.name}}</h1>
   <p class="age">{{#user.age}}</p>
+```
 
 # On
 
