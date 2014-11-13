@@ -105,12 +105,12 @@ String methods can only be used on paths set to strings, null, or undefined. If 
 
 The string methods support collaborative text editing, and Derby uses string methods to bind changes to all text inputs and textareas by default.
 
-> model.stringInsert(path, index, text, [callback])`
+> `model.stringInsert(path, index, text, [callback])`
 > * `path` Model path to a string
 > * `index` Character index within the string at which to insert
 > * `text` String to insert
 
-> model.stringRemove(path, index, howMany, [callback])`
+> `model.stringRemove(path, index, howMany, [callback])`
 > * `path` Model path to a string
 > * `index` Starting character index of the string at which to remove
 > * `howMany` Number of characters to remove
