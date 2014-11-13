@@ -88,7 +88,7 @@ To clear UI state, to optimize performance by rendering larger sections, or to w
 
 # Unbound and bound
 
-Bindings are created by default for all template expressions. To render an initial value only and and not create bindings, the `{{unbound}}` block may be wrapped around a template section. Bindings can be toggled back on with a `{{bound}}` block.
+Bindings are created by default for all template expressions. To render an initial value only and not create bindings, the `{{unbound}}` block may be wrapped around a template section. Bindings can be toggled back on with a `{{bound}}` block.
 
 ```derby
 {{unbound}}
