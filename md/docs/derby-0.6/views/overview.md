@@ -61,14 +61,11 @@ You can instantiate a view in a template with the `<view>` tag, `{{view}}` expre
   <seriousness />
 ```
 
-Views may be looked up dynamically with an expression. If the name of a view isn't found, an error will be thrown unless the `optional` attribute is specified.
+Views may be looked up dynamically with an expression. If the view isn't found, nothing will be rendered.
 
 ```derby
 <Body:>
   <!-- Dynamic view lookup based on an expression -->
   <view is="{{type}}-title"></view>
   {{view type + '-title'}}
-  <!-- Specify `optional` to avoid throwing when view isn't found -->
-  <view is="{{type}}-title" optional></view>
-  {{view type + '-title', {optional: true}}}
 ```
