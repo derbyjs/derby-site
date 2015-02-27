@@ -10,7 +10,7 @@ Remotely synced data is stored via [ShareJS](http://sharejs.org/), which means t
 
 On the server, Racer provides a `store`, which configures a connection to a database and pub/sub adapter. Every store connected to the same database and pub/sub system is synchronized in realtime.
 
-Stores create `model` objects. Models have a synchronous interface similar to interacting directly with objects. They maintain their own copy of a subset of the global state. This subset is defined via [subscriptions](backends#loading-data-into-a-model) to certain queries or documents. Models perform operations independently, and they automatically synchronize their state.
+Stores create `model` objects. Models have a synchronous interface similar to interacting directly with objects. They maintain their own copy of a subset of the global state. This subset is defined via [subscriptions](models/backends#loading-data-into-a-model) to certain queries or documents. Models perform operations independently, and they automatically synchronize their state.
 
 Models emit events when their contents are updated, which DerbyJS uses to update the view in realtime.
 
