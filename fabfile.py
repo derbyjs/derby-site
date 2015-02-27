@@ -35,7 +35,7 @@ def bootstrap():
 @task
 def tag(tag):
     '''Tag the current HEAD, pushes tags to origin'''
-    local('git tag %s')
+    local('git tag %s' % (tag))
     local('git push origin --tags')
 
 
