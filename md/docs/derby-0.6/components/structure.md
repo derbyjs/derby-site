@@ -1,6 +1,6 @@
 # Structure
 
-The controller defines the behavior of the component. 
+The controller defines the behavior of the component. A controller is defined by a JavaScript class, using prototypical inheritance.
 
 ## Controller definition
 
@@ -60,12 +60,12 @@ A component's view is typically defined in it's own file as such:
     </span>
   </div>
 ```
-It is possible to associate a controller with any view as long as you follow the [namespace](views/namespaces-and-files) rules.
+It is possible to associate a controller with any view as long as you follow the [namespace](../views/namespaces-and-files) rules.
 
 
 ### View functions
 Functions defined on the component's prototype will be available in the scope of the component's view, as demonstrated by the `select` function in the above example. 
-See the [controller property lookup](views/template-syntax/functions-and-events#controller-property-lookup) documentation.
+See the [controller property lookup](../views/template-syntax/functions-and-events#controller-property-lookup) documentation.
 
 
 ## Component usage
