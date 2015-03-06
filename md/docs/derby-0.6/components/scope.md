@@ -53,6 +53,7 @@ By default any content inside a component's declaration will be available in the
   <div>my normal content</div>
   <div>{{@content}}</div>
 ```
+
 It is also possible to specify a keyword that will turn multiple content elements into an attribute with an array of those values.
 ```derby
 <!-- usage -->
@@ -63,15 +64,22 @@ It is also possible to specify a keyword that will turn multiple content element
 </view>
 
 <!-- definition -->
-<index: arrays="tab">
+<index: arrays="tab/tabs">
   <div>my normal content</div>
   <ul>
     {{each @tabs as #tab}}
       <li>{{#tab}}</li>
     {{/each}}
   </ul>
+<!-- alternative definition without pluralization-->
+<index: arrays="tab">
+  <div>my normal content</div>
+  <ul>
+    {{each @tab as #tab}}
+      <li>{{#tab}}</li>
+    {{/each}}
+  </ul>
 ```
-
 
 ### Root Model
 There are times when accessing data in the root model is desirable from within the component. This can be achieved both in the template and in the controller.
