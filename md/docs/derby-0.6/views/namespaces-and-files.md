@@ -94,7 +94,7 @@ would be equivalent to:
   Mission statement - App
 ```
 
-Rules for importing views work the same was as [Node.js module loading](http://nodejs.org/api/modules.html) with `require()`. The `src` attribute uses the same syntax of relative paths or paths to `node_modules`. An `index.html` file can be imported via the name of the directory that it is in, just like `index.js` files in Node.js.
+Rules for importing views work the same way as [Node.js module loading](http://nodejs.org/api/modules.html) with `require()`. The `src` attribute uses the same syntax of relative paths or paths to `node_modules`. An `index.html` file can be imported via the name of the directory that it is in, just like `index.js` files in Node.js.
 
 As well, the name `index` can be used for a view that is returned for just the name of its namespace.
 
