@@ -1,6 +1,8 @@
 # Structure
 
-The controller defines the behavior of the component. A component's controller can 
+The controller defines the behavior of the component. 
+
+## Controller definition
 
 > `Controller = function() {}`
 > * `Controller` The prototypical function for defining a component's behavior
@@ -21,31 +23,12 @@ The controller defines the behavior of the component. A component's controller c
 > `Controller.prototype.style = 'path/to/style'`
 > * `style` *(optional)* The relative path to a style file to load. If the view file is named *index.css* and in the same directory as the controller, the directory *__dirname* can be specified
 
-### View functions
-Functions defined on the component's prototype will be available in the scope of the component's view, as demonstrated by the `select` function in the below example. See the [controller property lookup](views/template-syntax/functions-and-events#controller-property-lookup) documentation.
+The following shows an example of implementing the controller class for a component.
 
-
-## View definition
-A component's view is typically defined in it's own file as such:
-```derby
-<index:>
-  <p> arbitrary html content </p>
-  <div>
-    {{@content}}
-  </div>
-  <div as="chart">
-    <span class="bars" on-click="select($event)">
-      {{foo}}
-    </span>
-  </div>
-```
-It is possible to associate a controller with any view as long as you follow the [namespace](views/namespaces-and-files) rules.
-
-## Controller definition
 ```js
 MyComponent = function() {}
 
-MyComponent.prototype.name = 'mySweetComponent';
+MyComponent.prototype.name = 'my-sweet-component';
 MyComponent.prototype.view = __dirname;
 MyComponent.prototype.style = __dirname;
 
@@ -63,6 +46,27 @@ MyComponent.prototype.select = function(evt) {
 }
 ```
 
+## View definition
+A component's view is typically defined in it's own file as such:
+```derby
+<index:>
+  <p> arbitrary html content </p>
+  <div>
+    {{@content}}
+  </div>
+  <div as="chart">
+    <span class="bars" on-click="select($event)">
+      {{foo}}
+    </span>
+  </div>
+```
+It is possible to associate a controller with any view as long as you follow the [namespace](views/namespaces-and-files) rules.
+
+
+### View functions
+Functions defined on the component's prototype will be available in the scope of the component's view, as demonstrated by the `select` function in the above example. 
+See the [controller property lookup](views/template-syntax/functions-and-events#controller-property-lookup) documentation.
+
 
 ## Component usage
 
@@ -74,5 +78,5 @@ app.use('namespace:name', MyComponent);
 ```
 
 ```derby
-<view is="mySweetComponent" foo="{{_page.bar}}"></view>
+<view is="my-sweet-component" foo="{{_page.bar}}"></view>
 ```

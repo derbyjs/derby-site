@@ -3,52 +3,124 @@
 A component's model is always a decendent of the root model. 
 
 ## Child Model
-All paths in a components model are scoped to it's local context. There are no collections on child models so the rules of the root model don't apply around private paths. For example `model.set("foo", "bar") is completely valid inside a component.
+All paths in a components model are scoped to it's local context. There are no collections on child models so the rules of the root model don't apply around private paths. For example `model.set("foo", "bar")` is completely valid inside a component.
 
 
 ## Attributes
 The most direct way to get data into a component is to pass in a reference or a literal as an attribute.
 
+### Scopped paths
+Passing in a referrence is one of the most common ways to pass data into a component. The reference will be two-bound so updating the value in the component's model or in it's parent will trigger updates in either place.
 
 ```derby
-<view is="user-list" data="{{users}}" foo="{{true}}" ></view>
-```
-
-### scopped paths
-can referrence data passed in
-```derby
+<!-- usage -->
+<view is="user-list" data="{{users}}"></view>
+<!-- definition -->
 <index:>
-  {{each users as #user}}
-    {{#user}}
-  {{/each}}
+  <ul>
+    {{each users as #user}}
+      <li>{{#user.name}}</li>
+    {{/each}}
+  </ul>
 ```
 
 
-### literals
-all attributes set to strings will be treated as strings. this means if you want to pass a number or boolean literal to a component you must use bindings.
+### Literals
+All attributes set to strings will be treated as strings. This means if you want to pass a number or boolean literal to a component you must use bindings.
 
 ```derby
+<!-- usage -->
 <view is="thing" foo="{{true}}" numba="{{7}}"></view>
+<!-- definition -->
 <index:>
   {{if foo}}
-    bar!
+    {{numba + 1}} bars!
   {{/if}}
 ```
 
-### templates
-complex expressions that involve multiple bindings or view functions will be passed in as a template.
+
+### Content
+A component can accept dynamic content for rendering internally. 
+By default any content inside a component's declaration will be available in the `content` attribute.
+```derby
+<!-- usage -->
+<view is="thing">
+  my custom content
+</view>
+
+<!-- definition -->
+<index:>
+  <div>my normal content</div>
+  <div>{{@content}}</div>
+```
+It is also possible to specify a keyword that will turn multiple content elements into an attribute with an array of those values.
+```derby
+<!-- usage -->
+<view is="thing">
+  <tab>one</tab>
+  <tab>two</tab>
+  <tab>three</tab>
+</view>
+
+<!-- definition -->
+<index: arrays="tab">
+  <div>my normal content</div>
+  <ul>
+    {{each @tabs as #tab}}
+      <li>{{#tab}}</li>
+    {{/each}}
+  </ul>
+```
+
+
+### Root Model
+There are times when accessing data in the root model is desirable from within the component. This can be achieved both in the template and in the controller.
+
+```derby
+<index:>
+  <!-- dynamically look up a user in the users collection -->
+  {{#root.users[userId]}}
+```
+
+```js
+  var users = this.model.root.get("users");
+  var user = users[userId]
+  // or
+  var $users = this.model.scope("users");
+  var user = $users.get(userId)
+```
+
+
+### With block
+See the documentation for [with blocks](views/template-syntax/blocks#with) to pass in data with an alias. 
+
+
+## Attributes vs. Model data
+Complex expressions that involve multiple bindings or view functions will be passed in as a template.
 ```derby
 <view is="great" foo="{{ {x: _page.width, y: _page.height} }}" bar="{{format(_page.bar)}}"></view>
 ```
 
+This behavior might lead to an unexpected result when programmatically accessing data from the model. In the case where your attribute is a template you can access the rendered value with the component's `getAttribute` function.
 
-getAttribute
+> `value = this.getAttribute(name)`
+> * `name` the name of the attribute
+> * `value` the rendered value of the attribute
 
-setAttribute
+> this.setAttribute(name, value)
+> * `name` the name of the attribute
+> * `value` the new value of the attribute.
 
+An interactive example of interacting with attributes is available below. Notice that accessing the model using the attribute name returns a template object instead of the rendered value you might desire.
 
-## With
+<p data-height="411" data-theme-id="12888" data-slug-hash="ByOaMm" data-default-tab="html" data-user="enjalot" class='codepen'>See the Pen <a href='http://codepen.io/enjalot/pen/ByOaMm/'>Derby-standalone attributes</a> by Ian (<a href='http://codepen.io/enjalot'>@enjalot</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
+### Programatic view management
 
-## Root
-There are times when accessing data in the root model is desirable from within the comp
+> `view = this.getView(name)`
+> * `name` the name of the view
+> * `view` a template object representing the view 
+
+It is possible to access the views in a component's namespace from the controller. This may be used in conjunction with `setAttribute` to override a component's default rendering.
+An example use case would be to set a default template and then allow the user of the component to pass in a template to override the default.
