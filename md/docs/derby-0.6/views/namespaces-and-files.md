@@ -27,6 +27,20 @@ In addition, similar to the way that CSS allows overriding of styles by using a 
   Mission statement - App
 ```
 
+### Custom elements
+
+A view can be turned into a custom element by specifying the `element` property in it's definition. Custom element names are global so care should be taken in their usage.
+
+```derby
+<!-- definition -->
+<message: element="message">
+  <div> {{data}} </div>
+
+<!-- usage: render two messages with different data -->
+<message data="{{foo}}"></message>
+<message data="{{bar}}"></message>
+```
+
 ## Structuring views in multiple files
 
 Views should be broken into files that correspond to major pieces of functionality, different URLs, or components. Views are included from another file with the `<import:>` tag.
