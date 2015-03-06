@@ -1,8 +1,24 @@
 # Functions and events
 
-Functions defined on a property of a controller can be invoked from view expressions or in response to events. As a general pattern, view paths refer to the model when getting values and to the controller when calling functions.
+Attributes beginning with `on-` add listeners to DOM events and component events. Under the hood, events on elements are added with `element.addEventListener()` and events on components are added with `component.on()`. Adding events declaritively with attributes is easier than CSS selectors and less prone to unexpectedly breaking when refactoring templates or classes for styling.
 
-## Controller property lookup
+```derby
+<!-- Any event name can be added to an element -->
+<input on-mousedown="mousedownInput($event)" on-blur="blurInput(), update()">
+```
+
+```js
+// Equivalent to:
+input.addEventListener('mousedown', function(event) {
+  self.mousedownInput(event);
+}, false);
+input.addEventListener('blur', function(event) {
+  self.blurInput();
+  self.update();
+}, false);
+```
+
+## View functions
 
 Functions are looked up on the current component's controller, the page, and the global, in that order. The majority of functions are defined on component prototypes, generic shared utility functions are defined on the page prototype, and the global provides access to functions like `new Date()` and `console.log()`.
 
@@ -31,45 +47,11 @@ app.proto.sum = function() {
 };
 ```
 
-## Calling peer component methods
+### Component events
+Components support custom events. Dashes are transformed into camelCase.
 
-Components and elements can be set as a property on the current controller with the `as=` HTML attribute. This paired with how controller properties are looked up on function calls makes it easy to connect events on components or elements to methods on other components.
-
+See the [component events](components/events) documentation for more detail on using events and component functions.
 ```derby
-<!-- Connecting an instance of a component to an event -->
-<modal as="modal"></modal>
-<button on-click="modal.open()"></button>
-```
-
-```derby
-<!-- `page` is available on all controllers, even in separate components -->
-<flash as="page.flash"></flash>
-...
-<button on-click="page.flash.show('Clicked')"></button>
-```
-
-## Events
-
-Attributes beginning with `on-` add listeners to DOM events and component events. Under the hood, events on elements are added with `element.addEventListener()` and events on components are added with `component.on()`. Adding events declaritively with attributes is easier than CSS selectors and less prone to unexpectedly breaking when refactoring templates or classes for styling.
-
-```derby
-<!-- Any event name can be added to an element -->
-<input on-mousedown="mousedownInput($event)" on-blur="blurInput(), update()">
-```
-
-```js
-// Equivalent to:
-input.addEventListener('mousedown', function(event) {
-  self.mousedownInput(event);
-}, false);
-input.addEventListener('blur', function(event) {
-  self.blurInput();
-  self.update();
-}, false);
-```
-
-```derby
-<!-- Components support custom events. Dashes are transformed into camelCase -->
 <modal on-close="reset()" on-full-view="back.fade()"></modal>
 ```
 
@@ -82,6 +64,7 @@ modal.on('fullView', function() {
   back.fade();
 });
 ```
+
 
 ### Special HTML rules
 
@@ -136,17 +119,6 @@ UserList.prototype.clickRow = function(e, tr) {
   var link = tr.querySelector('a');
   if (link) link.dispatchEvent(event);
 };
-```
-
-### Component event arguments
-
-Component events implicitly pass through any emitted arguments. These arguments are added after any explicitly specified arguments in the expression.
-
-```derby
-<!-- Will log any arguments emitted by the submit event -->
-<dropdown on-submit="console.log()"></dropdown>
-<!-- Will log 'dropdown' followed by any emitted arguments -->
-<dropdown on-submit="console.log('dropdown')"></dropdown>
 ```
 
 ## Scoped model arguments

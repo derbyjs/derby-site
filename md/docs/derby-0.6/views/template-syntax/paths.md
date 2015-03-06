@@ -94,3 +94,21 @@ attribute for the content within the view tag.
     {{/if}}
   </li>
 ```
+
+## Controller properties
+
+Components and DOM elements can be set as properties of the current controller for easy programatic access
+
+```derby
+<index:>
+  <div as='container'>
+    <modal as='modal'></modal>
+  </div>
+```
+
+```js
+// DOM element
+this.container.querySelectorAll("*");
+// component
+this.modal.close();
+```

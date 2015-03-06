@@ -7,7 +7,7 @@ All paths in a components model are scoped to it's local context. There are no c
 
 
 ## Attributes
-The most direct way to get data into a component is to pass in a reference or a literal as an attribute.
+The most direct way to get data into a component is to pass in a reference or a literal as an attribute. The type of data passed into an attribute will determine how it should be used, the following sections describe the various ways to use data passed in as an attribute.
 
 ### Scopped paths
 Passing in a referrence is one of the most common ways to pass data into a component. The reference will be two-bound so updating the value in the component's model or in it's parent will trigger updates in either place.
@@ -54,23 +54,43 @@ By default any content inside a component's declaration will be available in the
   <div>{{@content}}</div>
 ```
 
+### Attributes
+Beyond content, a component can be passed in custom named views as attributes. This is accomplished by specifying the attributes the component expects in its definition.
+
+```derby
+<!-- usage -->
+<view is='thing'>
+  <before> first! </before>
+  <content>my custom content</content>
+  <after> last! </after>
+</view>
+
+<!-- definition -->
+<index: attributes='before after'>
+  <div>{{@before}}</div>
+  <div>my normal content</div>
+  <div>{{@content}}
+  <pre>{{@after}}</pre>
+```
+
 It is also possible to specify a keyword that will turn multiple content elements into an attribute with an array of those values.
 ```derby
 <!-- usage -->
-<view is="thing">
+<view is='thing'>
   <tab>one</tab>
   <tab>two</tab>
   <tab>three</tab>
 </view>
 
 <!-- definition -->
-<index: arrays="tab/tabs">
+<index: arrays='tab/tabs'>
   <div>my normal content</div>
   <ul>
     {{each @tabs as #tab}}
       <li>{{#tab}}</li>
     {{/each}}
   </ul>
+
 <!-- alternative definition without pluralization-->
 <index: arrays="tab">
   <div>my normal content</div>
@@ -100,7 +120,7 @@ There are times when accessing data in the root model is desirable from within t
 
 
 ### With block
-See the documentation for [with blocks](views/template-syntax/blocks#with) to pass in data with an alias. 
+See the documentation for [with blocks](../views/template-syntax/blocks#with) to pass in data with an alias. 
 
 
 ## Attributes vs. Model data
@@ -119,16 +139,10 @@ This behavior might lead to an unexpected result when programmatically accessing
 > * `name` the name of the attribute
 > * `value` the new value of the attribute.
 
-An interactive example of interacting with attributes is available below. Notice that accessing the model using the attribute name returns a template object instead of the rendered value you might desire.
+An interactive example of interacting with attributes is available below. Notice that accessing the model using the attribute name returns a template object instead of the rendered value you might desire:
 
 <p data-height="411" data-theme-id="12888" data-slug-hash="ByOaMm" data-default-tab="html" data-user="enjalot" class='codepen'>See the Pen <a href='http://codepen.io/enjalot/pen/ByOaMm/'>Derby-standalone attributes</a> by Ian (<a href='http://codepen.io/enjalot'>@enjalot</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
-### Programatic view management
+*Note - The above example is using [derby-standalone](http://github.com/derbyjs/derby-standalone) which has a slightly different syntax for defining templates at the moment.*
 
-> `view = this.getView(name)`
-> * `name` the name of the view
-> * `view` a template object representing the view 
-
-It is possible to access the views in a component's namespace from the controller. This may be used in conjunction with `setAttribute` to override a component's default rendering.
-An example use case would be to set a default template and then allow the user of the component to pass in a template to override the default.
