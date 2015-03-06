@@ -5,3 +5,4 @@ views/gen
 npm-debug.log
 /.idea
 public/derby
+fabfile.pyc
