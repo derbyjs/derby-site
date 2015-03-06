@@ -71,10 +71,10 @@ See the [controller property lookup](views/template-syntax/functions-and-events#
 ## Component usage
 
 ```js
-app.use(MyComponent);
+app.component(MyComponent);
 // or if you haven't defined the name in the prototype
 // you can associate the controller with an arbitrary view
-app.use('namespace:name', MyComponent);
+app.component('namespace:name', MyComponent);
 ```
 
 ```derby
