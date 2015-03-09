@@ -18,12 +18,12 @@ Passing in a referrence is one of the most common ways to pass data into a compo
 <!-- definition -->
 <index:>
   <ul>
-    {{each users as #user}}
+    {{each data as #user}}
       <li>{{#user.name}}</li>
     {{/each}}
   </ul>
 ```
-
+In this case `data` is looked up in the component's model, and it points to the `users` array in the parent scope.
 
 ### Literals
 All attributes set to strings will be treated as strings. This means if you want to pass a number or boolean literal to a component you must use bindings.
@@ -128,9 +128,31 @@ Complex expressions that involve multiple bindings or view functions will be pas
 ```derby
 <view is="great" foo="{{ {x: _page.width, y: _page.height} }}" bar="{{format(_page.bar)}}"></view>
 ```
+The definition of the component must use an `@` symbol to look up `foo` and `bar` from the components attributes:
 
-This behavior might lead to an unexpected result when programmatically accessing data from the model. In the case where your attribute is a template you can access the rendered value with the component's `getAttribute` function.
+```derby
+<index:>
+  <div style="top:{{@foo.y}};left:{{@foo.x}}">
+    {{@bar}}
+  </div>
+```
 
+This is because the `foo` and `bar` will be stored as template objects in the component's model, due to the complexity of creating the bindings in these cases.
+
+
+> You can always render an attribute in your component's view using `{{@attr}}`, no matter how it is passed in. You can only use `{{attr}}` to render from the component's model if you pass in a scopped path or a literal, as Derby will handle putting those into the model for you.
+
+This behavior might also lead to an unexpected result when trying to render from the model or programmatically accessing data from the model. In the case where your attribute is a template you can access the rendered value with the component's `getAttribute` function.
+
+```js
+// what you want
+var foo = this.getAttribute("foo");
+// { x: ..., y: ...}
+// what you probably don't want
+var template = this.model.get("foo");
+```
+
+### Getting and Setting Attributes
 > `value = this.getAttribute(name)`
 > * `name` the name of the attribute
 > * `value` the rendered value of the attribute
