@@ -38,6 +38,10 @@ There are times when you may want your partial to use the scope where it is used
   {{/each}}
 ```
 
+> Example: [within attribute](http://codepen.io/enjalot/pen/bNxOmO?editors=101)
+
+> *Note - This example is using [derby-standalone](http://github.com/derbyjs/derby-standalone) which has a slightly different syntax for defining templates at the moment.*
+
 ### inherit
 There are some cases where you would like to instanciate a component and pass along the attributes of the current controller. The inherit keyword will allow you to do this.
 
@@ -50,14 +54,19 @@ There are some cases where you would like to instanciate a component and pass al
   {{@foo}}
 ```
 
-### extend
-When writing a component that has very similar logic to another component you may want to wholesale include the other component's template. You can do this with the `extend` keyword
+> Example: [component inheritance](http://codepen.io/enjalot/pen/YPOdBY?editors=101)
 
-```derby
-<index:>
-  <modal extend></modal>
-  more {{custom}} stuff
-```
+> *Note - This example is using [derby-standalone](http://github.com/derbyjs/derby-standalone) which has a slightly different syntax for defining templates at the moment.*
+
+### extend
+It is possible to override another component's functionality while preserving it's view. 
+You can do this with the `extend` keyword, your component must implement the view functions defined by the extended component.
+This can be done with prototypical inheritance and then overriding any functions you want to customize.
+
+> Example: [extending components](http://codepen.io/enjalot/pen/OPorGB?editors=101)
+
+> *Note - This example is using [derby-standalone](http://github.com/derbyjs/derby-standalone) which has a slightly different syntax for defining templates at the moment.*
+
 
 ### import
 If you just want to reuse a view partial the `import` keyword is probably more appropriate. See the [namespaces and files](../views/namespaces-and-files#structuring-views-in-multiple-files) documentation for more details.

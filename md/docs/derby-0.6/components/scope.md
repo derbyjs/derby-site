@@ -166,5 +166,5 @@ An interactive example of interacting with attributes is available below. Notice
 <p data-height="411" data-theme-id="12888" data-slug-hash="ByOaMm" data-default-tab="html" data-user="enjalot" class='codepen'>See the Pen <a href='http://codepen.io/enjalot/pen/ByOaMm/'>Derby-standalone attributes</a> by Ian (<a href='http://codepen.io/enjalot'>@enjalot</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
-*Note - The above example is using [derby-standalone](http://github.com/derbyjs/derby-standalone) which has a slightly different syntax for defining templates at the moment.*
+> *Note - The above example is using [derby-standalone](http://github.com/derbyjs/derby-standalone) which has a slightly different syntax for defining templates at the moment.*
 
