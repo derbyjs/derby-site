@@ -34,8 +34,19 @@ renderer.heading = function (text, level) {
     '</h' + level + '>';
 };
 
+markedOptions = {
+  renderer: renderer,
+  gfm: true,
+  tables: true,
+
+  pedantic: false,
+  sanitize: false,
+  smartLists: true,
+  smartypants: false 
+}
+marked.setOptions(markedOptions)
 function markdownCompiler(file) {
-  return '<index: unminified>' + marked(file, {renderer: renderer});
+  return '<index: unminified>' + marked(file);
 };
 
 module.exports = function(app) {
