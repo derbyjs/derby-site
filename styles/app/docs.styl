@@ -1,22 +1,214 @@
-a.anchor
+/* Documentation sidebar */
+.sidebar {
+  background: derbyGranite;
+  height: 100%;
+  padding-top: 40px
+  padding-left: 0;
+  padding-right: 0;
+  line-height: 1.2em;
+  //overflow-y: scroll;
+}
+
+basePadding = 30px;
+.list-group-item {
+  font-size: 14px;
+  //padding: 8px 0px;
+  padding: 4px 0;
+  padding-left: basePadding;
+  border: none;
+  font-family: 'Roboto', sans-serif;
+  background: derbyGranite;
+
+  // taken from bootstrap
   display: block
   position: relative
-  top: -48px
-  height: 0px
-  visibility: hidden
+  margin-bottom: -1
+}
+.list-group-item:first-child, .list-group-item:last-child {
+  border-radius: 0;
+}
+.list-group-item.level-0, .list-group-item.level-1 {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 600;
+  padding-top: 15px
+  text-transform: upperCase;
+}
+.list-group-item.level-2 {
+  padding-left: 24px + basePadding;
+}
+.list-group-item.level-3 {
+  padding-left: 36px + basePadding;
+}
+a.list-group-item.active {
+  color: derbyTealDark;
+  background: derbyGranite;
+}
+a.list-group-item:hover {
+  color: derbyTeal;
+  background: derbyGranite;
+}
+a.list-group-item.active:hover {
+  color: derbyTealDark;
+  background: derbyGranite;
+}
 
-.heading
-  margin-top: 40px
-  a.header-link
+// ------------
+headerHeight = 60px
+footerHeight = 110px
+sidebarWidth = 300px
+
+.bs-docs-home
+  position:absolute
+  top: headerHeight
+  bottom: footerHeight
+  width: 100%
+  //height: 100%
+  //min-height: 100%
+
+.navbar-static-top
+  position:fixed
+  height: headerHeight
+  top: 0
+  right: 0
+  left: 0
+
+/////
+.navbar-collapse
+  position: absolute
+  top: 0
+  bottom: 0
+  left: sidebarWidth 
+
+.navbar-header
+  margin-left:0
+  margin-right:0
+.navbar-nav
+  float:left
+  margin: 0
+/////
+/*
+.container
+  position:relative
+  max-width: 1100px
+  margin: 0 auto
+  */
+
+.header-container
+  position:relative
+  max-width: 1100px
+  margin: 0 auto
+  height: headerHeight
+
+.container
+  position:relative
+  max-width: 1100px
+  margin: 0 auto
+  min-height: 100%
+  //min-height: 500px
+  
+  
+.sidebar
+  position: absolute
+  overflow: auto
+  width: sidebarWidth
+  top: 0
+  bottom: 0
+  
+.main
+  position:absolute
+  overflow: auto;
+  margin-left: sidebarWidth
+  top: 0
+  bottom: 0
+  padding-bottom: headerHeight
+
+// ------------
+
+.main
+  padding-left: 40px
+
+  a {
+    color: derbyBlack;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    text-decoration: none
+    z-index: 2
+  }
+
+  a:before
+    content:'';
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:1px;
+    border-bottom:solid 4px derbyTealLight;
+    z-index: -1
+
+  a:hover:before
+    content:'';
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:1px;
+    border-bottom:solid 4px derbyTeal;
+    z-index: -1
+
+
+  blockquote
+    a:before
+      content:'';
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:1px;
+      border-bottom:solid 4px derbyTeal;
+      z-index: -1
+
+    a:hover:before
+      content:'';
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:1px;
+      border-bottom:solid 4px derbyTealDark;
+      z-index: -1
+
+ 
+
+  h1.heading {
+    font-size: 48px;
+  }
+  h2.heading {
+    font-size: 32px;
+  }
+  
+  .heading
+    font-weight: 600
+    margin-top: 40px
+    // compensate for the anchor icons
+    a.header-link
+      visibility: hidden
+      margin-left: -25px
+      padding-right: 5px
+      svg.icon
+        margin-top: -5px
+    &:hover
+      .header-link
+        visibility: visible
+
+
+  // add the anchor link
+  a.anchor
+    display: block
+    position: relative
+    top: -48px
+    height: 0px
     visibility: hidden
-    margin-left: -25px
-    padding-right: 5px
-    svg.icon
-      margin-top: -5px
-  &:hover
-    .header-link
-      visibility: visible
 
+  img
+    max-width: 100%
 
-img
-  max-width: 100%
+  .docs-thumbs img {
+    display: inline-block;
+  }
