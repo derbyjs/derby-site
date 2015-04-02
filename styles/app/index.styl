@@ -1,5 +1,11 @@
+
+headerHeight = 60px
+footerHeight = 110px
+sidebarWidth = 300px
+brandWidth = 91px
+
 //@require '../libs/bootstrap.min.css'
-@require '../libs/docs.min.css'
+//@require '../libs/docs.min.css'
 @require './colors'
 @require './syntax'
 @require './docs'
@@ -24,52 +30,100 @@ body {
   margin: 0
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 110px;
-  background-color: #f5f5f5;
-}
+// ------------
 
-/* header colors */
+.bs-docs-home
+  position:absolute
+  top: headerHeight
+  bottom: footerHeight
+  width: 100%
+  //height: 100%
+  //min-height: 100%
+
+.navbar-static-top
+  position:fixed
+  height: headerHeight
+  top: 0
+  right: 0
+  left: 0
+
+/////
 .navbar
   min-height: 60px
 
+.navbar-header
+  margin-left:0
+  margin-right:0
+
+.navbar-static-top
+  color: white;
+  background: derbyTeal;
+  z-index: 1030 // not sure why this has to be...
+  .container
+    padding: 0
+
+.navbar-header
+  width: brandWidth;
+  background-color: derbyGranite;
+  min-height: 60px
+  .navbar-brand
+    padding: 0px 0 0 10px
+    img
+      margin-top: 7px
+
+// The navigation links at the top
+.navbar-collapse
+  position: absolute
+  top: 0
+  bottom: 0
+  left: brandWidth
 
 .navbar-nav
-  ///
   float:left
   margin: 0
-  ///
+  padding-left: 25px
   li
     //
     float:left
     position:relative
     display:block
+    list-style: none
     //
+    &.active
+      a
+        color: derbySand
     a
-      padding-top: 20px
-      padding-bottom: 20px
-.navbar-static-top
-  color: white;
-  background: derbyTeal;
-  .container
-    padding: 0
+      display: block
+      padding: 20px 15px
+      line-height: 20px
+      text-decoration: none
+      height: 20px
+      font-weight: 600
+      color: derbySeaweed
+      &:hover
+        background-color: derbyAlgae;
 
-.navbar-header
-  width: 25%;
-  background-color: derbyGranite;
-  min-height: 60px
-  padding-left: 20px
-  .navbar-brand
-    padding: 2px 0 0 30px
+.header-container
+  position:relative
+  //max-width: 1100px
+  width: 100%
+  margin: 0 auto
+  height: headerHeight
 
-ul.navbar-nav
-  padding-left: 25px
+.container
+  position:relative
+  max-width: 1100px
+  margin: 0 auto
+  min-height: 100%
+  
+.sidebar
+  position: absolute
+  overflow: auto
+  width: sidebarWidth
+  top: 0
+  bottom: 0
 
-
-
+/*
 .bs-docs-nav .navbar-brand, .bs-docs-nav .navbar-nav > li > a {
     font-weight: 600;
     color: derbySeaweed;
@@ -81,8 +135,16 @@ ul.navbar-nav
 .navbar-text {
   margin-bottom: 0 !important;
 }
+*/
 
 
+.footer
+  width: 100%
+  background-color: #f5f5f5
+
+  .bs-docs-social
+    margin: 10px
+    text-align: center
 
 
 

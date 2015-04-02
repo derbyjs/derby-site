@@ -9,8 +9,8 @@
   Derby
 
 <Body:>
-  <view is="main-header"></view>
   <div class="bs-docs-home">
+    <view is="main-header"></view>
     <div class="container">
         <div class="col-md-3 sidebar">
           <view is="{{$render.ns}}:sidebar" optional></view>
@@ -20,10 +20,10 @@
           {{if _page.links[$render.ns]}}
             <a class="btn btn-outline btn-lg" href="{{this}}">Next&nbsp; &#10132;</a>
           {{/if}}
+        <view is="main-footer"></view>
         </div>
     </div>
   </div>
-  <view is="main-footer"></view>
 
 <sidebar-outline:>
   <div class="list-group">
@@ -48,7 +48,7 @@
           <span class="icon-bar"></span>
         </button>
         -->
-        <a href="/" class="navbar-brand"><img height="50" src="/images/logo.png"></a>
+        <a href="/" class="navbar-brand"><img height="44" src="/images/logo.png"></a>
       </div>
       <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
         <ul class="nav navbar-nav">
