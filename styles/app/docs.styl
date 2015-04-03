@@ -1,81 +1,26 @@
 /* Documentation sidebar */
-.sidebar {
-  background: derbyGranite;
-  height: 100%;
-  padding-top: 40px
-  padding-left: 0;
-  padding-right: 0;
-  line-height: 1.2em;
-  //overflow-y: scroll;
-}
-
-basePadding = 30px;
-.list-group-item {
-  font-size: 14px;
-  //padding: 8px 0px;
-  padding: 4px 0;
-  padding-left: basePadding;
-  border: none;
-  font-family: 'Roboto', sans-serif;
-  background: derbyGranite;
-
-  // taken from bootstrap
-  display: block
-  position: relative
-  margin-bottom: -1
-}
-.list-group-item:first-child, .list-group-item:last-child {
-  border-radius: 0;
-}
-.list-group-item.level-0, .list-group-item.level-1 {
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: 600;
-  padding-top: 15px
-  text-transform: upperCase;
-}
-.list-group-item.level-2 {
-  padding-left: 24px + basePadding;
-}
-.list-group-item.level-3 {
-  padding-left: 36px + basePadding;
-}
-a.list-group-item.active {
-  color: derbyTealDark;
-  background: derbyGranite;
-}
-a.list-group-item:hover {
-  color: derbyTeal;
-  background: derbyGranite;
-}
-a.list-group-item.active:hover {
-  color: derbyTealDark;
-  background: derbyGranite;
-}
 
 
 .main
   position:absolute
-  overflow: auto;
-  margin-left: sidebarWidth
+  margin-left: sidebarWidth + 30px
   top: 0
-  bottom: 0
-  padding-bottom: headerHeight
-  width: calc(100% - sidebarWidth)
+  //width: calc(100% - 300px)
+  width: 640px
   padding: 20px
+  padding-bottom: 0
 
 // ------------
 
 .main
-  padding-left: 40px
 
-  a {
+  a
     color: derbyBlack;
     position: relative;
     display: inline-block;
     vertical-align: top;
     text-decoration: none
     z-index: 2
-  }
 
   a:before
     content:'';
@@ -150,6 +95,45 @@ a.list-group-item.active:hover {
   img
     max-width: 100%
 
-  .docs-thumbs img {
+  .docs-thumbs img
     display: inline-block;
-  }
+
+
+code
+  //color: derbyBlack
+  background: derbyBrick
+  border-radius: 2px
+  color: #333
+  font-weight: bold
+  padding: 3px
+
+// 
+pre.hljs
+  margin: 50px 0
+  width: 700px
+  
+code.hljs
+  border-radius: 2px
+  font-weight: bold
+  background: transparent
+  font-size: 14px
+  line-height: 1.4em
+
+
+blockquote
+  border-color: derbyTealLight
+  font-size: 16px
+  //background: derbyTealLighter
+  background: #f1f1f1
+  padding: 5px 20px
+  margin: 50px 0px
+  border-left: 3px solid #dddddd
+  width: 700px
+
+
+  code
+    border-radius: 2px
+    font-weight: bold
+    background:transparent
+
+  

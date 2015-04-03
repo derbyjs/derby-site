@@ -19,7 +19,7 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 18px;
   -webkit-font-smoothing: antialiased;
-  line-height: 1.5em;
+  line-height: 28px//1.5em;
   color: derbyBlack;
   background: derbySand;
   //min-height: 500px;
@@ -105,8 +105,8 @@ body {
 
 .header-container
   position:relative
-  //max-width: 1100px
-  width: 100%
+  max-width: 1100px
+  //width: 100%
   margin: 0 auto
   height: headerHeight
 
@@ -116,35 +116,95 @@ body {
   margin: 0 auto
   min-height: 100%
   
+basePadding = 30px;
+
 .sidebar
-  position: absolute
+  position: fixed 
   overflow: auto
   width: sidebarWidth
-  top: 0
-  bottom: 0
+  height: calc(100% - 60px)
+  background: derbyGranite;
+  padding:0
+  line-height: 1.2em;
 
-/*
-.bs-docs-nav .navbar-brand, .bs-docs-nav .navbar-nav > li > a {
+  .list-group-item
+    font-size: 14px;
+    //padding: 8px 0px;
+    padding: 4px 0;
+    padding-left: basePadding;
+    border: none;
+    font-family: 'Roboto', sans-serif;
+    background: derbyGranite;
+
+    // taken from bootstrap
+    display: block
+    position: relative
+    margin-bottom: -1
+  .list-group-item:first-child, .list-group-item:last-child
+    border-radius: 0;
+  .list-group-item.level-0, .list-group-item.level-1
+    font-family: 'Source Sans Pro', sans-serif;
     font-weight: 600;
-    color: derbySeaweed;
-}
-.bs-docs-nav .navbar-nav > .active > a, .bs-docs-nav .navbar-nav > .active > a:hover, .bs-docs-nav .navbar-nav > li > a:hover {
-    color: derbySand;
-    background-color: derbyAlgae;
-}
-.navbar-text {
-  margin-bottom: 0 !important;
-}
-*/
+    padding-top: 15px
+    text-transform: upperCase;
+  .list-group-item.level-2
+    padding-left: 24px + basePadding;
+  .list-group-item.level-3
+    padding-left: 36px + basePadding;
 
+  .list-group-item a
+    text-decoration: none
+    color: derbyGray
+    background: derbyGranite;
+    
+  .list-group-item a:hover
+    color: derbyTeal;
+
+  .list-group-item.active
+    a
+      color: derbyTealDark;
+      background: derbyGranite;
+  .list-group-item.active
+    a:hover
+      color: derbyTealDark;
+      background: derbyGranite;
+
+.next
+  margin-top: 40px
 
 .footer
-  width: 100%
+  position: relative
+  bottom: 0
   background-color: #f5f5f5
+  text-align: center
+  margin-top: 50px
 
   .bs-docs-social
     margin: 10px
-    text-align: center
+    .bs-docs-social-buttons
+      display:inline-block
+      padding-left:0
+      margin-top:0
+      margin-bottom:0
+      list-style: none
+      li
+        margin-top: 10px
+        display:inline-block
+        padding: 0px 8px
+
+  .bs-docs-footer-links 
+    list-style: none
+    margin-top: 10px
+    margin-bottom: 10px
+    padding-left: 0
+    li
+      display: inline
+      padding: 5px 10px
+
+  .attribution
+    margin: 0
+    padding-bottom: 20px
+
 
 
 
@@ -176,20 +236,3 @@ body {
 ::-webkit-scrollbar-track {
   background-color: rgba(50, 50, 50, 0.05);
 }
-
-
-/* Overrides */
-code
-  color: derbyBlack
-  background: derbyBrick
-  border-radius: 2px
-
-blockquote
-  border-color: derbyTealLight
-  font-size: 1em
-  background: derbyTealLighter
-  code
-    color: #333
-    font-weight: bold
-    background: transparent
-

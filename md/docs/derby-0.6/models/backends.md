@@ -54,10 +54,10 @@ The `subscribe`, `fetch`, `unsubscribe`, and `unfetch` methods are used to load 
 
 `subscribe` and `fetch` both return data initially, but subscribe also registers with pub/sub on the server to receive ongoing updates as the data change.
 
-> `model.subscribe(items..., callback(err))`
-> `model.fetch(items..., callback(err))`
-> `model.unsubscribe(items..., callback(err))`
-> `model.unfetch(items..., callback(err))`
+> `model.subscribe(items..., callback(err))`  
+> `model.fetch(items..., callback(err))`   
+> `model.unsubscribe(items..., callback(err))`  
+> `model.unfetch(items..., callback(err))`  
 > * `items` Accepts one or more subscribable items, including a document path, scoped model, or query
 > * `callback` Calls back once all of the data for each query and document has been loaded or when an error is encountered
 
