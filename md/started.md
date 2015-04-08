@@ -109,3 +109,6 @@ sudo apt-get -y install redis-server
 
 We currently recommend developing in a *nix environment.
 You can use a free VM like [VirtualBox](https://www.virtualbox.org/) to run a Linux environment or tools like [Vagrant](http://www.vagrantup.com/) or [Docker](http://www.docker.com/).
+
+
+-------------------------

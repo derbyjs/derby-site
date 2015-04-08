@@ -1,96 +1,80 @@
 <Body:>
-  <div>
     <view is="main-header"></view>
-
-    <div class="bs-docs-masthead" id="content" role="main">
+    <div class="bs-docs-home-page" id="content" role="main">
       <div class="container">
-        <p class="lead">Expect more from your MVC. <br>DerbyJS is a full-stack framework for writing modern web applications.
-          <br>
-        </p>
-        <p class="lead">
-          <a href="started" class="btn btn-outline-inverse btn-lg">Get started</a>
-        </p>
+        <div class="rows">
+          <div class="row top">
+            <h1 class="lead">Expect more from your MVC. </h1>
+            <h3>DerbyJS is a full-stack framework for writing modern web applications.</h3>
+            <a href="started" class="getstarted">Get started</a>
 
-        <ul class="bs-docs-social-buttons">
-          <li>
-            <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=derbyjs&repo=derby&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20" title="Star on GitHub"></iframe>
-          </li><!--
-          <li>
-            <a href="https://twitter.com/derbyjs" class="twitter-follow-button" data-show-count="false">Follow @derbyjs</a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-          </li>-->
-        </ul>
-      </div>
-    </div>
-
-    <div class="bs-docs-featurette">
-      <div class="container">
-        <div class="row docs-thumbs">
-          <div class="col-sm-4">
-            <img src="images/responsive.png" class="img-responsive">
-            <p class="subtitle">expect more from your model</p>
-            <h3>Realtime collaboration</h3>
-            <p>
-              Effortlessly sync data across clients and servers with automatic conflict resolution powered by <a href="http://sharejs.org" target="_blank">ShareJS</a>'s operational transformation of JSON and text. </p>
-            </div>
-            <div class="col-sm-4">
-              <img src="images/browser.png" class="img-responsive">
-              <p class="subtitle">expect more from your view</p>
-              <h3>Components and View bindings</h3>
-              <p>Organize your code into Components with designer-friendly HTML templates.<br>
-                Easily specify live bindings between the view and model so that when data changes, the view updates instantly. </p>
-            </div>
-            <div class="col-sm-4">
-              <img src="images/arrows.png" class="img-responsive">
-              <p class="subtitle">expect more from your controller</p>
-              <h3>Client and server routing</h3>
-              <p>The same code renders to HTML from routes run in the browser or in an <a href="http://expressjs.com/" target="_blank">Express</a> server app. Search engines and initial page loads rejoice!</p>
-              <p>
-              </p>
-            </div>
-
-            <div class="col-sm-6">
-              <img src="images/nodejs.png" class="img-responsive">
-              <p class="subtitle">expect more from your framework</p>
-              <h3>
-                Modular
-              </h3>
-              <p>DerbyJS is composed of several standard <a href="http://nodejs.org/" target="_blank">node.js</a> modules. Mix and match your own code, community modules and DerbyJS functionality with standard tools like <a href="http://npmjs.org" target="_blank">npm</a> and <a href="http://browserify.org/" target="_blank">browserify</a>.
-              </p>
-            </div>
             <!--
-            <div class="col-sm-4">
-                <a href="http://examples.derbyjs.com" target="_blank">
-                <img src="images/flag.png" class="img-responsive">
-                <p class="subtitle">for real! ...time</p>
-                <h3>
-                Examples
-                </h3>
-                </a>
-                <p>
-                  Check out DerbyJS in action, start <a href="" target="_blank">chatting
-                  </a>, check off some <a href="" target="_blank">TODOs</a>, do some <a href="" target="_blank">data visualization</a> or get the <a href="" target="_blank">whole kitchen sink</a>. Don't forget to open each example twice to see the real-time for yourself!
-                </p>
+            <ul class="bs-docs-social-buttons">
+              <li>
+                <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=derbyjs&repo=derby&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20" title="Star on GitHub"></iframe>
+              </li>
+              <li>
+                <a href="https://twitter.com/derbyjs" class="twitter-follow-button" data-show-count="false">Follow @derbyjs</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+              </li>
+            </ul>
+            -->
+          </div>
+
+          <div class="row">
+            <!-- <img src="images/responsive.png" class="img-responsive"> -->
+            <h2>Realtime collaboration</h2>
+            <div class="example">
+              <iframe class="bars" src="http://localhost:8010" scrolling="no"></iframe>
             </div>
-          -->
-          <div class="col-sm-6">
-              <img src="images/derby.png" class="img-responsive">
-              <p class="subtitle">let's collaborate</p>
-              <h3> <a href="/resources#community">Community</a></h3>
+            <!-- <p class="subtitle">expect more from your model</p> -->
             <p>
-              Connect with people using and developing DerbyJS! Ask questions and show off what you are building on the <a href="http://groups.google.com/group/derbyjs" target="_blank">mailing list</a>, <a href="http://stackoverflow.com/questions/tagged/derbyjs" target="_blank">StackOverflow</a>, <a href="http://github.com/derbyjs" target="_blank">GitHub</a> and more!
+              Effortlessly sync data across clients and servers with automatic conflict resolution powered by <a href="http://sharejs.org" target="_blank">ShareJS</a>'s operational transformation of JSON and text. 
+            </p>
+          </div>
+          <div class="row">
+            <!-- <p class="subtitle">expect more from your controller</p> -->
+            <h2>Server Rendering</h2>
+
+            <p>The same templates can be rendered to HTML from in the browser or on the server. This means you can have fast page loads, search engine support and even use the same templates to render emails. 
+            </p>
+            <div class="example">
+              <iframe class="renderer" src="http://localhost:8009" scrolling="no"></iframe>
+            </div>
+            <p>
             </p>
           </div>
 
-          <div class="col-sm-12">
-            <a href="/started">
-              <h3 class="btn btn-outline-inverse btn-lg">Get Started!</h3>
-            </a>
+          <div class="row">
+            <!-- <p class="subtitle">expect more from your view</p> -->
+            <p><h2>Components and View bindings</h2></p>
+            <img src="images/html5logos.png" class="logos">
+            <p>Organize your code into Components with designer-friendly HTML templates.<br>
+              Easily specify live bindings between the view and model so that when data changes, the view updates instantly. </p>
+          </div>
+
+          <div class="row">
+            <!-- <p class="subtitle">expect more from your framework</p> -->
+            <h2>
+              Modular
+            </h2>
+            <!-- <img src="images/nodejs.png" class="img-small"> -->
+            <p>DerbyJS is composed of several standard <a href="http://nodejs.org/" target="_blank">node.js</a> modules. Mix and match your own code, <a href="/resources">community modules</a> and DerbyJS functionality with standard tools like <a href="http://npmjs.org" target="_blank">npm</a> and <a href="http://browserify.org/" target="_blank">browserify</a>.
+            </p>
+          </div>
+          <div class="row">
+              <!-- <img src="images/derby.png" class="img-responsive"> -->
+              <!-- <p class="subtitle">let's collaborate</p> -->
+              <h2>Community</h2>
+            <p>
+              <a href="/resources#community">Connect</a> with people using and developing DerbyJS! Ask questions and show off what you are building on the <a href="http://groups.google.com/group/derbyjs" target="_blank">mailing list</a>, <a href="http://stackoverflow.com/questions/tagged/derbyjs" target="_blank">StackOverflow</a>, <a href="http://github.com/derbyjs" target="_blank">GitHub</a> and more!
+            </p>
+          </div>
+
+          <div class="row bottom">
+            <a href="/started" class="getstarted">Get started</a>
           </div>
         </div>
-        <hr class="half-rule">
       </div>
+      <view is="main-footer"></view>
     </div>
-
-  </div>
-  <view is="main-footer"></view>

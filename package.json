@@ -13,7 +13,8 @@
     "express": "^4.4",
     "serve-favicon": "^2.0",
     "marked": "^0.3",
-    "highlight.js": "^8.3"
+    "highlight.js": "^8.3",
+    "d-codemirror": "^0.2.2"
   },
   "repository": {
     "type": "git",

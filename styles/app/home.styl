@@ -1,0 +1,104 @@
+.bs-docs-home-page
+  position:absolute
+  top: headerHeight
+  bottom: footerHeight
+  width: 100%
+  .container
+    max-width: 100%
+
+  .rows
+    position:relative
+    background-color: derbySand
+    
+  .row
+    text-align: center
+    padding-top: 60px
+
+    p
+      text-align:left
+      width: 49%
+      display: block
+      margin 0px auto
+
+    .example
+      width: 100%
+      margin: 20px auto
+      //margin-top: 50px
+
+  .logos
+    height: 150px
+
+  .top
+    height: 250px
+    padding: 10px
+    padding-top: 100px
+    background-color: derbyGranite
+    //.lead
+    //  margin-top: 40px
+
+  .bottom
+    height: 200px
+
+  .bars
+    border: none
+    overflow: hidden
+    min-height: 200px
+    height: 240px
+    width: 100%
+    max-width: 800px
+    background-color: transparent
+
+  .renderer
+    border: none
+    overflow: hidden
+    height: 400px
+    width: 100%
+    max-width: 850px
+    background-color: transparent
+
+  a
+    color: derbyBlack;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    text-decoration: none
+    z-index: 2
+
+  a:before
+    content:'';
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:1px;
+    border-bottom:solid 4px derbyTealLight;
+    z-index: -1
+
+  a:hover:before
+    content:'';
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:1px;
+    border-bottom:solid 4px derbyTeal;
+    z-index: -1
+
+  .getstarted
+    position: relative
+    top: 20px
+    font-size: 24px
+    color: derbyTeal
+    text-decoration: none
+    border-radius: 40px
+    border: none
+    padding: 5px 20px
+    color: derbyGranite
+    //background-color: purple
+    background-color: derbyRed
+  .getstarted:before
+    display:none
+
+@media (max-width: 750px)
+  .bs-docs-home-page
+    .bars
+      width: 370px
+      height: 460px
