@@ -82,7 +82,7 @@ Typically, view namespaces have a one-to-one correspondence with directories and
 
 would be equivalent to:
 
-#### index.html
+`index.html`
 ```derby
 <Title:>
   App

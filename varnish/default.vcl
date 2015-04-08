@@ -88,6 +88,7 @@ sub vcl_recv {
     set req.backend = render;
   }
 
+
   if (req.http.Upgrade ~ "(?i)websocket") {
     return (pipe);
   }

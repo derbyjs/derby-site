@@ -1,8 +1,15 @@
-@require '../libs/bootstrap.min.css'
-@require '../libs/docs.min.css'
+
+headerHeight = 60px
+footerHeight = 110px
+sidebarWidth = 300px
+brandWidth = 91px
+
+//@require '../libs/bootstrap.min.css'
+//@require '../libs/docs.min.css'
 @require './colors'
 @require './syntax'
 @require './docs'
+@require './home'
 
 html {
   position: relative;
@@ -10,211 +17,205 @@ html {
 }
 
 body {
-  margin-bottom: 110px !important;
-  padding-top: 50px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+  line-height: 28px//1.5em;
+  color: derbyBlack;
+  background: derbySand;
+  //min-height: 500px;
+
+  //removed with bootstrap
+  //margin-bottom: 110px !important;
+  //padding-top: 50px;
+  margin: 0
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 110px;
-  background-color: #f5f5f5;
-}
+// ------------
 
-.docs-thumbs img {
-  display: inline-block;
-}
+.bs-docs-home
+  position:absolute
+  top: headerHeight
+  bottom: footerHeight
+  width: 100%
+  //height: 100%
+  //min-height: 100%
 
-.navbar-text {
-  margin-bottom: 0 !important;
-}
+.navbar-static-top
+  position:fixed
+  height: headerHeight
+  top: 0
+  right: 0
+  left: 0
 
-.navbar-avatar {
-  width: 25px;
-  height: 25px;
-}
+/////
+.navbar
+  min-height: 60px
 
-.navbar-fixed-top {
-  border: 0;
-  box-shadow: 0 2px 2px -1px rgba(0,0,0,.1);
-  -webkit-box-shadow: 0 2px 2px -1px rgba(0,0,0,.1);
-}
+.navbar-header
+  margin-left:0
+  margin-right:0
 
-.nav-sidebar {
-  margin-right: -21px;
-  margin-bottom: 20px;
-  margin-left: -20px;
-}
+.navbar-static-top
+  color: white;
+  background: derbyTeal;
+  z-index: 1030 // not sure why this has to be...
+  .container
+    padding: 0
 
-.nav-sidebar > li > a {
-  padding-right: 20px;
-  padding-left: 20px;
-}
+.navbar-header
+  width: brandWidth;
+  background-color: derbyGranite;
+  min-height: 60px
+  .navbar-brand
+    padding: 0px 0 0 10px
+    img
+      margin-top: 7px
 
-.nav-sidebar > .active > a,
-.nav-sidebar > .active > a:hover,
-.nav-sidebar > .active > a:focus {
-  color: #fff;
-  background-color: #428bca;
-}
+// The navigation links at the top
+.navbar-collapse
+  position: absolute
+  top: 0
+  bottom: 0
+  left: brandWidth
 
-.list-group-item {
-  font-size: 13px;
-}
+.navbar-nav
+  float:left
+  margin: 0
+  padding-left: 25px
+  li
+    //
+    float:left
+    position:relative
+    display:block
+    list-style: none
+    //
+    &.active
+      a
+        color: derbySand
+    a
+      display: block
+      padding: 20px 15px
+      line-height: 20px
+      text-decoration: none
+      height: 20px
+      font-weight: 600
+      color: derbySeaweed
+      &:hover
+        //background-color: derbyAlgae;
+        color: derbySand
 
-.list-group-item a {
-  color: #56b3a6;
-}
-.list-group.no-borders .list-group-item {
-  border: none;
-}
+.header-container
+  position:relative
+  max-width: 1100px
+  //width: 100%
+  margin: 0 auto
+  height: headerHeight
 
-.thumb-sm {
-  width: 34px;
-  display: inline-block;
-}
+.container
+  position:relative
+  max-width: 1100px
+  margin: 0 auto
+  min-height: 100%
+  
+basePadding = 30px;
 
-.avatar {
-  position: relative;
-  display: block;
-  border-radius: 500px;
-  white-space: nowrap;
-}
+.sidebar
+  position: fixed 
+  overflow: auto
+  width: sidebarWidth
+  height: calc(100% - 60px)
+  background: derbyGranite;
+  padding:0
+  line-height: 1.2em;
 
-.thumb-sm img {
-  height: auto;
-  max-width: 100%;
-  vertical-align: middle;
-}
+  .list-group-item
+    font-size: 14px;
+    //padding: 8px 0px;
+    padding: 4px 0;
+    padding-left: basePadding;
+    border: none;
+    font-family: 'Roboto', sans-serif;
+    background: derbyGranite;
 
-.avatar img {
-  border-radius: 500px;
-  width: 100%;
-}
+    // taken from bootstrap
+    display: block
+    position: relative
+    margin-bottom: -1
+  .list-group-item:first-child, .list-group-item:last-child
+    border-radius: 0;
+  .list-group-item.level-0, .list-group-item.level-1
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 600;
+    padding-top: 15px
+    text-transform: upperCase;
+  .list-group-item.level-2
+    padding-left: 24px + basePadding;
+  .list-group-item.level-3
+    padding-left: 36px + basePadding;
 
-.avatar i.on {
-  background-color: #1aae88;
-}
+  .list-group-item a
+    text-decoration: none
+    color: derbyGray
+    background: derbyGranite;
+    
+  .list-group-item a:hover
+    color: derbyTeal;
 
-.avatar i.bottom {
-  left: auto;
-  top: auto;
-  bottom: 0;
-  right: 0;
-}
+  .list-group-item.active
+    a
+      color: derbyTealDark;
+      background: derbyGranite;
+  .list-group-item.active
+    a:hover
+      color: derbyTealDark;
+      background: derbyGranite;
 
-.avatar i {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 10px;
-  height: 10px;
-  border-width: 2px;
-  border-style: solid;
-  border-radius: 100%;
-}
+.next
+  margin-top: 40px
+  margin-bottom: 40px
 
-.arrow {
-  border-width: 8px;
-  z-index: 10;
-}
+.footer-space
+  margin-top: 50px
 
-.arrow, .arrow:after {
-  position: absolute;
-  display: block;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-}
+.footer
+  position: relative
+  bottom: 0
+  background-color: #f5f5f5
+  text-align: center
+  //margin-top: 50px
 
-.arrow:after {
-  border-width: 7px;
-  content: "";
-}
+  .bs-docs-social
+    margin: 10px
+    .bs-docs-social-buttons
+      display:inline-block
+      padding-left:0
+      margin-top:0
+      margin-bottom:0
+      list-style: none
+      li
+        margin-top: 10px
+        display:inline-block
+        padding: 0px 8px
 
-.arrow.top {
-  left: 50%;
-  margin-left: -8px;
-  border-top-width: 0;
-  border-bottom-color: #eee;
-  border-bottom-color: rgba(0, 0, 0, 0.1);
-  top: -8px;
-}
+  .bs-docs-footer-links 
+    list-style: none
+    margin-top: 10px
+    margin-bottom: 10px
+    padding-left: 0
+    li
+      display: inline
+      padding: 5px 10px
 
-.arrow.top:after {
-  content: " ";
-  top: 1px;
-  margin-left: -7px;
-  border-top-width: 0;
-  border-bottom-color: #fff;
-}
+  .attribution
+    margin: 0
+    padding-bottom: 20px
 
-.arrow.right {
-  top: 50%;
-  right: -8px;
-  margin-top: -8px;
-  border-right-width: 0;
-  border-left-color: #eee;
-  border-left-color: rgba(0, 0, 0, 0.1);
-}
 
-.arrow.right:after {
-  content: " ";
-  right: 1px;
-  border-right-width: 0;
-  border-left-color: #fff;
-  bottom: -7px;
-}
 
-.arrow.bottom {
-  left: 50%;
-  margin-left: -8px;
-  border-bottom-width: 0;
-  border-top-color: #eee;
-  border-top-color: rgba(0, 0, 0, 0.1);
-  bottom: -8px;
-}
 
-.arrow.bottom:after {
-  content: " ";
-  bottom: 1px;
-  margin-left: -7px;
-  border-bottom-width: 0;
-  border-top-color: #fff;
-}
 
-.arrow.left {
-  top: 50%;
-  left: -8px;
-  margin-top: -8px;
-  border-left-width: 0;
-  border-right-color: #eee;
-  border-right-color: rgba(0, 0, 0, 0.1);
-}
 
-.arrow.left:after {
-  content: " ";
-  left: 1px;
-  border-left-width: 0;
-  border-right-color: #fff;
-  bottom: -7px;
-}
-
-.text-sm {
-  font-size: 12px !important;
-}
-.text-muted {
-  color: #a1a8ac !important;
-}
-
-.b-white {
-  border-color: #fff !important;
-}
-.b-light {
-  border-color: #e1e6ef !important;
-}
 .scrollable {
   overflow-x: hidden;
   overflow-y: auto;
@@ -222,68 +223,22 @@ body {
 .wrapper {
   padding: 15px;
 }
-.text-up {
-  text-transform: uppercase;
-}
-.no-borders {
-  border-color: transparent;
-  border-width: 0;
-}
-.m-b-none {
-  margin-bottom: 0 !important;
-}
-.panel-body {
-  padding: 10px;
-}
+
+
 
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
-
 ::-webkit-scrollbar-thumb {
   background-color: rgba(50, 50, 50, 0.25);
   border: 2px solid transparent;
   border-radius: 10px;
   background-clip: padding-box;
 }
-
 ::-webkit-scrollbar-thumb:hover {
   background-color: rgba(50, 50, 50, 0.5);
 }
-
 ::-webkit-scrollbar-track {
   background-color: rgba(50, 50, 50, 0.05);
-}
-
-blockquote
-  border-color: derbyTealLight
-  font-size: 1em
-  background: derbyTealLighter
-  code
-    color: #333
-    font-weight: bold
-    background: transparent
-
-.bs-docs-featurette
-  p.subtitle
-    margin: 0;
-    padding: 0;
-    font-size: 11;
-    color: #949494;
-  .col-sm-4 {
-    min-height: 400px
-  }
-.lang {
-  font-size: 13px;
-}
-
-.list-group-item {
-  padding: 8px 12px;
-}
-.list-group-item.level-2 {
-  padding-left: 24px;
-}
-.list-group-item.level-3 {
-  padding-left: 36px;
 }

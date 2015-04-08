@@ -10,7 +10,7 @@ In order to get started writing your first DerbyJS app, you need to have node.js
 
 There are several examples in the [derby-examples](https://github.com/derbyjs/derby-examples) repository.
 You can clone the repo and install:
-```
+```bash
 git clone https://github.com/derbyjs/derby-examples.git
 cd ~/derby-examples
 npm install
@@ -18,14 +18,14 @@ npm install
 
 You can run each of the examples from their own directories:
 
-```
+```bash
 $ cd ~/derby-examples/directory
 $ node server.js
 ```
 
 The examples written in CoffeeScript are meant to be run via the coffee command:
 
-```
+```bash
 $ npm install -g coffee-script
 $ cd ~/derby-examples/sink
 $ coffee server.coffee
@@ -35,7 +35,7 @@ $ coffee server.coffee
 
 If you want to start from a blank slate, [generator-derby](https://github.com/derbyparty/generator-derby) is a handy tool for creating a DerbyJS boilerplate.
 
-```
+```bash
 # install yeoman
 npm install -g yo
 # install the generator
@@ -109,3 +109,6 @@ sudo apt-get -y install redis-server
 
 We currently recommend developing in a *nix environment.
 You can use a free VM like [VirtualBox](https://www.virtualbox.org/) to run a Linux environment or tools like [Vagrant](http://www.vagrantup.com/) or [Docker](http://www.docker.com/).
+
+
+-------------------------

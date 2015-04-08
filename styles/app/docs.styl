@@ -1,22 +1,143 @@
-a.anchor
-  display: block
-  position: relative
-  top: -48px
-  height: 0px
-  visibility: hidden
+/* Documentation sidebar */
 
-.heading
-  margin-top: 40px
-  a.header-link
+
+.main
+  position:absolute
+  margin-left: sidebarWidth + 30px
+  top: 0
+  //width: calc(100% - 300px)
+  width: 640px
+  padding: 20px
+  padding-bottom: 0
+
+// ------------
+
+.main
+
+  a
+    color: derbyBlack;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    text-decoration: none
+    z-index: 2
+
+  a:before
+    content:'';
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:1px;
+    border-bottom:solid 4px derbyTealLight;
+    z-index: -1
+
+  a:hover:before
+    content:'';
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:1px;
+    border-bottom:solid 4px derbyTeal;
+    z-index: -1
+
+
+  blockquote
+    a:before
+      content:'';
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:1px;
+      border-bottom:solid 4px derbyTeal;
+      z-index: -1
+
+    a:hover:before
+      content:'';
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:1px;
+      border-bottom:solid 4px derbyTealDark;
+      z-index: -1
+
+ 
+
+  h1.heading {
+    font-size: 48px;
+  }
+  h2.heading {
+    font-size: 32px;
+  }
+  
+  .heading
+    font-weight: 600
+    margin-top: 40px
+    // compensate for the anchor icons
+    a.header-link
+      visibility: hidden
+      margin-left: -25px
+      padding-right: 5px
+      border: none
+      svg.icon
+        margin-top: -10px
+    &:hover
+      .header-link
+        visibility: visible
+
+
+  // add the anchor link
+  a.anchor
+    display: block
+    position: relative
+    top: -60px
+    height: 0px
     visibility: hidden
-    margin-left: -25px
-    padding-right: 5px
-    svg.icon
-      margin-top: -5px
-  &:hover
-    .header-link
-      visibility: visible
+
+  img
+    max-width: 100%
+
+  .docs-thumbs img
+    display: inline-block;
 
 
-img
-  max-width: 100%
+code
+  //color: derbyBlack
+  background: derbyBrick
+  border-radius: 2px
+  color: #333
+  font-weight: bold
+  padding: 3px
+
+// 
+pre.hljs
+  margin: 25px 0 50px 0
+  width: 700px
+  
+code.hljs
+  border-radius: 2px
+  font-weight: bold
+  background: transparent
+  font-size: 14px
+  line-height: 1.4em
+
+
+blockquote
+  border-color: derbyTealLight
+  font-size: 16px
+  //background: derbyTealLighter
+  background: #f1f1f1
+  padding: 5px 20px
+  margin: 50px 0px
+  border-left: 3px solid #dddddd
+  width: 700px
+
+
+  code
+    border-radius: 2px
+    font-weight: bold
+    background:transparent
+
+  
+hr
+  padding: 20px 0
+  border: none

@@ -2,12 +2,12 @@
 
 Routes map URL patterns to actions. Derby routes are powered by [Express](http://expressjs.com/), which is similar to [Sinatra](http://www.sinatrarb.com/). Within apps, routes are defined via the `get`, `post`, `put`, and `del` methods of the app created by `derby.createApp()`.
 
-> `app.get ( routePattern, callback(page, model, params, next) )`
-> `app.post ( routePattern, callback(page, model, params, next) )`
-> `app.put ( routePattern, callback(page, model, params, next) )`
-> `app.del ( routePattern, callback(page, model, params, next) )`
+> `app.get ( routePattern, callback(page, model, params, next) )`  
+> `app.post ( routePattern, callback(page, model, params, next) )`  
+> `app.put ( routePattern, callback(page, model, params, next) )`  
+> `app.del ( routePattern, callback(page, model, params, next) )`  
 >
-> * `pattern`: A string containing a literal URL, an Express route pattern, or a regular expression. See [Express's routing documentation](http://expressjs.com/guide.html#routing) for more info.
+> * `pattern`: A string containing a literal URL, an Express route pattern, or a regular expression. See [Express's routing documentation](http://expressjs.com/guide/routing.html) for more info.
 >
 > * `callback`: Function invoked when a request for a URL matching the appropriate HTTP method and pattern is received. Note that this function is called both on the server and the client.
 >
@@ -58,8 +58,8 @@ For the most part, updating the URL client-side should be done with normal HTML 
 
 To update the URL after an action other than clicking a link, scripts can call methods on `app.history`. For example, an app might update the URL as the user scrolls and the page loads more content from a paginated list.
 
-> `app.history.push ( url, [render], [state], [e] )`
-> `app.history.replace ( url, [render], [state], [e] )`
+> `app.history.push ( url, [render], [state], [e] )`  
+> `app.history.replace ( url, [render], [state], [e] )`  
 >
 > * `url`: New URL to set for the current window
 >
