@@ -44,7 +44,10 @@ backend widgets {
   .host = "127.0.0.1";
   .port = "8008";
 }
-
+backend render {
+  .host = "127.0.0.1";
+  .port = "8009";
+}
 
 sub vcl_recv {
   if (!req.http.Host) {
@@ -81,6 +84,8 @@ sub vcl_recv {
     set req.backend = todos;
   } else if (req.http.Host ~ "^widgets\.") {
     set req.backend = widgets;
+  } else if (req.http.Host ~ "^render\.") {
+    set req.backend = render;
   }
 
   if (req.http.Upgrade ~ "(?i)websocket") {
