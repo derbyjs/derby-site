@@ -49,7 +49,6 @@ backend render {
   .port = "8009";
 }
 
-
 sub vcl_recv {
   if (!req.http.Host) {
     error 404 "Need a host header";
