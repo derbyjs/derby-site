@@ -67,7 +67,11 @@ See more links in the [Resources](resources) section.
 
 ## Environment
 
-For Derby you need: [Node](http://nodejs.org) (>=0.10), [MongoDB](http://www.mongodb.org/), [Redis](http://redis.io/) (>=2.6) - it's optional.
+For Derby you need: 
+* [Node.js](http://nodejs.org) (>=0.10)  
+* [MongoDB](http://www.mongodb.org/)
+* [Redis](http://redis.io/) (>=2.6) is optional (used to scale past one server process), but currently required to run examples.
+
 
 ### Mac OS
 

@@ -20,6 +20,7 @@
           {{if _page.links[$render.ns]}}
             <a class="btn btn-outline btn-lg next" href="{{this}}">Next&nbsp; &#10132;</a>
           {{/if}}
+          <a class="edit-on-github" href="{{gitLink($render)}}">Edit on GitHub</a>
         <view is="main-footer"></view>
         </div>
     </div>
@@ -72,6 +73,8 @@
       </div>
       <ul class="bs-docs-footer-links muted">
         <li><a href="https://groups.google.com/forum/#!forum/derbyjs" target="_blank">Google Group</a></li>
+        <li>&middot;</li>
+        <li><a href="https://gitter.im/derbyjs/derby" target="_blank">Gitter Chat</a></li>
         <li>&middot;</li>
         <li><a href="https://github.com/derbyjs/derby" target="_blank">GitHub</a></li>
         <li>&middot;</li>

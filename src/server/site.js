@@ -12,7 +12,7 @@ app.loadStyles(__dirname + '/../../styles/app');
 
 // TODO move this view function elsewhere
 // check if the link matches the first parts of the page's namespace
-// so that we can highligh 'docs' when in any sub page
+// so that we can highlight 'docs' when in any sub page
 app.proto.linkMatch = function(url, render) {
   var segments = url.split("/");
   var ns = render.ns.split(":");
@@ -21,6 +21,27 @@ app.proto.linkMatch = function(url, render) {
     if(segments[i] !== ns[i-1]) return false;
   }
   return true;
+}
+
+// probably a clever way to do this automatically like in ./outline.js
+// but its not straightforward without it knowing about the overview.md views
+var TOPLEVEL = [
+  "derby-0.6",
+  "views",
+  "models",
+  "components",
+  "apps",
+  "template-syntax"
+]
+app.proto.gitLink = function(render) {
+  var url = "https://github.com/derbyjs/derby-site/blob/master/md/"
+  url += render.url
+  var ns = render.ns.split(":")
+  if(TOPLEVEL.indexOf(ns[ns.length-1]) >= 0) {
+    url += "/overview"
+  }
+  url += ".md"
+  return url
 }
 
 
