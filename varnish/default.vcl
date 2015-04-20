@@ -48,6 +48,10 @@ backend render {
   .host = "127.0.0.1";
   .port = "8009";
 }
+backend cypher {
+  .host = "127.0.0.1";
+  .port = "8787";
+}
 
 sub vcl_recv {
   if (!req.http.Host) {
@@ -86,7 +90,10 @@ sub vcl_recv {
     set req.backend = widgets;
   } else if (req.http.Host ~ "^render\.") {
     set req.backend = render;
+  } else if (req.http.Host ~ "^cypher\.") {
+    set req.backend = cypher;
   }
+
 
 
   if (req.http.Upgrade ~ "(?i)websocket") {
