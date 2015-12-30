@@ -10,6 +10,23 @@ Filters create a live-updating list from items in an object. The results automat
 >   * `limit` The maximum number of results. A limit of zero is equivalent to no limit
 > * `fn` A function or the name of a function defined via `model.fn()`. The function should have the arguments `function(item, key, object, additionalInputs...)`. Like functions for [`array.filter()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter), the function should return true for values that match the filter
 
+```js
+app.get('/search-pants', function(page, model, params, next) {
+  model.subscribe('pants', function(err) {
+    if (err) return next(err);
+    model.filter('pants', 'pricing', 'color',
+      // evaluate whether a pants item matches the search options
+      function(item, pantsId, pants, pricing, color) {
+        return item.price >= pricing.minimum
+          && item.price <= pricing.maximum
+          && item.color == color;
+      }
+    ).ref('_page.pantsList'); // bind the output of the filter
+    page.render('pants');
+  });
+});
+```
+
 If `model.filter()` is called with `null` for the function, it will create a list out of all items in the input object. This can be handy as a way to render all subscribed items in a collection, since only arrays can be used as an input to `{{each}}` template tags.
 
 > `filter = model.sort(inputPath, [options], fn)`
