@@ -1,7 +1,7 @@
 {
   "name": "derby-site",
   "version": "0.0.4",
-  "description": "",
+  "description": "derby-site",
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
@@ -31,6 +31,5 @@
     "url": "https://github.com/derbyjs/derby-site/issues"
   },
   "license": "MIT",
-  "readme": "derby-site\n",
-  "readmeFilename": "README.md"
+  "homepage": "https://github.com/derbyjs/derby-site#readme"
 }

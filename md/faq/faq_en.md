@@ -33,7 +33,7 @@ Work through the tutorials:
 2. [Running Derby 0.6, Example # 2 (Russian)](http://habrahabr.ru/post/221703/)
 3. [Running Derby 0.6, Example # 3 (Russian)](http://habrahabr.ru/post/222399/)
 
-Then study the official [derby-examples](https://github.com/codeparty/derby-examples).
+Then study the official [derby-examples](https://github.com/derbyjs/derby-examples).
 
 ---
 ## Queries
@@ -52,7 +52,7 @@ Then study the official [derby-examples](https://github.com/codeparty/derby-exam
 
     // livedb-mongo returns count queries as an `extraSegment`  https://github.com/share/livedb-mongo/blob/v0.3.2/mongo.js#L227
     // unlike the other supported metaOperators                 https://github.com/share/livedb-mongo/blob/v0.3.2/mongo.js#L7
-    // and 0.6 now allows references to `extraSegments`         https://github.com/codeparty/racer/blob/v0.6.0-alpha3/lib/Model/Query.js#L494
+    // and 0.6 now allows references to `extraSegments`         https://github.com/derbyjs/racer/blob/v0.6.0-alpha3/lib/Model/Query.js#L494
     topicsCount.refExtra('_page.topicsCount');
 
     // ...
@@ -79,8 +79,8 @@ receive an array of strings, each of which is the id of an object you'd like to
 synchronize with the remote. You can also use a special [racer] datatype called
 a [refList], but more on that later.
 
-[racer]: https://github.com/codeparty/racer/tree/v0.6.0-alpha3
-[refList]: https://github.com/codeparty/racer/blob/v0.6.0-alpha3/lib/Model/refList.js
+[racer]: https://github.com/derbyjs/racer/tree/v0.6.0-alpha3
+[refList]: https://github.com/derbyjs/racer/blob/v0.6.0-alpha3/lib/Model/refList.js
 
 Where is this necessary? Imagine the "Hello World" of real time apps: a chat.
 This chat app has pages of chat rooms where there are thousands of people
@@ -114,7 +114,7 @@ app.get('/chat/:room', function chatRoom(page, model, params, next) {
     // on the client.
     //
     // Yes, the argument order has changed. If curious, read
-    // https://github.com/codeparty/racer/blob/v0.6.0-alpha3/lib/Model/fn.js#L32
+    // https://github.com/derbyjs/racer/blob/v0.6.0-alpha3/lib/Model/fn.js#L32
     model.start('_page.userIds', 'messages', 'pluckUserIds');
 
     var users = model.query('users', '_page.userIds');

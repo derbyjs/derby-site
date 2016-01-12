@@ -23,7 +23,7 @@ FAQ по Derby 0.6 (на русском)
 3. [Изучаем Derby 0.6, пример #3](http://habrahabr.ru/post/222399/)
 4. [Введине в компоненты derby 0.6](http://habrahabr.ru/post/224831/)
 
-Далее изучить примеры из [derby-examples](https://github.com/codeparty/derby-examples)
+Далее изучить примеры из [derby-examples](https://github.com/derbyjs/derby-examples)
 
 ---
 #### Что нужно знать до начала изучения derby.js?
