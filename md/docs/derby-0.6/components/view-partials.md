@@ -5,7 +5,7 @@ A component is created by associating a controller with a view, this page goes i
 While a component's controller is associated with a single view, it can contain sub-views defined as view partials. Components can also accept other views passed in as attributes.
 
 ## Scope
-By default a view partial inherits the scope where it is instanciated.  
+By default a view partial inherits the scope where it is instantiated.
 
 ```derby
 <index:>
@@ -43,7 +43,7 @@ There are times when you may want your partial to use the scope where it is used
 > *Note - This example is using [derby-standalone](http://github.com/derbyjs/derby-standalone) which has a slightly different syntax for defining templates at the moment.*
 
 ### inherit
-There are some cases where you would like to instanciate a component and pass along the attributes of the current controller. The inherit keyword will allow you to do this.
+There are some cases where you would like to instantiate a component and pass along the attributes of the current controller. The inherit keyword will allow you to do this.
 
 ```derby
 <index:>
@@ -59,7 +59,7 @@ There are some cases where you would like to instanciate a component and pass al
 > *Note - This example is using [derby-standalone](http://github.com/derbyjs/derby-standalone) which has a slightly different syntax for defining templates at the moment.*
 
 ### extend
-It is possible to override another component's functionality while preserving it's view. 
+It is possible to override another component's functionality while preserving it's view.
 You can do this with the `extend` keyword, your component must implement the view functions defined by the extended component.
 This can be done with prototypical inheritance and then overriding any functions you want to customize.
 
@@ -76,7 +76,7 @@ If you just want to reuse a view partial the `import` keyword is probably more a
 
 > `view = this.getView(name)`
 > * `name` the name of the view
-> * `view` a template object representing the view 
+> * `view` a template object representing the view
 
 It is possible to access the views in a component's namespace from the controller. This may be used in conjunction with `setAttribute` to override a component's default rendering.
 An example use case would be to set a default template and then allow the user of the component to pass in a template to override the default.
@@ -93,8 +93,8 @@ Derby components are tracked in the DOM with an HTML comment tag. This allows co
 
 ## Debugging
 
-A relatively quick way to inspect a component for debugging is to find it's comment in the browser's DOM inspector. 
-In modern browsers clicking on the comment allows you to reference it in the console with `$0`. 
+A relatively quick way to inspect a component for debugging is to find it's comment in the browser's DOM inspector.
+In modern browsers clicking on the comment allows you to reference it in the console with `$0`.
 Once you have a reference to the comment tag you can access it's controller with `$0.$component` and it's model data with `$0.$component.model.get()`
 
 <img src="/images/docs/charts-debug.png">
