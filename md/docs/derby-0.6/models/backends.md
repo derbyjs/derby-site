@@ -1,6 +1,6 @@
 # Backends
 
-Racer stores are backed by ShareJS, which uses [LiveDB](https://github.com/share/livedb) to persit data, perform queries, keep a journal of all operations, and pub/sub operations and changes to queries. Currently, LiveDB has adapters for in memory or Redis based pub/sub and supports storage in memory or MongoDB via [livedb-mongo](https://github.com/share/livedb-mongo). LiveDB is written with support for additional database adapters in mind.
+Racer stores are backed by ShareJS, which uses [LiveDB](https://github.com/share/livedb) to persist data, perform queries, keep a journal of all operations, and pub/sub operations and changes to queries. Currently, LiveDB has adapters for in memory or Redis based pub/sub and supports storage in memory or MongoDB via [livedb-mongo](https://github.com/share/livedb-mongo). LiveDB is written with support for additional database adapters in mind.
 
 Getting started with a single-process server and MongoDB:
 
