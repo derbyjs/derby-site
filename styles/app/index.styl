@@ -3,6 +3,8 @@ headerHeight = 60px
 footerHeight = 110px
 sidebarWidth = 300px
 brandWidth = 91px
+fontSizeBase = 18px
+fontSizeSmall = 14px;
 
 //@require '../libs/bootstrap.min.css'
 //@require '../libs/docs.min.css'
@@ -18,7 +20,7 @@ html {
 
 body {
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 18px;
+  font-size: fontSizeBase;
   -webkit-font-smoothing: antialiased;
   line-height: 28px;
   color: derbyBlack;
@@ -113,11 +115,11 @@ body {
   max-width: 1100px
   margin: 0 auto
   min-height: 100%
-  
+
 basePadding = 30px;
 
 .sidebar
-  position: fixed 
+  position: fixed
   overflow: auto
   width: sidebarWidth
   height: calc(100% - 60px)
@@ -154,7 +156,7 @@ basePadding = 30px;
     text-decoration: none
     color: derbyGray
     background: derbyGranite;
-    
+
   .list-group-item a:hover
     color: derbyTeal;
 
@@ -199,7 +201,7 @@ a.edit-on-github
         display:inline-block
         padding: 0px 8px
 
-  .bs-docs-footer-links 
+  .bs-docs-footer-links
     list-style: none
     margin-top: 10px
     margin-bottom: 10px
