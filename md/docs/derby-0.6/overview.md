@@ -4,8 +4,7 @@ Welcome to the documentation for DerbyJS!
 
 ## Related documentation
 
-* [ShareJS](http://sharejs.org/)
-* [LiveDB](https://github.com/share/livedb)
+* [ShareDB](https://github.com/share/sharedb)
 
 ## Previous documentation
 

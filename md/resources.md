@@ -42,10 +42,7 @@ Schema Validation
 Web Sockets
 
 [racer-highway](https://github.com/derbyparty/racer-highway)
-Web Sockets which downgrandes to Browser Channel
-
-[livedb-foundation](https://github.com/josephg/livedb-foundation)
-LiveDB implementation based on Foundation DB
+Web Sockets which downgrades to Browser Channel
 
 [derby-hook](https://github.com/derbyparty/derby-hook)
 After submit hook wrapper
@@ -71,11 +68,11 @@ Stylus
 
 ## Sources
 
-[Derbyjs Github](https://github.com/derbyjs)
+[DerbyJS Github](https://github.com/derbyjs)
 Derby, Racer, etc sources
 
 [Share Github](https://github.com/share)
-ShareJS, LiveDB, etc sources
+ShareDB, etc sources
 
 [Derbyparty Github](https://github.com/derbyparty)
 Modules from Community

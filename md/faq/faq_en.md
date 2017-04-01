@@ -21,7 +21,7 @@ If the answer is important and common enough, we'll add it to the FAQ.
 #### What background should I have before I try derby.js?
 
   - web development basics (html, css, javascript)
-  - [node.js](http://nodejs.org/), particularly [commonjs modules](http://nodejs.org/api/modules.html), [npm](https://www.npmjs.org/doc/), and how to run an http server
+  - [Node.js](http://nodejs.org/), particularly [commonjs modules](http://nodejs.org/api/modules.html), [npm](https://www.npmjs.org/doc/), and how to run an http server
   - [express](http://expressjs.com/guide.html), the framework that Derby itself is built on top of.
 
 ---
