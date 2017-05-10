@@ -2,7 +2,7 @@
 
 DerbyJS is a framework for developing web applications, making it much easier to build real-time collaborative functionality.
 
-Built from a collection of standard node.js modules, DerbyJS can be brought into existing projects, or existing node modules can easily be brought into a DerbyJS project.
+Built from a collection of standard Node.js modules, DerbyJS can be brought into existing projects, or existing node modules can easily be brought into a DerbyJS project.
 
 Derby provides server-side rendering through it's HTML-like templating language. Templates can be organized into components for better code reuse and faster application development.
 Templates and components are backed by a real-time data model called Racer.
@@ -10,7 +10,7 @@ Templates and components are backed by a real-time data model called Racer.
 
 ### What is Racer?
 
-Racer is the data manipulation layer in Derby, it wraps the [ShareJS](http://sharejs.org) library. Racer provides a consistent API for managing data on the server and client, and seemlessly syncs the two with little thought from the user.
+Racer is the data manipulation layer in Derby, it wraps the [ShareDB](https://github.com/share/sharedb) library. Racer provides a consistent API for managing data on the server and client, and seamlessly syncs the two with little thought from the user.
 
 
 ### How does Racer compare to Firebase?
@@ -35,7 +35,7 @@ Using Derby you can treat OT like black box with some magic. ShareJS will merge 
 
 ### Why do we need Mongo and Redis?
 
-Derby, and hence Racer, are powered by [livedb](https://github.com/share/livedb). Live DB currently only has a production ready adapter for Mongo, and optionally uses Redis to enable scaling past a single node process. More backends can be added to livedb by writing adapters, see [livedb-mongo](https://github.com/share/livedb-mongo) for example.
+Derby, and hence Racer, are powered by [ShareDB](https://github.com/share/sharedb). ShareDB currently only has a production ready adapter for Mongo, and optionally uses Redis to enable scaling past a single node process. More backends can be added to ShareDB by writing adapters, see [sharedb-mongo](https://github.com/share/sharedb-mongo) for example.
 
 
 ### How can I use web sockets with Racer instead of long polling?
@@ -62,5 +62,3 @@ Starting from version 0.6 - yes, you can.
 These are just a few of the frequently asked questions. This is a work in progress. If your question is not answered here, please search over on the [Google Group](https://groups.google.com/forum/?fromgroups#!forum/derbyjs). If you don't see an existing question, then let us know what is wrong. Please provide any related code snippets.
 
 ------
-
-
