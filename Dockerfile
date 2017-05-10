@@ -2,7 +2,7 @@
 # RUN-USING: docker run -p 4000:4000 --name derby-site --rm derbyjs/derby-site
 
 # specify base docker image
-FROM dockerfile/nodejs
+FROM node:6.10.3
 
 # copy over dependencies
 WORKDIR /var
