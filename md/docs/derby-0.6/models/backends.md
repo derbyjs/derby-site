@@ -6,33 +6,25 @@ is backed by a real Mongo database and full query support. ShareDB is written wi
 Getting started with a single-process server and MongoDB:
 
 ```js
-var racer = require('racer');
+var derby = require('derby');
 var ShareDbMongo = require('sharedb-mongo');
 
-var db = new ShareDbMongo({mongo: 'mongodb://localhost:27017/test'});
-var backend = racer.createBackend({db: db});
+var db = new ShareDbMongo('mongodb://localhost:27017/test');
+var backend = derby.createBackend({db: db});
 var model = backend.createModel();
 ```
 
 The above examples use the in-process driver by default. In a production environment, you'll want to scale across multiple frontend servers and support updating data in other processes, such as migration scripts and additional services. For this, you should use the [ShareDB Redis pub/sub adapter](https://github.com/share/sharedb-redis-pubsub). ShareDB requires Redis 2.6 or newer, since it uses Lua scripting commands.
 
 ```js
-var racer = require('racer');
-var redis = require('redis');
+var derby = require('derby');
 var ShareDbMongo = require('sharedb-mongo');
 var RedisPubSub = require('sharedb-redis-pubsub');
 
-
-// Two Redis clients are needed, since Redis requires separate clients for
-// pub/sub commands and other Redis commands
-var pubsub = new RedisPubSub({
-  client: redis.createClient()
-  observer: redis.createClient()
-});
-var db = new ShareDbMongo({mongo: 'mongodb://localhost:27017/test'});
-var backend = racer.createBackend({
+var db = new ShareDbMongo('mongodb://localhost:27017/test');
+var backend = derby.createBackend({
   db: db,
-  pubsub: pubsub
+  pubsub: new RedisPubSub()
 });
 var model = backend.createModel();
 ```
@@ -45,11 +37,49 @@ The Redis driver supports flushing all data from Redis or starting with an empty
 
 Racer paths are translated into database collections and documents using a natural mapping:
 
-```
+```bash
 collection.documentId.documentProperty
 ```
 
-ShareDB Mongo will add `_type`, and `_v` properties to Mongo documents for internal use. It will strip out these properties as well as `_id` when it returns the document from Mongo. If a document is an object, it will be stored as the Mongo document directly. If it is another type, it will be nested under a property on the Mongo document called `_data`. For object documents, Racer will set the `id` property on the document object in the model automatically.
+ShareDB Mongo will add the following properties to Mongo documents for internal use:
+* `_m.ctime` - Timestamp when the ShareDB document was created
+* `_m.mtime` - Timestamp when the ShareDB document was last modified
+* `_type` - [OT type](https://github.com/share/sharedb#data-model)
+* `_v` - [Snapshot version](https://github.com/share/sharedb#data-model)
+
+In addition to `ctime` and `mtime`, custom metadata properties can be added to `_m` with middleware that modifies `snapshot.m` in apply or commit.
+
+Since these underscore-prefixed properties are for ShareDB's internal use, ShareDB Mongo will strip out these properties (`_m`, `_type`, and `_v`) as well as `_id` when it returns the document from Mongo. The `_id` is removed because Racer adds an `id` alias to all local documents. This alias references the `_id` property of the original Mongo document.
+
+If a document is an object, it will be stored as the Mongo document directly. For example,
+
+```js
+{
+  make: "Ford",
+  model: "Mustang",
+  year: 1969,
+  _m: {
+    ctime: 1494381632731,
+    mtime: 1494381635994
+  },
+  _type: "http://sharejs.org/types/JSONv0",
+  _v: 12
+}
+```
+
+If it is another type (e.g. [Plaintext OT Type](https://github.com/ottypes/text)), the value will be nested under a property on the Mongo document called `_data`.
+
+```js
+{
+  _data: "This is a text message.",
+  _m: {
+    ctime: 1494381632731,
+    mtime: 1494381635994
+  },
+  _type: "http://sharejs.org/types/text",
+  _v: 12
+}
+```
 
 It is not possible to set or delete an entire collection, or get the list of collections via the Racer API.
 
