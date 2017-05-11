@@ -19,7 +19,7 @@ ADD views /var/derby-site/views
 
 # npm install all the things
 WORKDIR /var/derby-site
-RUN npm install
+RUN npm_config_spin=false npm_config_loglevel=warn npm install --production
 
 # expose any ports we need
 EXPOSE 4000
