@@ -12,7 +12,7 @@ Default events are triggered during the lifecycle of a component:
 * `create`: Emitted before the component's `create()` function is called.
 * `destroy`: Emitted before the component's `destroy()` function is called.
 
-If the functions to be called aren't defined on the component, their respective events are still triggered inconditionally.
+If the functions to be called aren't defined on the component, their respective events are still triggered unconditionally.
 
 ## Custom events
 
