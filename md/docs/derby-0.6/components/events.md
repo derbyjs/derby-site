@@ -4,6 +4,16 @@ Functions defined on a property of a controller can be invoked from view express
 
 Functions are looked up on the current component's controller, the page, and the global, in that order. See the [view functions and events](../views/template-syntax/functions-and-events#controller-property-lookup) documentation for more detail.
 
+## Lifecycle events
+
+Default events are triggered during the lifecycle of a component:
+
+* `init`: Emitted before the component's `init()` function is called.
+* `create`: Emitted before the component's `create()` function is called.
+* `destroy`: Emitted before the component's `destroy()` function is called.
+
+If the functions to be called aren't defined on the component, their respective events are still triggered unconditionally.
+
 ## Custom events
 
 Components support custom events. Dashes are transformed into camelCase.
