@@ -2,7 +2,7 @@
 # RUN-USING: docker run -p 4000:4000 --name derby-site --rm derbyjs/derby-site
 
 # specify base docker image
-FROM dockerfile/nodejs
+FROM node:6.10.3
 
 # copy over dependencies
 WORKDIR /var
@@ -19,7 +19,7 @@ ADD views /var/derby-site/views
 
 # npm install all the things
 WORKDIR /var/derby-site
-RUN npm install
+RUN npm_config_spin=false npm_config_loglevel=warn npm install --production
 
 # expose any ports we need
 EXPOSE 4000

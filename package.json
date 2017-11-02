@@ -8,13 +8,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "derby": "0.6.0-alpha47",
+    "d-codemirror": "^0.2.5",
+    "derby": "^0.9.7",
     "derby-stylus": "^0.1",
     "express": "^4.12",
-    "serve-favicon": "^2.2",
+    "highlight.js": "^9.11.0",
     "marked": "^0.3",
-    "highlight.js": "^8.5",
-    "d-codemirror": "^0.2.5"
+    "serve-favicon": "^2.2"
   },
   "repository": {
     "type": "git",
