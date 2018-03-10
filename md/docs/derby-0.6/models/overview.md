@@ -1,12 +1,12 @@
 # Models
 
-DerbyJS models are provided by [Racer](https://github.com/derbyjs/racer), a realtime model synchronization engine. By building on ShareJS, Racer enables multiple users and services to interact with the same data objects with realtime conflict resolution. Racer models have a simple getter/setter and event interface for writing application logic.
+DerbyJS models are provided by [Racer](https://github.com/derbyjs/racer), a realtime model synchronization engine. By building on ShareDB, Racer enables multiple users and services to interact with the same data objects with realtime conflict resolution. Racer models have a simple getter/setter and event interface for writing application logic.
 
-## Racer and ShareJS
+## Racer and ShareDB
 
-Racer provides a single interface for working with local data stored in memory and remote data synced via ShareJS. It works equally well on the server and the browser, and it is designed to be used independently from DerbyJS. This is useful when writing migrations, data-only services, or integrating with different view libraries.
+Racer provides a single interface for working with local data stored in memory and remote data synced via ShareDB. It works equally well on the server and the browser, and it is designed to be used independently from DerbyJS. This is useful when writing migrations, data-only services, or integrating with different view libraries.
 
-Remotely synced data is stored via [ShareJS](http://sharejs.org/), which means that different clients can modify the same data at the same time. ShareJS uses [Operational Transformation (OT)](http://en.wikipedia.org/wiki/Operational_transformation) to automatically resolve conflicts in realtime or offline.
+Remotely synced data is stored via [ShareDB](https://github.com/share/sharedb), which means that different clients can modify the same data at the same time. ShareDB uses [Operational Transformation (OT)](http://en.wikipedia.org/wiki/Operational_transformation) to automatically resolve conflicts in realtime or offline.
 
 On the server, Racer provides a `store`, which configures a connection to a database and pub/sub adapter. Every store connected to the same database and pub/sub system is synchronized in realtime.
 
