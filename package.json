@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "d-codemirror": "^0.2.5",
-    "derby": "^0.9.7",
+    "derby": "^0.10.0",
     "derby-stylus": "^0.1",
     "express": "^4.12",
     "highlight.js": "^9.11.0",
