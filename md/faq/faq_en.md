@@ -1,5 +1,5 @@
 <index:>
-FAQ for Derby 0.6
+FAQ for Derby 0.10
 =================
 
 The purpose of this repository is to document frequently asked questions and

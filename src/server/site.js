@@ -17,7 +17,7 @@ app.proto.linkMatch = function(url, render) {
   var segments = url.split("/");
   var ns = render.ns.split(":");
   var i = 1;
-  for(i; i < segments.length; i++) { 
+  for(i; i < segments.length; i++) {
     if(segments[i] !== ns[i-1]) return false;
   }
   return true;
@@ -26,7 +26,7 @@ app.proto.linkMatch = function(url, render) {
 // probably a clever way to do this automatically like in ./outline.js
 // but its not straightforward without it knowing about the overview.md views
 var TOPLEVEL = [
-  "derby-0.6",
+  "derby-0.10",
   "views",
   "models",
   "components",
@@ -54,7 +54,7 @@ expressApp.get('/', function(req, res, next) {
 });
 
 expressApp.get('/docs', function(req, res, next) {
-  res.redirect('/docs/derby-0.6');
+  res.redirect('/docs/derby-0.10');
 });
 
 var codeMirrorPath = __dirname + '/../../node_modules/d-codemirror/node_modules/codemirror'
