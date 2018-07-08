@@ -1,0 +1,55 @@
+version: "3"
+
+services:
+  mongo:
+    image: mongo:3.6
+    restart: always
+    ports:
+      - "27017:27017"
+
+  redis:
+    image: redis:3
+    restart: always
+    ports:
+      - "6379:6379"
+
+  derby_site:
+    image: derbyjs/derby-site:${DERBY_SITE_TAG}
+    restart: always
+    ports:
+      - "4000:4000"  
+
+  derby_examples:
+    image: derbyjs/derby-examples:${DERBY_EXAMPLES_TAG}
+    restart: always
+    ports:
+      - "8001:8001"
+      - "8002:8002"
+      - "8003:8003"
+      - "8004:8004"
+      - "8005:8005"
+      - "8006:8006"
+      - "8007:8007"
+      - "8008:8008"
+      - "8009:8009"
+    environment:
+      MONGO_HOST: mongo
+      REDIS_HOST: redis
+
+  nginx:
+    image: nginx
+    restart: always
+    volumes:
+      - ./nginx/derbyjs.conf:/etc/nginx/conf.d/derbyjs.conf
+    ports:
+      - "0.0.0.0:8080:80"
+    command: /bin/bash -c "nginx -g 'daemon off;'"
+
+networks:
+  default:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.host_binding_ipv4: "127.0.0.1"
+      com.docker.network.driver.mtu: "1500"
+      com.docker.network.bridge.enable_icc: "true"
+      com.docker.network.bridge.enable_ip_masquerade: "true"
