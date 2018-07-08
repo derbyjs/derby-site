@@ -47,7 +47,7 @@ As well as a synchronous interface, model mutators have an optional callback wit
 > * `object` A document to add. If the document has an `id` property, it will be set at that value underneath the path. Otherwise, an id from `model.id()` will be set on the object first
 > * `id` Returns `object.id`
 
-> model.setEach(path, object, [callback])`
+> `model.setEach(path, object, [callback])`
 > * `path` Model path underneath which each property will be set
 > * `object` An object whose properties are each set individually
 
