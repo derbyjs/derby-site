@@ -1,7 +1,7 @@
 ## Getting Started
 
 <p class="lead">
-In order to get started writing your first DerbyJS app, you need to have node.js, MongoDB and Redis installed. If you don't have those, <a href="#environment">get setup!</a>
+In order to get started writing your first DerbyJS app, you need to have Node.js and MongoDB installed. DerbyJS is written to support any database, but the MongoDB adapter is the most complete. If you don't have those, <a href="#environment">get setup!</a>
 </p>
 
 ---
@@ -19,16 +19,16 @@ npm install
 You can run each of the examples from their own directories:
 
 ```bash
-$ cd ~/derby-examples/directory
-$ node server.js
+cd ~/derby-examples/directory
+node server.js
 ```
 
 The examples written in CoffeeScript are meant to be run via the coffee command:
 
 ```bash
-$ npm install -g coffee-script
-$ cd ~/derby-examples/sink
-$ coffee server.coffee
+npm install -g coffee-script
+cd ~/derby-examples/sink
+coffee server.coffee
 ```
 
 ## Boilerplate
@@ -67,52 +67,7 @@ See more links in the [Resources](resources) section.
 
 ## Environment
 
-For Derby you need: 
-* [Node.js](http://nodejs.org) (>=0.10)  
+For Derby you need:
+* [Node.js](http://nodejs.org)
 * [MongoDB](http://www.mongodb.org/)
-* [Redis](http://redis.io/) (>=2.6) is optional (used to scale past one server process), but currently required to run examples.
-
-
-### Mac OS
-
-We recommend installing node.js from [the official site](http://nodejs.org)
-You can install mongodb and redis using [homebrew](http://brew.sh/)
-
-```bash
-brew update
-brew install mongodb
-brew install redis
-```
-
-### Debian
-
-Same for all Debian family: Debian, Ubuntu, Mint, etc.
-For Node and Redis we will use the chris-lea repository, Mongo has an official repo.
-
-```bash
-# Add the repository
-# node.js
-sudo add-apt-repository -y ppa:chris-lea/node.js
-# redis
-sudo add-apt-repository -y ppa:chris-lea/redis-server
-# mongodb
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
-sudo echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/10gen.list
-
-# Update the apt-get
-sudo apt-get -y update
-
-# Set
-sudo apt-get -y install nodejs
-sudo apt-get -y install mongodb-10gen
-sudo apt-get -y install redis-server
-```
-
-
-### Windows
-
-We currently recommend developing in a *nix environment.
-You can use a free VM like [VirtualBox](https://www.virtualbox.org/) to run a Linux environment or tools like [Vagrant](http://www.vagrantup.com/) or [Docker](http://www.docker.com/).
-
-
--------------------------
+* [Redis](http://redis.io/) is optional. It can be used to scale pub/sub beyond one server process
