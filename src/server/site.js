@@ -5,8 +5,6 @@ var app = derby.createApp('site', __filename);
 app.serverUse(module, './markdown');
 app.serverUse(module, 'derby-stylus');
 
-app.component(require('d-codemirror'))
-
 app.loadViews(__dirname + '/../../views/app');
 app.loadStyles(__dirname + '/../../styles/app');
 
@@ -56,9 +54,6 @@ expressApp.get('/', function(req, res, next) {
 expressApp.get('/docs', function(req, res, next) {
   res.redirect('/docs/derby-0.10');
 });
-
-var codeMirrorPath = __dirname + '/../../node_modules/d-codemirror/node_modules/codemirror'
-expressApp.use('/cm', express.static(codeMirrorPath))
 
 var outlineData = require('./outline').generate(app);
 expressApp.get('/*', function(req, res, next) {
