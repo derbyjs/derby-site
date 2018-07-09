@@ -17,7 +17,10 @@ services:
     image: derbyjs/derby-site:${DERBY_SITE_TAG}
     restart: always
     ports:
-      - "4000:4000"  
+      - "4000:4000" 
+    labels:
+      traefik.enable: true
+      traefik.frontend.rule: Host:derbyjs.com,www.derbyjs.com
 
   derby_examples:
     image: derbyjs/derby-examples:${DERBY_EXAMPLES_TAG}
@@ -35,6 +38,38 @@ services:
     environment:
       MONGO_HOST: mongo
       REDIS_HOST: redis
+    labels:
+      traefik.enable: true
+      traefik.charts.frontend.rule: Host:charts.derbyjs.com
+      traefik.charts.port: 8001
+      traefik.chat.frontend.rule: Host:chat.derbyjs.com
+      traefik.chat.port: 8002
+      traefik.codemirror.frontend.rule: Host:codemirror.derbyjs.com
+      traefik.codemirror.port: 8003
+      traefik.directory.frontend.rule: Host:directory.derbyjs.com
+      traefik.directory.port: 8004
+      traefik.hello.frontend.rule: Host:hello.derbyjs.com
+      traefik.hello.port: 8005
+      traefik.sink.frontend.rule: Host:sink.derbyjs.com
+      traefik.sink.port: 8006
+      traefik.todos.frontend.rule: Host:todos.derbyjs.com
+      traefik.todos.port: 8007
+      traefik.widgets.frontend.rule: Host:widgets.derbyjs.com
+      traefik.widgets.port: 8008
+      traefik.render.frontend.rule: Host:render.derbyjs.com
+      traefik.render.port: 8009
+
+  traefik:
+    image: traefik:1.6-alpine
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports: 
+      - "0.0.0.0:8181:8080"
+      - "0.0.0.0:8080:80"
+    command:
+      - --api=true
+      - --docker
+      - --docker.exposedbydefault=false
 
   nginx:
     image: nginx
@@ -42,7 +77,7 @@ services:
     volumes:
       - ./nginx/derbyjs.conf:/etc/nginx/conf.d/derbyjs.conf
     ports:
-      - "0.0.0.0:8080:80"
+      - "0.0.0.0:8180:80"
     command: /bin/bash -c "nginx -g 'daemon off;'"
 
 networks:
