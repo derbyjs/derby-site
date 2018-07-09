@@ -2,7 +2,7 @@
 
 Reactive functions provide a simple way to update a computed value whenever one or more objects change. While model events respond to specific model methods and path patterns, reactive functions will be re-evaluated whenever any of their inputs or nested properties change in any way.
 
-Reactive functions may be run any number of times, so they should be [pure functions](http://en.wikipedia.org/wiki/Pure_function). In other words, they should always return the same results given the same input arguments, and they should be side effect free. By default, the inputs to the function are retrieved directly from the model, so be sure not to modify any object or array input arguments. For example, slice an array input before you sort it. The output of the model function is deep cloned by default.
+Reactive functions may be run any number of times, so they should be [pure functions](https://en.wikipedia.org/wiki/Pure_function). In other words, they should always return the same results given the same input arguments, and they should be side effect free. By default, the inputs to the function are retrieved directly from the model, so be sure not to modify any object or array input arguments. For example, slice an array input before you sort it. The output of the model function is deep cloned by default.
 
 To execute a model function, you then call `model.evaluate()` or `model.start()`. Evaluate runs a function once and returns the result, and start sets up event listeners that continually re-evaluate the function whenever any of its input or output paths are changed.
 

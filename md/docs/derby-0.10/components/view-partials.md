@@ -38,9 +38,9 @@ There are times when you may want your partial to use the scope where it is used
   {{/each}}
 ```
 
-> Example: [within attribute](http://codepen.io/enjalot/pen/bNxOmO?editors=101)
+> Example: [within attribute](https://codepen.io/enjalot/pen/bNxOmO?editors=101)
 
-> *Note - This example is using [derby-standalone](http://github.com/derbyjs/derby-standalone) which has a slightly different syntax for defining templates at the moment.*
+> *Note - This example is using [derby-standalone](https://github.com/derbyjs/derby-standalone) which has a slightly different syntax for defining templates at the moment.*
 
 ### inherit
 There are some cases where you would like to instantiate a component and pass along the attributes of the current controller. The inherit keyword will allow you to do this.
@@ -54,18 +54,18 @@ There are some cases where you would like to instantiate a component and pass al
   {{@foo}}
 ```
 
-> Example: [component inheritance](http://codepen.io/enjalot/pen/YPOdBY?editors=101)
+> Example: [component inheritance](https://codepen.io/enjalot/pen/YPOdBY?editors=101)
 
-> *Note - This example is using [derby-standalone](http://github.com/derbyjs/derby-standalone) which has a slightly different syntax for defining templates at the moment.*
+> *Note - This example is using [derby-standalone](https://github.com/derbyjs/derby-standalone) which has a slightly different syntax for defining templates at the moment.*
 
 ### extend
 It is possible to override another component's functionality while preserving it's view.
 You can do this with the `extend` keyword, your component must implement the view functions defined by the extended component.
 This can be done with prototypical inheritance and then overriding any functions you want to customize.
 
-> Example: [extending components](http://codepen.io/enjalot/pen/OPorGB?editors=101)
+> Example: [extending components](https://codepen.io/enjalot/pen/OPorGB?editors=101)
 
-> *Note - This example is using [derby-standalone](http://github.com/derbyjs/derby-standalone) which has a slightly different syntax for defining templates at the moment.*
+> *Note - This example is using [derby-standalone](https://github.com/derbyjs/derby-standalone) which has a slightly different syntax for defining templates at the moment.*
 
 
 ### import

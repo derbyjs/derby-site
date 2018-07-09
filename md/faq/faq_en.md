@@ -3,7 +3,7 @@ FAQ for Derby 0.10
 =================
 
 The purpose of this repository is to document frequently asked questions and
-common pitfalls for [derbyjs](http://derbyjs.com).
+common pitfalls for [derbyjs](//derbyjs.com).
 
 ### Contributing
 
@@ -21,17 +21,17 @@ If the answer is important and common enough, we'll add it to the FAQ.
 #### What background should I have before I try derby.js?
 
   - web development basics (html, css, javascript)
-  - [Node.js](http://nodejs.org/), particularly [commonjs modules](http://nodejs.org/api/modules.html), [npm](https://www.npmjs.org/doc/), and how to run an http server
-  - [express](http://expressjs.com/guide.html), the framework that Derby itself is built on top of.
+  - [Node.js](https://nodejs.org/), particularly [commonjs modules](https://nodejs.org/api/modules.html), [npm](https://www.npmjs.org/doc/), and how to run an http server
+  - [express](https://expressjs.com/guide.html), the framework that Derby itself is built on top of.
 
 ---
 #### How do I get started with Derby 0.6 (the latest version)?
 
 Work through the tutorials:
 
-1. [Running Derby 0.6, Example # 1 (Russian)](http://habrahabr.ru/post/221027/)
-2. [Running Derby 0.6, Example # 2 (Russian)](http://habrahabr.ru/post/221703/)
-3. [Running Derby 0.6, Example # 3 (Russian)](http://habrahabr.ru/post/222399/)
+1. [Running Derby 0.6, Example # 1 (Russian)](https://habrahabr.ru/post/221027/)
+2. [Running Derby 0.6, Example # 2 (Russian)](https://habrahabr.ru/post/221703/)
+3. [Running Derby 0.6, Example # 3 (Russian)](https://habrahabr.ru/post/222399/)
 
 Then study the official [derby-examples](https://github.com/derbyjs/derby-examples).
 
@@ -521,7 +521,7 @@ starting from the 0.6.0-alpha6
 
 You should pass a predefined '$event' parameter into the event handler function.
 ```html
-<a href="http://derbyjs.com" on-click="click($event)">
+<a href="//derbyjs.com" on-click="click($event)">
 ```
 ```js
 app.proto.click = function(e) {
@@ -536,7 +536,7 @@ app.proto.click = function(e) {
 
 A predefined '$element' parameter should be passed into the event handler function.
 ```html
-<a href="http://derbyjs.com" on-click="click($event, $element)">
+<a href="//derbyjs.com" on-click="click($event, $element)">
 ```
 ```js
 app.proto.click = function(e, el) {

@@ -68,6 +68,6 @@ See more links in the [Resources](resources) section.
 ## Environment
 
 For Derby you need:
-* [Node.js](http://nodejs.org)
-* [MongoDB](http://www.mongodb.org/)
-* [Redis](http://redis.io/) is optional. It can be used to scale pub/sub beyond one server process
+* [Node.js](https://nodejs.org)
+* [MongoDB](https://www.mongodb.org/)
+* [Redis](https://redis.io/) is optional. It can be used to scale pub/sub beyond one server process

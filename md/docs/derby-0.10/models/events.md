@@ -1,6 +1,6 @@
 # Events
 
-Model events are based on the standard [Node.js EventEmitter](http://nodejs.org/docs/latest/api/events.html) methods, and they support the same methods: `on`, `once`, `removeListener`, `emit`, etc.
+Model events are based on the standard [Node.js EventEmitter](https://nodejs.org/docs/latest/api/events.html) methods, and they support the same methods: `on`, `once`, `removeListener`, `emit`, etc.
 
 ## Mutation events
 

@@ -6,10 +6,10 @@ Mailing list
 [Gitter Chat](https://gitter.im/derbyjs/derby)
 GitHub chat for derby community
 
-[Stackoverflow DerbyJS tag](http://stackoverflow.com/questions/tagged/derbyjs)
+[Stackoverflow DerbyJS tag](https://stackoverflow.com/questions/tagged/derbyjs)
 Best place for questions
 
-[Stackoverflow Chat (Ru)](http://chat.stackoverflow.com/rooms/41934/derbyjs-ru)
+[Stackoverflow Chat (Ru)](https://chat.stackoverflow.com/rooms/41934/derbyjs-ru)
 Бла бла бла
 
 [Github Issues](https://github.com/derbyjs/derby/issues)
@@ -21,9 +21,9 @@ Lever uses derby in production and puts out some tutorial and meetup videos abou
 [Twitter](https://twitter.com/derbyjs)
 
 IRC
-derbyjs on [freenode.net](http://freenode.net)
+derbyjs on [freenode.net](https://freenode.net)
 
-[Habrahabr.ru](http://habrahabr.ru/hub/derbyjs/)
+[Habrahabr.ru](https://habrahabr.ru/hub/derbyjs/)
 Habr Derby Hub
 
 
@@ -86,7 +86,6 @@ This site
 
 ## Component demos
 
-http://derby-demos.ilkkah.com
 Derby components from [ile](https://github.com/ile/)
 
 https://d-passport.herokuapp.com/
@@ -100,5 +99,4 @@ A modern web app for enterprise hiring
 [Type4Fame](http://type4fame.com/)
 Multiplayer Typing Game - [source code](https://github.com/cray0000/type4fame)
 
-[gameOfbombs](http://gameofbombs.com/community/)
 Realtime forum for [bombermine](http://bombermine.com/) players
