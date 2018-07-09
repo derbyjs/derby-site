@@ -2,7 +2,7 @@
 
 Derby projects support one or more single-page apps.
 Apps have a full MVC structure, including a model provided by
-[Racer](http://github.com/derbyjs/racer), a template and styles based view, and controller
+[Racer](https://github.com/derbyjs/racer), a template and styles based view, and controller
 code with application logic and routes (which map URLs to actions).
 
 On the server, apps provide a router middleware for Express. One or more app

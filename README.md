@@ -1,6 +1,6 @@
 derby-site
 =============
-The [derbyjs.com](http://derbyjs.com/) site, built with Derby.
+The [derbyjs.com](//derbyjs.com/) site, built with Derby.
 
 Installation
 ------------

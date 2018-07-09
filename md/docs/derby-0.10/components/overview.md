@@ -21,7 +21,7 @@ Each component has a scoped model in its own namespace. Data or references to th
 
 This example shows some of the features of components. It is implemented using [derby-standalone](https://github.com/derbyjs/derby-standalone), a client-side only version of Derby that allows for prototyping in environments like CodePen. 
 
-<p data-height="200" data-theme-id="12888" data-slug-hash="JpxGn" data-default-tab="result" data-user="enjalot" class='codepen'>See the Pen <a href='http://codepen.io/enjalot/pen/JpxGn/'>Derby-standalone example</a> by Ian (<a href='http://codepen.io/enjalot'>@enjalot</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<p data-height="200" data-theme-id="12888" data-slug-hash="JpxGn" data-default-tab="result" data-user="enjalot" class='codepen'>See the Pen <a href='https://codepen.io/enjalot/pen/JpxGn/'>Derby-standalone example</a> by Ian (<a href='https://codepen.io/enjalot'>@enjalot</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
 There is a slight difference in the way templates are defined in derby-standalone, so refer to the [namespaces and files](views/namespaces-and-files) documentation when implementing components in a regular Derby project.
@@ -29,4 +29,4 @@ There is a slight difference in the way templates are defined in derby-standalon
 
 ## Web Components
 
-While Derby components are not built on the emerging [Web Component](http://webcomponents.org/) ecosystem, they are designed with the future in mind and we look forward to embracing the standards that emerge.
+While Derby components are not built on the emerging [Web Component](https://webcomponents.org/) ecosystem, they are designed with the future in mind and we look forward to embracing the standards that emerge.

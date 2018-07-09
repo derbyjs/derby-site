@@ -29,7 +29,7 @@ Store is singular JavaScript object on the server for managing database connecti
 
 ### What is OT?
 
-OT - [Operational Transformation](http://en.wikipedia.org/wiki/Operational_transformation) - is a conflict resolution technique used in [ShareJS](http://sharejs.org). The main idea is to resolve conflicts created by multiple clients trying to modify the same data in a distributed system.
+OT - [Operational Transformation](https://en.wikipedia.org/wiki/Operational_transformation) - is a conflict resolution technique used in [ShareJS](http://sharejs.org). The main idea is to resolve conflicts created by multiple clients trying to modify the same data in a distributed system.
 OT is different for different data types. ShareJS uses a json data type in Racer. There is also a text data type in ShareJS and plans to add a rich text data type.
 Using Derby you can treat OT like black box with some magic. ShareJS will merge operations for arrays, strings, number increments 'out of the box', but if two clients make set operation for same data at same time (data with same version) there is no way to capture this correcly and one of two operations will be lost. If it is critical (and you have a big head), you can create application specific data types for ShareJS.
 

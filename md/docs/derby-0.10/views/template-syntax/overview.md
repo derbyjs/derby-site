@@ -1,6 +1,6 @@
 # Template syntax
 
-Derby’s template syntax is loosely based on [Handlebars](http://handlebarsjs.com/), a semantic templating language that extends [Mustache](http://mustache.github.io/mustache.5.html).
+Derby’s template syntax is loosely based on [Handlebars](https://handlebarsjs.com/), a semantic templating language that extends [Mustache](https://mustache.github.io/mustache.5.html).
 
 Semantic templates encourage separation of logic from presentation. Instead of arbitrary code, there are a small set of template expressions. During rendering, data are passed to the template, and template expressions are replaced with the appropriate values. In Derby, this data comes from the model.
 

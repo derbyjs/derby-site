@@ -18,10 +18,10 @@ FAQ по Derby 0.6 (на русском)
 
 Проработать туториалы:
 
-1. [Изучаем Derby 0.6, пример #1](http://habrahabr.ru/post/221027/)
-2. [Изучаем Derby 0.6, пример #2](http://habrahabr.ru/post/221703/)
-3. [Изучаем Derby 0.6, пример #3](http://habrahabr.ru/post/222399/)
-4. [Введине в компоненты derby 0.6](http://habrahabr.ru/post/224831/)
+1. [Изучаем Derby 0.6, пример #1](https://habrahabr.ru/post/221027/)
+2. [Изучаем Derby 0.6, пример #2](https://habrahabr.ru/post/221703/)
+3. [Изучаем Derby 0.6, пример #3](https://habrahabr.ru/post/222399/)
+4. [Введине в компоненты derby 0.6](https://habrahabr.ru/post/224831/)
 
 Далее изучить примеры из [derby-examples](https://github.com/derbyjs/derby-examples)
 
@@ -32,7 +32,7 @@ FAQ по Derby 0.6 (на русском)
 2. nodejs — нужно понимать commonjs-модули, npm, знать, как запустить стандартный http-сервер;
 3. expressjs — приложения derby строятся поверх приложений express, поэтому хорошо бы иметь об экспресс и серверном js какие-то базовые знания (подключение модулей, обработка запроссов и т.д.)
 
-По nodejs и expressjs я бы посоветовал пройти курс [Ильи Кантора](http://learn.javascript.ru/nodejs-screencast) с обязательной практикой.
+По nodejs и expressjs я бы посоветовал пройти курс [Ильи Кантора](https://learn.javascript.ru/nodejs-screencast) с обязательной практикой.
 
 ---
 ## Запросы
@@ -457,7 +457,7 @@ app.proto.refresh = function(){
 
 Необходимо в функцию-обработчик события передать дополнительный, предопределенный параметр $event
 ```html
-<a href="http://derbyjs.com" on-click="click($event)">
+<a href="//derbyjs.com" on-click="click($event)">
 ```
 ```js
 app.proto.click = function(e) {
@@ -472,7 +472,7 @@ app.proto.click = function(e) {
 
 Необходимо в функцию-обработчик события передать дополнительный, предопределенный параметр $element
 ```html
-<a href="http://derbyjs.com" on-click="click($event, $element)">
+<a href="//derbyjs.com" on-click="click($event, $element)">
 ```
 ```js
 app.proto.click = function(e, el) {

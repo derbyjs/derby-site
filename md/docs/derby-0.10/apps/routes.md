@@ -1,13 +1,13 @@
 # Routes
 
-Routes map URL patterns to actions. Derby routes are powered by [Express](http://expressjs.com/), which is similar to [Sinatra](http://www.sinatrarb.com/). Within apps, routes are defined via the `get`, `post`, `put`, and `del` methods of the app created by `derby.createApp()`.
+Routes map URL patterns to actions. Derby routes are powered by [Express](https://expressjs.com/), which is similar to [Sinatra](http://www.sinatrarb.com/). Within apps, routes are defined via the `get`, `post`, `put`, and `del` methods of the app created by `derby.createApp()`.
 
 > `app.get ( routePattern, callback(page, model, params, next) )`  
 > `app.post ( routePattern, callback(page, model, params, next) )`  
 > `app.put ( routePattern, callback(page, model, params, next) )`  
 > `app.del ( routePattern, callback(page, model, params, next) )`  
 >
-> * `pattern`: A string containing a literal URL, an Express route pattern, or a regular expression. See [Express's routing documentation](http://expressjs.com/guide/routing.html) for more info.
+> * `pattern`: A string containing a literal URL, an Express route pattern, or a regular expression. See [Express's routing documentation](https://expressjs.com/guide/routing.html) for more info.
 >
 > * `callback`: Function invoked when a request for a URL matching the appropriate HTTP method and pattern is received. Note that this function is called both on the server and the client.
 >
@@ -21,7 +21,7 @@ Routes map URL patterns to actions. Derby routes are powered by [Express](http:/
 
 Express is used directly on the server. On the client, Derby includes Express's route matching module. When a link is clicked or a form is submitted, Derby first tries to render the new URL on the client. AJAX requests will still go directly to the server.
 
-Derby can also capture form submissions client-side. It provides support for `post`, `put`, and `del` HTTP methods using the same hidden form field [override approach](http://expressjs.com/guide.html#http-methods) as Express.
+Derby can also capture form submissions client-side. It provides support for `post`, `put`, and `del` HTTP methods using the same hidden form field [override approach](https://expressjs.com/guide.html#http-methods) as Express.
 
 ## Page
 
@@ -44,12 +44,12 @@ Unlike Express, which provides direct access to the `req` and `res` objects crea
 >
 > * `status`: *(optional)* Number specifying HTTP status code. Defaults to 302 on the server. Has no effect on the client.
 
-[expressRedirect]: http://expressjs.com/guide.html#res.redirect()
+[expressRedirect]: https://expressjs.com/guide.html#res.redirect()
 
 
 ### Middleware
 
-It is possible to directly use [express middleware](http://expressjs.com/guide/using-middleware.html) and get access to a [Racer model](../models#methods).
+It is possible to directly use [express middleware](https://expressjs.com/guide/using-middleware.html) and get access to a [Racer model](../models#methods).
 
 
 ## History
