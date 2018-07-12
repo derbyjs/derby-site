@@ -31,6 +31,7 @@ cd ~/derby-examples/sink
 coffee server.coffee
 ```
 
+<!--
 ## Boilerplate
 
 If you want to start from a blank slate, [generator-derby](https://github.com/derbyparty/generator-derby) is a handy tool for creating a DerbyJS boilerplate.
@@ -48,6 +49,7 @@ yo derby
 # or create a coffeescript based app:
 yo derby --coffee
 ```
+-->
 
 ---
 
