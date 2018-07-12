@@ -57,7 +57,12 @@ expressApp.get('/docs', function(req, res, next) {
 
 var outlineData = require('./outline').generate(app);
 expressApp.get('/*', function(req, res, next) {
-  var ns = req.params[0].replace(/\//g, ':');
+  var ns = req.params[0]
+    // Ignore trailing slashes in URL pathnames
+    .replace(/\/$/, '')
+    // Look for a view with a name corresponding to the URL path. View names
+    // use colons as separators rather than slashes
+    .replace(/\//g, ':');
   if (!app.views.find(ns)) return next();
   var page = app.createPage(req, res, next);
   page.model.setEach('_page', outlineData);
