@@ -36,7 +36,7 @@ address, **not** the public address. Once you have done this, you can run the
 following command to create the stack from the `./deploy` directory:
 
 ```shell
-docker stack deploy --compose-file docker-compose.yaml derbyjs
+docker stack deploy --compose-file ~/derby-site/deploy/docker-compose.yaml derbyjs
 ```
 
 This will create all necessary resources. If you are making changes to the
