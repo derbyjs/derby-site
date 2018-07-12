@@ -26,7 +26,7 @@ node server.js
 The examples written in CoffeeScript are meant to be run via the coffee command:
 
 ```bash
-npm install -g coffee-script
+npm install -g coffeescript
 cd ~/derby-examples/sink
 coffee server.coffee
 ```
