@@ -12,7 +12,7 @@ There are several examples in the [derby-examples](https://github.com/derbyjs/de
 You can clone the repo and install:
 ```bash
 git clone https://github.com/derbyjs/derby-examples.git
-cd ~/derby-examples
+cd derby-examples
 npm install
 ```
 
