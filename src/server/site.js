@@ -31,11 +31,11 @@ var TOPLEVEL = [
   "apps",
   "template-syntax"
 ]
-app.proto.gitLink = function(render) {
-  var url = "https://github.com/derbyjs/derby-site/blob/master/md/"
+app.proto.gitHubEditLink = function(render) {
+  var url = "https://github.com/derbyjs/derby-site/edit/master/md/"
   url += render.url
   var ns = render.ns.split(":")
-  if(TOPLEVEL.indexOf(ns[ns.length-1]) >= 0) {
+  if (TOPLEVEL.indexOf(ns[ns.length-1]) >= 0) {
     url += "/overview"
   }
   url += ".md"
