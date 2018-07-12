@@ -56,13 +56,6 @@ yo derby --coffee
 Be sure to check out the [Docs](docs) to get a deeper understanding of how DerbyJS makes developing apps easier!
 See more links in the [Resources](resources) section.
 
-
-## Tutorials
-
-[Introductory tutorials](http://decisionmapper.com/tutorials) take you from getting started to a multi-player game.
-
-[Add authentication](http://www.glkn.ru/blog/2014/10/26/creating-private-todos-app/) to a simple Todo app.
-
 ---
 
 ## Environment
