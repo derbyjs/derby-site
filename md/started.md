@@ -1,4 +1,4 @@
-## Getting Started
+## Getting started
 
 <p class="lead">
 In order to get started writing your first DerbyJS app, you need to have Node.js and MongoDB installed. While DerbyJS is written to support any database, the MongoDB adapter is the most complete. If you don't have those, <a href="#environment">get setup!</a>
@@ -6,7 +6,7 @@ In order to get started writing your first DerbyJS app, you need to have Node.js
 
 ---
 
-## Run Examples
+## Run examples
 
 There are several examples in the [derby-examples](https://github.com/derbyjs/derby-examples) repository.
 You can clone the repo and install:
