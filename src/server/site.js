@@ -1,3 +1,6 @@
+var path = require('path');
+var glob = require('glob');
+var parseUrl = require('url').parse;
 var derby = require('derby');
 var express = require('express');
 var app = derby.createApp('site', __filename);
@@ -12,8 +15,8 @@ app.loadStyles(__dirname + '/../../styles/app');
 // check if the link matches the first parts of the page's namespace
 // so that we can highlight 'docs' when in any sub page
 app.proto.linkMatch = function(url, render) {
-  var segments = url.split("/");
-  var ns = render.ns.split(":");
+  var segments = url.split('/');
+  var ns = render.ns.split(':');
   var i = 1;
   for(i; i < segments.length; i++) {
     if(segments[i] !== ns[i-1]) return false;
@@ -21,27 +24,25 @@ app.proto.linkMatch = function(url, render) {
   return true;
 }
 
-// probably a clever way to do this automatically like in ./outline.js
-// but its not straightforward without it knowing about the overview.md views
-var TOPLEVEL = [
-  "derby-0.10",
-  "views",
-  "models",
-  "components",
-  "apps",
-  "template-syntax"
-]
-app.proto.gitHubEditLink = function(render) {
-  var url = "https://github.com/derbyjs/derby-site/edit/master/md/"
-  url += render.url
-  var ns = render.ns.split(":")
-  if (TOPLEVEL.indexOf(ns[ns.length-1]) >= 0) {
-    url += "/overview"
+// On startup, find `overview.md` files, which by convention are used for
+var IS_OVERVIEW = (function() {
+  var mdDirectory = path.resolve(__dirname + '../../../md');
+  var overviewFiles = glob.sync('**/overview.md', {cwd: mdDirectory});
+  var map = {};
+  for (var i = 0; i < overviewFiles.length; i++) {
+    var overviewUrl = '/' + path.dirname(overviewFiles[i]);
+    map[overviewUrl] = true;
   }
-  url += ".md"
-  return url
-}
-
+  return map;
+})();
+app.proto.gitHubEditLink = function(url) {
+  var pathname = parseUrl(url).pathname;
+  var editLink = 'https://github.com/derbyjs/derby-site/edit/master/md' + pathname;
+  if (IS_OVERVIEW[pathname]) {
+    editLink += '/overview';
+  }
+  return editLink + '.md';
+};
 
 
 var expressApp = module.exports = express();

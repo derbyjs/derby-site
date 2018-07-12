@@ -11,6 +11,7 @@
     "derby": "^0.10.0",
     "derby-stylus": "^0.3.0",
     "express": "^4.16.3",
+    "glob": "^7.1.2",
     "highlight.js": "^9.11.0",
     "marked": "^0.4.0",
     "serve-favicon": "^2.5.0"
