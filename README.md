@@ -20,26 +20,29 @@ To run the site locally:
 npm start
 ```
 
-Deployment
---------------
-
-You can use `docker-compose` to run the entire Derby site. To do this,
+To run the entire stack locally, you can use `docker-compose`. To do this,
 simply run `docker-compose up` from the `./deploy` directory. To change the
-underlying versions of `derby-site` or `derby-examples`, you can either set
-your environment variables or update the `.env` file in the same directory.
+underlying versions of `derby-site` or `derby-examples`, simply adjust the tags
+for the `image`.
 
-For example, to update the `derby-site` to `2018-07-08`, you could run the
-following command:
+Production
+----------
+
+The Derby site can operate using the Docker Compose or, more ideally, Docker
+Swarm. The use Swarm, you must first initialize a swarm cluster. To do this,
+simply run `docker swarm init`. If you are prompted to include the
+`--advertise-addr` parameter, make sure this matches the instances **local** IP
+address, **not** the public address. Once you have done this, you can run the
+following command to create the stack from the `./deploy` directory:
 
 ```shell
-$ DERBY_SITE_TAG=2018-07-08 docker-compose up
-deploy_derby_examples_1 is up-to-date
-Recreating deploy_derby_site_1 ...
-deploy_traefik_1 is up-to-date
-deploy_redis_1 is up-to-date
-deploy_mongo_1 is up-to-date
-Recreating deploy_derby_site_1 ... done
+docker stack deploy --compose-file docker-compose.yaml derbyjs
 ```
 
-Alternatively, you can edit the value of `DERBY_SITE_TAG` in the `.env` file,
-then run `docker-compose up -d`.
+This will create all necessary resources. If you are making changes to the
+configuration or want to update to a new version, you can simply edit the
+`docker-compose.yaml` file and run the command listed above again. This will
+initiate a rolling update.
+
+Note that the only container utilizing rolling updates is the `derby-site`
+container.

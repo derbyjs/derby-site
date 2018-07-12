@@ -3,29 +3,41 @@ version: "3"
 services:
   mongo:
     image: mongo:3.6
-    restart: always
     ports:
       - "27017:27017"
+    networks:
+      - derbyjs_overlay
 
   redis:
     image: redis:3
-    restart: always
     ports:
       - "6379:6379"
+    networks:
+      - derbyjs_overlay
 
   derby_site:
-    image: derbyjs/derby-site:${DERBY_SITE_TAG}
-    restart: always
+    image: derbyjs/derby-site:2018-07-11
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 1
+        delay: 10s
     ports:
-      - "4000:4000" 
+      - "4000:4000"
     labels:
-      traefik.enable: true
+      traefik.enable: "true"
       traefik.frontend.rule: PathPrefix:/
       traefik.priority: 100
+    networks:
+      - derbyjs_overlay
 
   derby_examples:
-    image: derbyjs/derby-examples:${DERBY_EXAMPLES_TAG}
-    restart: always
+    image: derbyjs/derby-examples:2018-07-11
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 1
+        delay: 10s
     ports:
       - "8001:8001"
       - "8002:8002"
@@ -40,7 +52,7 @@ services:
       MONGO_HOST: mongo
       REDIS_HOST: redis
     labels:
-      traefik.enable: true
+      traefik.enable: "true"
       traefik.charts.frontend.rule: Host:charts.derbyjs.com
       traefik.charts.port: 8001
       traefik.chat.frontend.rule: Host:chat.derbyjs.com
@@ -59,23 +71,29 @@ services:
       traefik.widgets.port: 8008
       traefik.render.frontend.rule: Host:render.derbyjs.com
       traefik.render.port: 8009
+    networks:
+      - derbyjs_overlay
 
   traefik:
     image: traefik:1.6-alpine
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 1
+        delay: 10s
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    ports: 
+    ports:
       - "0.0.0.0:8080:80"
     command:
       - --api=true
+      - --ping=true
+      - --ping.entrypoint=http
       - --docker
       - --docker.exposedbydefault=false
+    networks:
+      - derbyjs_overlay
 
 networks:
-  default:
-    driver: bridge
-    driver_opts:
-      com.docker.network.bridge.host_binding_ipv4: "127.0.0.1"
-      com.docker.network.driver.mtu: "1500"
-      com.docker.network.bridge.enable_icc: "true"
-      com.docker.network.bridge.enable_ip_masquerade: "true"
+  derbyjs_overlay:
+    driver: overlay
