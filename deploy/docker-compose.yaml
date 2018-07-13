@@ -72,6 +72,9 @@ services:
       - "8007:8007"
       - "8008:8008"
       - "8009:8009"
+    depends_on:
+      - mongo
+      - redis
     environment:
       MONGO_HOST: mongo
       REDIS_HOST: redis

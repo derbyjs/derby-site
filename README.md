@@ -24,11 +24,20 @@ To run the entire stack locally, you can use `docker-compose`. To do this,
 simply run:
 
 ```shell
-SWARM_MODE=false docker-compose up
+npm run compose-up
 ```
 
-from the `./deploy` directory. To change the underlying versions of `derby-site`
-or `derby-examples`, simply adjust the tags for the `image`.
+Similarly, `npm run compose-stop` will stop all containers and
+`npm run compose-down` will stop and remove all containers and networks created.
+
+You can also use Docker Compose directly by running the following command:
+
+```shell
+SWARM_MODE=false docker-compose -f ./deploy/docker-compose.yaml up
+```
+
+To change the underlying versions of `derby-site` or `derby-examples`, simply
+adjust the tags for the `image`.
 
 Production
 ----------
@@ -39,6 +48,13 @@ simply run `docker swarm init`. If you are prompted to include the
 `--advertise-addr` parameter, make sure this matches the instances **local** IP
 address, **not** the public address. Once you have done this, you can run the
 following command to create the stack from the `./deploy` directory:
+
+```shell
+npm run deploy
+```
+
+Alternatively, you can run this directly using the Docker CLI with the following
+command:
 
 ```shell
 SWARM_MODE=true docker stack deploy --compose-file docker-compose.yaml derbyjs

@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compose-up": "SWARM_MODE=false docker-compose -f ./deploy/docker-compose.yaml up -d && exit 0",
+    "compose-stop": "SWARM_MODE=false docker-compose -f ./deploy/docker-compose.yaml stop && exit 0",
+    "compose-down": "SWARM_MODE=false docker-compose -f ./deploy/docker-compose.yaml down && exit 0",
+    "deploy": "SWARM_MODE=true docker stack deploy --compose-file ./deploy/docker-compose.yaml derbyjs && exit 0"
   },
   "dependencies": {
     "derby": "^0.10.0",
