@@ -7,7 +7,7 @@ Installation
 
 Clone this repository and install the dependencies:
 
-```
+```shell
 npm install
 ```
 
@@ -16,14 +16,28 @@ Development
 
 To run the site locally:
 
-```
+```shell
 npm start
 ```
 
 To run the entire stack locally, you can use `docker-compose`. To do this,
-simply run `docker-compose up` from the `./deploy` directory. To change the
-underlying versions of `derby-site` or `derby-examples`, simply adjust the tags
-for the `image`.
+simply run:
+
+```shell
+npm run compose-up
+```
+
+Similarly, `npm run compose-stop` will stop all containers and
+`npm run compose-down` will stop and remove all containers and networks created.
+
+You can also use Docker Compose directly by running the following command:
+
+```shell
+SWARM_MODE=false docker-compose -f ./deploy/docker-compose.yaml up
+```
+
+To change the underlying versions of `derby-site` or `derby-examples`, simply
+adjust the tags for the `image`.
 
 Production
 ----------
@@ -36,7 +50,14 @@ address, **not** the public address. Once you have done this, you can run the
 following command to create the stack from the `./deploy` directory:
 
 ```shell
-docker stack deploy --compose-file ~/derby-site/deploy/docker-compose.yaml derbyjs
+npm run deploy
+```
+
+Alternatively, you can run this directly using the Docker CLI with the following
+command:
+
+```shell
+SWARM_MODE=true docker stack deploy --compose-file docker-compose.yaml derbyjs
 ```
 
 This will create all necessary resources. If you are making changes to the

@@ -22,12 +22,15 @@ services:
       update_config:
         parallelism: 1
         delay: 10s
+      labels: &derby_site_labels
+        traefik.enable: "true"
+        traefik.docker.network: derbyjs_derbyjs_overlay
+        traefik.frontend.rule: PathPrefix:/
+        traefik.port: "4000"
+        traefik.priority: "100"
     ports:
       - "4000:4000"
-    labels:
-      traefik.enable: "true"
-      traefik.frontend.rule: PathPrefix:/
-      traefik.priority: 100
+    labels: *derby_site_labels
     networks:
       - derbyjs_overlay
 
@@ -38,6 +41,27 @@ services:
       update_config:
         parallelism: 1
         delay: 10s
+      labels: &derby_examples_labels
+        traefik.enable: "true"
+        traefik.docker.network: derbyjs_derbyjs_overlay
+        traefik.charts.frontend.rule: Host:charts.derbyjs.com
+        traefik.charts.port: "8001"
+        traefik.chat.frontend.rule: Host:chat.derbyjs.com
+        traefik.chat.port: "8002"
+        traefik.codemirror.frontend.rule: Host:codemirror.derbyjs.com
+        traefik.codemirror.port: "8003"
+        traefik.directory.frontend.rule: Host:directory.derbyjs.com
+        traefik.directory.port: "8004"
+        traefik.hello.frontend.rule: Host:hello.derbyjs.com
+        traefik.hello.port: "8005"
+        traefik.sink.frontend.rule: Host:sink.derbyjs.com
+        traefik.sink.port: "8006"
+        traefik.todos.frontend.rule: Host:todos.derbyjs.com
+        traefik.todos.port: "8007"
+        traefik.widgets.frontend.rule: Host:widgets.derbyjs.com
+        traefik.widgets.port: "8008"
+        traefik.render.frontend.rule: Host:render.derbyjs.com
+        traefik.render.port: "8009"
     ports:
       - "8001:8001"
       - "8002:8002"
@@ -48,29 +72,13 @@ services:
       - "8007:8007"
       - "8008:8008"
       - "8009:8009"
+    depends_on:
+      - mongo
+      - redis
     environment:
       MONGO_HOST: mongo
       REDIS_HOST: redis
-    labels:
-      traefik.enable: "true"
-      traefik.charts.frontend.rule: Host:charts.derbyjs.com
-      traefik.charts.port: 8001
-      traefik.chat.frontend.rule: Host:chat.derbyjs.com
-      traefik.chat.port: 8002
-      traefik.codemirror.frontend.rule: Host:codemirror.derbyjs.com
-      traefik.codemirror.port: 8003
-      traefik.directory.frontend.rule: Host:directory.derbyjs.com
-      traefik.directory.port: 8004
-      traefik.hello.frontend.rule: Host:hello.derbyjs.com
-      traefik.hello.port: 8005
-      traefik.sink.frontend.rule: Host:sink.derbyjs.com
-      traefik.sink.port: 8006
-      traefik.todos.frontend.rule: Host:todos.derbyjs.com
-      traefik.todos.port: 8007
-      traefik.widgets.frontend.rule: Host:widgets.derbyjs.com
-      traefik.widgets.port: 8008
-      traefik.render.frontend.rule: Host:render.derbyjs.com
-      traefik.render.port: 8009
+    labels: *derby_examples_labels
     networks:
       - derbyjs_overlay
 
@@ -91,6 +99,7 @@ services:
       - --ping.entrypoint=http
       - --docker
       - --docker.exposedbydefault=false
+      - --docker.swarmmode=${SWARM_MODE}
     networks:
       - derbyjs_overlay
 
