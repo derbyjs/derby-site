@@ -54,7 +54,7 @@ expressApp.get('/', function(req, res, next) {
 
 expressApp.get('/docs/derby-0.6/*', function(req, res, next) {
   var subpath = req.params[0];
-  res.redirect(301, '/docs/derby-0.10' + subpath);
+  res.redirect(301, '/docs/derby-0.10/' + subpath);
 });
 
 expressApp.get('/docs', function(req, res, next) {
