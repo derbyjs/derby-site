@@ -7,22 +7,22 @@ This behavior is helpful, since multiple parts of an application may need the sa
 Contexts provide a way to track a group of related fetches and subscribes. In addition, they provide an `unload()` method that unfetches and unsubscribes the corresponding number of times. By default, all fetches and subscribes happen within the `'root'` context. Additional context names may be used to isolate the loading and unloading of data within the same model for independent purposes.
 
 > `childModel = model.context(name)`
-> * `name` A string uniquely identifying a context. Calling model.context again with the same name string will refer to the same context. By default, models have the context name 'root'
+> * `name` A string uniquely identifying a context. Calling `model.context()` again with the same string will refer to the same context. By default, models have the context name `'root'`
 > * `childModel` Returns a model with a context of `name`, overriding the parent model's context name. All fetch, subscribe, and unload actions performed on this childModel will have this context
 
 > `model.unload([name])`
-> * `name` *(optional)* Unfetch and unsubscribe from all documents and queries for the corresponding number of times they were fetched and subscribed. This will end subscriptions and remove the data from the model if no remaining fetches or subscribes hold the data in the model under a different context. Defaults to the current model context name. Specifying a `name` argument overrides the default.
+> * `name` *(optional)* Unfetch and unsubscribe from all documents and queries for the corresponding number of times they were fetched and subscribed. This will end subscriptions and remove the data from the model if no remaining fetches or subscribes hold the data in the model under a different context. Defaults to the current model context name. Specifying a `name` argument overrides the default
 
 > `model.unloadAll()`
-> * Unload each context within a model. Results in all subscriptions and data being removed from a model
+> * Unload each context within a model. Results in all remotely loaded data being removed from a model. (Data within [local collections](paths#local-and-remote-collections) will remain.)
 
 ## Usage example
 
 ```js
 function openTodos(model) {
-  // Create a model that inherits from the current model and sets the load context
+  // Create a model with a load context inheriting from the current model
   var dialogModel = model.context('todosDialog');
-  // Load data with any of the normal methods using this model
+  // Load data
   var userId = dialogModel.scope('_session.userId').get();
   var user = dialogModel.scope('users.' + userId);
   var todosQuery = dialogModel.query('todos', {creatorId: userId});
@@ -35,7 +35,7 @@ function openTodos(model) {
 
 function closeTodos(model) {
   model.set('showTodos', false);
-  // Use the same context name to perform the reverse of any load operations
+  // Use the same context name to unsubscribe
   model.unload('todosDialog');
 }
 ```
