@@ -66,6 +66,8 @@ Components and elements can be set as a property on the current controller with 
 <button on-click="page.flash.show('Clicked')"></button>
 ```
 
+<!-- add documentation for emit delayable -->
+
 ## Component event arguments
 
 Component events implicitly pass through any emitted arguments. These arguments are added after any explicitly specified arguments in the expression.
