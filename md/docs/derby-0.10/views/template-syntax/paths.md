@@ -25,58 +25,9 @@ var userId = model.get('userId');
 model.get('users.' + userId);
 ```
 
-The `unescaped` keyword may be used to render HTML without escaping. This should *very rarely* be used in practice. There are many ways of dynamically creating views, and unescaped HTML is unsafe, is typically slower, and is rarely the best way to do things in Derby.
-
-```derby
-<!-- Avoid unescaped HTML unless you really know what you are doing -->
-<div>{{unescaped rawHtml}}</div>
-```
-
-## Relative paths
-
-Relative view paths begin with `this`. They refer to the expression in the containing block:
-
-```derby
-{{with user}}
-  <h1>{{this.name}}</h1>
-  <h2>{{this.headline}}</h2>
-  {{if this.friendList}}
-    <h3>Friends</h3>
-    <ul>
-      {{each this}}
-        <li>{{this.name}}</li>
-      {{/each}}
-    </ul>
-  {{/if}}
-{{/with}}
-```
-
-## Aliases
-
-Aliases label path expressions. They must begin with a hash (`#`) character to make it more obvious whether a path is an alias or a model value. Each of the block types support defining aliases with the `as` keyword.
-
-Aliases are more explicit than relative paths and make it possible to refer to the scope of a parent block.
-
-```derby
-{{with user as #user}}
-  <h1>{{#user.name}}</h1>
-  <h2>{{#user.headline}}</h2>
-  {{if #user.friendList as #friendList}}
-    <!-- Note that we can refer to the parent scope -->
-    <h3>Friends of {{#user.name}}</h3>
-    <ul>
-      {{each #friendList as #friend}}
-        <li>{{#friend.name}}</li>
-      {{/each}}
-    </ul>
-  {{/if}}
-{{/with}}
-```
-
 ## Attributes
 
-Views can be passed values as attributes. These attributes are accessed via paths that start with an at sign (`@`). By default, there is an `@content`
-attribute for the content within the view tag.
+Values are passed into views with attributes. These attributes are accessed via paths that start with an at sign (`@`). In addition, there is an `@content` attribute created for any content inside of a view tag.
 
 ```derby
 <Body:>
@@ -95,9 +46,52 @@ attribute for the content within the view tag.
   </li>
 ```
 
+## Aliases
+
+Aliases label path expressions. They must begin with a hash (`#`) character to make it more obvious whether a path is an alias or a model value. Each of the block types support defining aliases with the `as` keyword.
+
+Aliases make it possible to refer to the scope of the current block or a parent block.
+
+```derby
+{{with user as #user}}
+  <h1>{{#user.name}}</h1>
+  <h2>{{#user.headline}}</h2>
+  {{if #user.friendList as #friendList}}
+    <!-- Note that we can refer to the parent scope -->
+    <h3>Friends of {{#user.name}}</h3>
+    <ul>
+      {{each #friendList as #friend}}
+        <li>{{#friend.name}}</li>
+      {{/each}}
+    </ul>
+  {{/if}}
+{{/with}}
+```
+
+## Relative paths - DEPRECATED
+
+Relative view paths begin with `this`. They refer to the expression in the containing block.
+
+Aliases are preferred to relative paths, as they are more clear. Relative paths came from implementing a syntax inspired by Handlebars, but Derby has been moving toward increased consistency with JavaScript, and the alternate use of the keyword `this` is confusing. Expect that this feature will be removed in a future version of Derby.
+
+```derby
+{{with user}}
+  <h1>{{this.name}}</h1>
+  <h2>{{this.headline}}</h2>
+  {{if this.friendList}}
+    <h3>Friends</h3>
+    <ul>
+      {{each this}}
+        <li>{{this.name}}</li>
+      {{/each}}
+    </ul>
+  {{/if}}
+{{/with}}
+```
+
 ## Controller properties
 
-Components and DOM elements can be set as properties of the current controller for easy programatic access
+Components and DOM elements can be set as properties of the current controller for easy programmatic access
 
 ```derby
 <index:>
