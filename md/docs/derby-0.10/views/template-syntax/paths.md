@@ -27,7 +27,7 @@ model.get('users.' + userId);
 
 ## Attributes
 
-Values are passed into views with attributes. These attributes are accessed via paths that start with an at sign (`@`). In addition, there is an `@content` attribute created for any content inside of a view tag.
+Values are passed into views with attributes. Within the view, these values are accessed via paths that start with an at sign (`@`). In addition, there is an `@content` attribute created for any content inside of a view tag.
 
 ```derby
 <Body:>
@@ -45,6 +45,8 @@ Values are passed into views with attributes. These attributes are accessed via 
     {{/if}}
   </li>
 ```
+
+See [View attributes](view-attributes) for additional detail on passing data to views.
 
 ## Aliases
 
@@ -87,22 +89,4 @@ Aliases are preferred to relative paths, as they are more clear. Relative paths 
     </ul>
   {{/if}}
 {{/with}}
-```
-
-## Controller properties
-
-Components and DOM elements can be set as properties of the current controller for easy programmatic access
-
-```derby
-<index:>
-  <div as='container'>
-    <modal as='modal'></modal>
-  </div>
-```
-
-```js
-// DOM element
-this.container.querySelectorAll("*");
-// component
-this.modal.close();
 ```

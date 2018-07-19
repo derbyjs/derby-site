@@ -1,6 +1,6 @@
 # Literals
 
-Derby supports creating JavaScript literals in templates. The syntax is identical to JavaScript, except that identifiers within literals are parsed as [view paths](paths) instead of JavaScript variables. Derby parses template expressions with Esprima, so its coverage of JavaScript expression syntax is comprehensive. Technically, `undefined` is an unmodifiable global property and not a literal value. For simplicity, Derby treats it as a literal.
+Derby supports creating JavaScript literals in templates. The syntax is identical to JavaScript, except that identifiers within literals are parsed as [view paths](paths) instead of JavaScript variables. Derby parses template expressions with Esprima, so its coverage of JavaScript expression syntax is comprehensive.
 
 ## Simple literals
 
@@ -38,8 +38,8 @@ It is possible to iterate over object literals in template expressions. In most 
 
 ```derby
 <ul>
-  {{each ['A', 'B', 'C']}}
-    <li>{{this}}</li>
+  {{each ['A', 'B', 'C'] as #letter}}
+    <li>{{#letter}}</li>
   {{/each}}
 </ul>
 
@@ -55,8 +55,8 @@ Literals containing paths are created at render time and populated with the appr
 
 ```derby
 <ul>
-  {{each [first, 1, 2, 3]}}
-    <li>{{this}}</li>
+  {{each [first, 1, 2, 3] as #item}}
+    <li>{{#item}}</li>
   {{/each}}
 </ul>
 

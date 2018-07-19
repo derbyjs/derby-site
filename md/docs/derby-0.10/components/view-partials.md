@@ -17,46 +17,7 @@ By default a view partial inherits the scope where it is instantiated.
 <my-partial:>
   i can render {{foo}} and {{#bar}}
 ```
-A view partial associated with a component follows the [component scope](scope) rules. A view partial used inside a component will inherit the scope of the scope of the component.
-
-### within
-
-There are times when you may want your partial to use the scope where it is used rather than where it is called. This is generally useful for meta-programming where a component author wants to allow the component user to define a custom representation. The `within` keyword lets you control this behavior.
-
-```derby
-<!-- usage -->
-<dropdown list="{{users}}">
-  <item within>
-    <!-- accessing #item which is only defined inside the dropdown component -->
-    <icon user-id="{{#item.id}}"> {{#item.name}}
-  </item>
-</dropdown>
-
-<index: attributes="item">
-  {{each @list as #item}}
-    {{@item}}
-  {{/each}}
-```
-
-> Example: [within attribute](https://codepen.io/enjalot/pen/bNxOmO?editors=101)
-
-> *Note - This example is using [derby-standalone](https://github.com/derbyjs/derby-standalone) which has a slightly different syntax for defining templates at the moment.*
-
-### inherit
-There are some cases where you would like to instantiate a component and pass along the attributes of the current controller. The inherit keyword will allow you to do this.
-
-```derby
-<index:>
-  {{@foo}}
-  <modal inherit></modal>
-
-<modal:>
-  {{@foo}}
-```
-
-> Example: [component inheritance](https://codepen.io/enjalot/pen/YPOdBY?editors=101)
-
-> *Note - This example is using [derby-standalone](https://github.com/derbyjs/derby-standalone) which has a slightly different syntax for defining templates at the moment.*
+A view partial associated with a component follows the [component scope](scope) rules. A view partial used inside a component will inherit the scope of the component.
 
 ### extend
 It is possible to override another component's functionality while preserving it's view.
