@@ -40,7 +40,7 @@ console.log(model.get('_page.green'));
 console.log(model.get('colors.green'));
 ```
 
-Racer also supports a special reference type created via `model.refList`. This type of reference is useful when a number of objects need to be rendered or manipulated as a list even though they are stored as properties of another object. This is also type of reference created by a query. A reference list supports the same mutator methods as an array, so it can be bound in a view template just like an array.
+Racer also supports a special reference type created via `model.refList`. This type of reference is useful when a number of objects need to be rendered or manipulated as a list even though they are stored as properties of another object. This is also the type of reference created by a query. A reference list supports the same mutator methods as an array, so it can be bound in a view template just like an array.
 
 > `scoped = model.refList(path, collection, ids, [options])`
 > * `path` The location at which to create a reference list. This must be underneath a [local collection](paths#local-and-remote-collections) (typically `_page`), since references must be declared per model
