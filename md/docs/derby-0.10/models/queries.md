@@ -18,7 +18,7 @@ Note that projections, which are used to limit the fields that a query returns, 
 
 ## Query results
 
-After a query is subscribed or fetched, its results can be returned directly via `query.get()`. It is also possible to to create a live-updating results set in the model via `query.ref()`.
+After a query is subscribed or fetched, its results can be returned directly via `query.get()`. It is also possible to create a live-updating results set in the model via `query.ref()`.
 
 > `results = query.get()`
 > * `results` Creates and returns an array of each of the document objects matching the query
