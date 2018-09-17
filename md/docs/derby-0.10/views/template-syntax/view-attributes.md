@@ -4,7 +4,7 @@ A `<view>` element or `{{view}}` expression renders a view in a particular locat
 
 In addition, to `is`, Derby treats the attributes `as`, `within`, `inherit`, `extend`, and attributes that begin with `on-` specially. These special attributes are described in below sections.
 
-Other attribute names are custom to a view or component, and they and are used to pass in data or options to a given view or component instance. We'll describe use of these custom attributes first.
+Other attribute names are custom to a view or component, and they are used to pass in data or options to a given view or component instance. We'll describe use of these custom attributes first.
 
 ## Custom view attributes
 
