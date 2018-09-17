@@ -67,3 +67,28 @@ initiate a rolling update.
 
 Note that the only container utilizing [rolling updates](https://docs.docker.com/engine/swarm/swarm-tutorial/rolling-update/) is the `derby-site`
 container.
+
+
+Build and Deploy
+----------------
+
+To build the DerbyJS Site, clone this repo locally as described above.
+
+Build a docker image with a tag containing today's date, and push to Docker Hub:
+```
+cd derby-site
+docker build -t derbyjs/derby-site .
+tag derbyjs/derby-site:latest derbyjs/derby-site:YYYY-MM-DD
+docker push derbyjs/derby-site:YYYY-MM-DD
+```
+
+Next, update the deployed tag specified in [/deploy/docker.compose.yaml](https://github.com/derbyjs/derby-site/blob/master/deploy/docker-compose.yaml). The tag is defined in `services: derbysite: image: derbyjs/derby-site:YYYY-MM-DD`, and it should be updated to the current date. Commit and push your changes to GitHub.
+
+Finally, SSH to the derby-site server:
+```
+ssh derbyjs-01.droplet.derbyjs.com
+```
+and run the command to update:
+```
+cd ~/derby-site/deploy/ && git pull && npm run deploy
+```
