@@ -65,5 +65,5 @@ configuration or want to update to a new version, you can simply edit the
 `docker-compose.yaml` file and run the command listed above again. This will
 initiate a rolling update.
 
-Note that the only container utilizing rolling updates is the `derby-site`
+Note that the only container utilizing [rolling updates](https://docs.docker.com/engine/swarm/swarm-tutorial/rolling-update/) is the `derby-site`
 container.
