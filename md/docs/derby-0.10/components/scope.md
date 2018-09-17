@@ -10,7 +10,7 @@ All paths in a components model are scoped to it's local context. There are no c
 The most direct way to get data into a component is to pass in a reference or a literal as an attribute. The type of data passed into an attribute will determine how it should be used, the following sections describe the various ways to use data passed in as an attribute.
 
 ### Scoped paths
-Passing in a reference is one of the most common ways to pass data into a component. The reference will be two-bound so updating the value in the component's model or in it's parent will trigger updates in either place.
+Passing in a reference is one of the most common ways to pass data into a component. The reference will be two-bound so updating the value in the component's model or in its parent will trigger updates in either place.
 
 ```derby
 <!-- usage -->
