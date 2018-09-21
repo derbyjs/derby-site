@@ -97,10 +97,13 @@ Definition:
 ```derby
 <!-- attributes and arrays can be declared in space separated lists -->
 <!-- arrays can specify a singular and plural name separated by a slash -->
-<tabs: tag="tabs" attributes="selectedIndex size" arrays="pane/panes">
+<tabs: tag="tabs" attributes="listIcon selectedIndex size" arrays="pane/panes">
   <ul class="tabs size-{{@size || 'medium'}}">
     {{each @panes as #pane, #i}}
-      <li class="{{if @selectedIndex === #i}}selected{{/if}}">{{#pane.title}}</li>
+      <li class="{{if @selectedIndex === #i}}selected{{/if}}">
+        <span>{{#pane.title}}</span>
+        {{listIcon}}
+      </li>
     {{/each}}
   </ul>
   {{@panes[@selectedIndex].content}}
@@ -112,6 +115,14 @@ Usage:
 <tabs selected-index="{{currentTab}}" panes="{{paneOptions}}"></tabs>
 
 <tabs>
+  <!-- An example of how views can be passed in via custom tabs. -->
+  <list-icon>
+    <div class="circle"></div>
+  </list-icon>
+  <!--
+    An example of how data can be passed in via custom tabs. Directly passing in
+    data through an HTML attribute is preferred over this.
+  -->
   <selected-index>{{0}}</selected-index>
   <pane title="First tab">Hello!</pane>
   <pane title="Second tab">Greetings.</pane>
