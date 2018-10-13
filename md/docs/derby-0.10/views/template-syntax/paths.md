@@ -22,7 +22,7 @@ model.get('user.name');
 model.get('user.bestFriends.0.name');
 
 var userId = model.get('userId');
-model.get('users.' + userId);
+model.get('users.' + userId + '.name');
 ```
 
 ## Attributes
