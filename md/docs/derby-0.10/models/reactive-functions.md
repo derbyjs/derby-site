@@ -4,17 +4,64 @@ Reactive functions provide a simple way to update a computed value whenever one 
 
 Reactive functions may be run any number of times, so they should be [pure functions](https://en.wikipedia.org/wiki/Pure_function). In other words, they should always return the same results given the same input arguments, and they should be side effect free. By default, the inputs to the function are retrieved directly from the model, so be sure not to modify any object or array input arguments. For example, slice an array input before you sort it. The output of the model function is deep cloned by default.
 
-To execute a model function, you then call `model.evaluate()` or `model.start()`. Evaluate runs a function once and returns the result, and start sets up event listeners that continually re-evaluate the function whenever any of its input or output paths are changed.
+To execute a model function, you then call `model.start()` or `model.evaluate()`.
+* `evaluate()` runs a function once and returns the result.
+* `start()` also sets up event listeners that continually re-evaluate the
+* function whenever any of its input or output paths are changed.
 
 > `value = model.start(path, inputPaths..., [options], fn)`
 > `value = model.evaluate(inputPaths..., [options], fn)`
-> * `path` The output path at which to set the value and keep it updated as input paths change. Can also be set if the model function defines a `set` method as well
-> * `inputPaths` One or more paths whose values will be retrieved from the model via `model.get()` and passed to the function as inputs. May also be set if the model function defines a `set` method
-> * `options:`
->   * `copy` Supports `'output'` (default), `'input'`, `'both'`, or `'none'`. Does a deep copy of the output object before it is set. `'output'` has no effect in evalutate, since it doesn't set the output in the model
->   * `mode` Supports `'diffDeep'` (default), `'diff'`, `'arrayDeep'`, or `'array'`. The method to use when setting. Has no effect in evaluate
-> * `fn`  A function or the name of a function defined via `model.fn()`
-> * `value` Returns the initial value computed by the function
+> * `path` - _string | ChildModel_ - The output path at which to set the value,
+>   keeping it updated as input paths change
+> * `inputPaths` - _(string | ChildModel)+_ - One or more paths whose values
+>   will be retrieved from the model and passed to the function as inputs
+> * `options` - _Object_ (optional)
+>   * `copy` - Controls automatic deep copying of the inputs and output of the
+>     function. _Model#evaluate never deep-copies output, since the return
+>     value is not set onto the model._
+>     - `'output'` (default) - Deep-copy the return value of the function
+>     - `'input'` - Deep-copy the inputs to the function
+>     - `'both'` - Deep-copy both inputs and output
+>     - `'none'` - Do not automatically copy anything
+>   * `mode` - The `model.set*` method to use when setting the output. _This has
+>     no effect in Model#evaluate._
+>     - `'diffDeep'` (default) - Do a recursive deep-equal comparison on old
+>       and new output values, attempting to issue fine-grained ops on subpaths
+>       where possible.
+>     - `'diff` - Do an identity comparison (`===`) on the output value, and do
+>       a simple set if old and new outputs are different.
+>     - `'arrayDeep'` - Compare old and new arrays item-by-item using a
+>       deep-equal comparison for each item, issuing top-level array insert,
+>       remove, and move ops as needed. Unlike `'diffDeep'`, this will _not_
+>       issue ops deep inside array items.
+>     - `'array'` - Compare old and new arrays item-by-item using identity
+>       comparison (`===`) for each item, issuing top-level array insert,
+>       remove, and move ops as needed.
+>   * `async` - _boolean_ - If true, then upon input changes, defer evaluation
+>     of the function to the next tick, instead of immediately evaluating the
+>     function upon each input change. _Introduced in [racer@0.9.5](https://github.com/derbyjs/racer/releases/tag/v0.9.5)._
+>     - This can improve UI performance when multiple inputs to a reactive
+>       function will change in the same event loop, as `async: true` will
+>       mean the function only needs be evaluated once instead of N times.
+>     - _Warning:_ Avoid using `async: true` if there's any controller code
+>       that does a `model.get()` on the output path or any paths downstream
+>       of the output, since changes to an input path won't immediately result
+>       in the output being updated.
+> * `fn` - _Function | string_ -  A function or the name of a function defined
+>   via `model.fn()`
+>   * The function gets invoked with the values at the input paths, one input
+>     per argument, and should return the computed output value.
+>   * It should be a synchronous [pure function](https://en.wikipedia.org/wiki/Pure_function).
+>     - One common side effect to avoid is `Array#sort` on an input array, since
+>       that sorts the array in-place. If you need to do a sort, make a shallow
+>       copy via `array.slice()` first, or use a sorting library that returns a
+>       new array instead of sorting in-place.
+>     - The function will be called both in Node and in the browser, so avoid
+>       using functions whose behavior is implementation-dependent, such as the
+>       one-argument form of [`String#localeCompare`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare).
+>     - The function might get called with some inputs `undefined`, so be
+>       defensive and check inputs' existence before using them.
+> * Return `value` - The initial value computed by the function
 
 > `model.stop(path)`
 > * `path` The path at which the output should no longer update. Note that the value is not deleted; it is just no longer updated
@@ -23,10 +70,9 @@ In DerbyJS, `model.start()` functions should typically be established in the `in
 
 ```js
 MyComponent.prototype.init = function(model) {
-  function sum(x, y) {
-    return x + y;
-  }
-  model.start('total', 'first', 'second', sum);
+  model.start('total', 'first', 'second', function sum(x, y) {
+    return (x || 0) + (y || 0);
+  });
 };
 ```
 
