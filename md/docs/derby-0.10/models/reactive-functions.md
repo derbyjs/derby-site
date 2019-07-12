@@ -9,11 +9,19 @@ To execute a model function, you then call `model.start()` or `model.evaluate()`
 * `start()` also sets up event listeners that continually re-evaluate the
 * function whenever any of its input or output paths are changed.
 
-> `value = model.start(path, inputPaths..., [options], fn)`
-> `value = model.evaluate(inputPaths..., [options], fn)`
+> ```
+> value = model.start(path, inputPaths, [options], fn)
+> value = model.evaluate(inputPaths, [options], fn)
+> ```
+> ```
+> // Legacy (racer &lt;= 0.9.5)
+> value = model.start(path, inputPaths..., [options], fn)
+> value = model.evaluate(inputPaths..., [options], fn)
+> ```
+>
 > * `path` - _string | ChildModel_ - The output path at which to set the value,
 >   keeping it updated as input paths change
-> * `inputPaths` - _(string | ChildModel)+_ - One or more paths whose values
+> * `inputPaths` - _Array<string | ChildModel>_ - One or more paths whose values
 >   will be retrieved from the model and passed to the function as inputs
 > * `options` - _Object_ (optional)
 >   * `copy` - Controls automatic deep copying of the inputs and output of the
