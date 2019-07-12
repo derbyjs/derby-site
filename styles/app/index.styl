@@ -62,8 +62,8 @@ body {
     padding: 0
 
 .navbar-header
-  width: brandWidth;
-  background-color: derbyGranite;
+  min-width: brandWidth
+  background-color: derbyGranite
   min-height: 60px
   .navbar-brand
     padding: 0px 0 0 10px
@@ -72,20 +72,15 @@ body {
 
 // The navigation links at the top
 .navbar-collapse
-  position: absolute
-  top: 0
-  bottom: 0
-  left: brandWidth
+  flex-grow: 1
+  min-width: 320px
 
 .navbar-search-container
-  position: absolute;
-  top: 0;
-  right: 0;
-  max-width: 400px;
-  height: 100%;
-  line-height: 1em;
-  overflow: hidden;
-  background: none;
+  max-width: 400px
+  line-height: 1em
+  overflow: hidden
+  flex-grow: 1
+  padding-right: 10px
 
 .navbar-nav
   float:left
@@ -114,11 +109,12 @@ body {
         color: derbySand
 
 .header-container
-  position:relative
+  position: relative
   max-width: 1100px
-  //width: 100%
   margin: 0 auto
   height: headerHeight
+  display: flex
+  align-items: center
 
 .container
   position:relative
