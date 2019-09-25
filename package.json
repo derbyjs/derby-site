@@ -12,7 +12,7 @@
     "deploy": "SWARM_MODE=true docker stack deploy --compose-file ./deploy/docker-compose.yaml derbyjs && exit 0"
   },
   "dependencies": {
-    "derby": "^0.10.13",
+    "derby": "^0.10.15",
     "derby-stylus": "^0.3.0",
     "express": "^4.17.1",
     "glob": "^7.1.2",
