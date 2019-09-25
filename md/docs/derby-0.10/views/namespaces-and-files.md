@@ -27,13 +27,13 @@ In addition, similar to the way that CSS allows overriding of styles by using a 
   Mission statement - App
 ```
 
-### Custom elements
+### Custom HTML tags
 
-A view can be turned into a custom element by specifying the `element` property in it's definition. Custom element names are global so care should be taken in their usage.
+A view can be turned into a custom HTML tag by specifying the `tag` property in it's definition. Custom tag names are global so care should be taken in their usage.
 
 ```derby
 <!-- definition -->
-<message: element="message">
+<message: tag="message">
   <div> {{data}} </div>
 
 <!-- usage: render two messages with different data -->

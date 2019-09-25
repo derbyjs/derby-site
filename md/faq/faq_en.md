@@ -638,7 +638,7 @@ In order to do this you will need to specify a 'target' parameter (it's 'self.in
 
 View:
 ```html
-<index: element='demo'>
+<index:>
     <input as='input' type='text' value="{{@value}}" />
 ```
 Code:

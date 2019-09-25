@@ -574,7 +574,7 @@ app.get('/about', function(page){
 
 View:
 ```html
-<index: element='demo'>
+<index:>
     <input as='input' type='text' value="{{@value}}" />
 ```
 Code:
