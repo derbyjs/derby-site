@@ -24,6 +24,8 @@ It is possible to override another component's functionality while preserving it
 
 <p class="codepen" data-height="200" data-theme-id="0" data-default-tab="result" data-user="nateps" data-slug-hash="OJJXRQb"></p>
 
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
 
 ### import
 If you just want to reuse a view partial the `import` keyword is probably more appropriate. See the [namespaces and files](../views/namespaces-and-files#structuring-views-in-multiple-files) documentation for more details.
