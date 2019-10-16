@@ -1,19 +1,13 @@
-# Component Class
+# Component lifecycle
 
-To create a component, you write a view template in HTML and a JavaScript class for its controller. You then register–or associate your controller class and view with a Derby app–by calling `app.component(MyComponent)`. After that, an instance of the component class is created whenever its view is rendered.
 
-Derby provides a base class `Component`, from which all component classes inherit. When authoring a component, you can explicitly extend Derby's Component class with JavaScript, TypeScript, or CoffeeScript `extends` syntax. For convenience, if you register a class that does not inherit from `Component`, Derby will add `Component.prototype` to your class's prototype chain. In other words, Derby will make sure that your class inherits from `Component` at the time that you call `app.component()`.
+Components are defined by writing a view template in HTML and a JavaScript controller class. Calling `app.component(MyComponent)` registers the view and controller with a Derb app. After that, an instance of the component class is created whenever its view is rendered.
 
-```js
-const Component = require('derby').Component;
-class MyComponent extends Component {
-  ...
-}
-```
 
-## Lifecycle
+## Rendering
 
 Derby components are designed for efficient server-side HTML and client-side DOM rendering with the same code.
+
 
 ### Client-side rendering
 
@@ -29,11 +23,12 @@ Derby components are designed for efficient server-side HTML and client-side DOM
 
 *6. `MyComponent.init(model)`:* Init is called once Derby has completed all steps to initialize the component and before rendering. All custom code that initializes data in the model prior to rendering, such as reactive functions, should be placed within the component's `init()` implementation.
 
-*7. Rendering:* Following `init()`, Derby renders the component's view and inserts it into the DOM.
+*7. Rendering:* Following `init()`, Derby renders the component's view and inserts it into the DOM. Hooks defined in the view, such as the `as` attribute for assigning elements and components to controller properties or `on-` attributes for adding event listeners happen at render time as well.
 
 *8. `'create'` event:* On the client only, Derby emits a `'create'` event on the component instance before calling the create method. Similar to the `'init'` event, this method is provided in case containing components need to obtain a reference to a component instance. However, the create event only happens on the client, and it is emitted after the component is rendered and inserted into the DOM.
 
 *9. `MyComponent.create(model, dom)`:* Create is called once the component is rendered and inserted into the DOM. Custom code that adds model or DOM event listeners should be placed within the component's `create()` implementation.
+
 
 ### Server-side rendering
 
@@ -51,6 +46,7 @@ There are a number of differences between Node.js and a browser environment that
 
 * Servers are multi-tenent and long lived, so be careful to avoid global state in components. This is also a best practice in client-only applications, but it is especially important when code is executed on both the server and the client. On the server, shared state could lead to data being leaked from one session to another, and minor memory leaks in long-lived processes can build up and crash a server.
 
+
 ### Server-side rendering + Client-side attachment
 
 Out of the box, Derby is optimized for server + client-side rendering. This can greatly improve perceived load time, since the browser can display the application before its scripts have loaded or executed on the client.
@@ -66,73 +62,53 @@ Therefore, component code must be deterministic. Pure code, where the same input
 * Rendering components should not modify persistent state or have other side effects.
 
 
-In addition, Derby requires that the HTML in templates produces a DOM that matches its HTML representation. Common pitfalls:
+In addition, Derby requires that parsing the HTML in templates produces a matching DOM. Common pitfalls:
 
 * Templates must be valid HTML. For example, `<p><div></div></p>`, is invalid HTML and will produce a DOM such as `<p></p><div></div><p></p>`. This is because the [`<p>` element](https://html.spec.whatwg.org/multipage/grouping-content.html#the-p-element) may contain only [phrasing content](https://html.spec.whatwg.org/multipage/dom.html#phrasing-content), and the start of a `<div>` closes the `<p>`.
 
-* Templates must explicitly include [optional tags](https://html.spec.whatwg.org/multipage/syntax.html#optional-tags). For example, `<table><tr><td></td></tr></table>` is valid HTML, but it will produce the DOM `<table><tbody><tr><td></td></tr></tbody></table>`. For simplicity, Derby does not attempt to implement these rules and requires that optional tags be written out.
+* Templates must explicitly include all [optional tags](https://html.spec.whatwg.org/multipage/syntax.html#optional-tags). For example, `<table><tr><td></td></tr></table>` is valid HTML, but it will produce the DOM `<table><tbody><tr><td></td></tr></tbody></table>`. For simplicity, Derby does not attempt to implement these rules and requires that optional tags be written out.
 
-* All non-void elements must be explicitly closed. For example, `<ul><li>One<li>Two</ul>` is valid HTML, because an `<li>` element's end tag is implied in this case. Derby requires that this be written out as `<ul><li>One</li><li>Two</li></ul>`. ([Void elements](https://html.spec.whatwg.org/multipage/syntax.html#void-elements) like `<img>` only have a start tag and the end tag must not be specified.)
+* All non-void elements must be explicitly closed. For example, `<ul><li>One<li>Two</ul>` is valid HTML, because an `<li>` elements' end tags are implied. Derby requires that this be written out fully as `<ul><li>One</li><li>Two</li></ul>`. ([Void elements](https://html.spec.whatwg.org/multipage/syntax.html#void-elements) like `<img>` only have a start tag and the end tag must not be specified.)
 
 To test whether an HTML fragment will work in a Derby template, use an [HTML validator](https://validator.nu/) and check that setting then reading it back as `innerHTML` returns the same string.
 
-```
+```js
 var html = '<p><div></div></p>';
 var div = document.createElement('div');
 div.innerHTML = html;
 html === div.innerHTML;
 ```
 
-### Cleanup
+
+## Cleanup
+
+When a binding causes a component to be removed from the DOM, Derby internally calls its `destroy()` method. (This method should not be invoked manually.) Destroying a component removes its DOM listeners, destroys its model data and model listeners, removes references created by `as` attributes in views, and removes all of Derby's internal references to the component and bindings within the component. Each of these is important for avoiding memory leaks.
+
+Using Derby's built-in features to add DOM listeners, model listeners, and bind asynchronous callbacks generally avoids the need to implement custom cleanup code. If custom cleanup code is needed, it can be implemented by listening to the component's `'destroy'` event or checking whether the component's `isDestroyed` property is `true`.
 
 
+### Singleton (stateless) components
 
+Creating a model per component, binding component attributes, and cleaning up component models and bindings can add significant overhead. However, Derby's template syntax is very expressive, and many components can be written in a stateless manner with no need for their own model.
 
-## Methods
+In this case, it is best to declare the component as a "singleton" component. A singleton component is also implemented with a JavaScript class for a controller, but Derby will only instantiate the class once and reuse the same instance of the class each time the component's view is rendered. Derby will not create a model or other properties on the controller, since its instance can be used in multiple places simultaneously. In addition, rendering a singleton component does not invoke `init()`, `create()`, or `destroy()`.
 
-### Event emission
+Since singleton components do not have a model, only attribute paths may be used in views. Singleton controllers should consist of only pure functions.
 
-Components are Node.js event emitters, so they inherit the `on`, `once`, `removeListener`, `emit`, etc. methods from [EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter).
+When a component is used many times on a page, such as a repeated item in a list or a commonly used UI element, it is best to write it statelessly for better performance. View partials are the most lightweight, singleton components allow use of custom JavaScript, and full components have their own model state.
 
-### Cleanup
-
-> `component.destroy()`
->
-> This method should not be invoked directly. Derby calls it when removing a component's marker comment from the DOM. `destroy()` emits the `'destroy'` event on the component, destroys the component's view model data, removes all model event listeners created within the component, removes all DOM event listeners created within the component, and cleans up Derby's internal tracking of bindings for the component.
-
-> `boundFn = component.bind(fn)`
-> * `fn` - _Function_ - A function to be invoked with the component as its `this` value. In addition, the function will no longer be invoked once the component is destroyed
-> * `boundFn` - _Function_ - Returns a bound function, similar to JavaScript's `Function.bind()`. This function is safer to use in asynchronous code, such as with setTimeout, requestAnimationFrame, or requests to the server, because it won't call back after the component is destroyed, and memory is able to be cleaned up. Internally, references to `fn` and the component are removed after `'destroy'`.
-
-```js
-class MyComponent extends Component {
-  load() {
-    this.set('loading', true);
-    setTimeout(this.bind(function() {
-      this.set('loading', false);
-    }), 200);
-  }
-}
+```derby
+<user-icon:>
+  <div class="user-icon">
+    {{getInitials(@user.fullName)}}
+  </div>
 ```
 
-### Throttling and debouncing
-
-
-> `throttledFn = component.throttle(fn, [delayArg])`
-
-> When passing in a numeric delay, calls the function at most once per that many milliseconds. Like Underscore, the function will be called on the leading and the trailing edge of the delay as appropriate. Unlike Underscore, calls are consistently called via setTimeout and are never synchronous. This should be used for reducing the frequency of ongoing updates, such as scroll events or other continuous streams of events.
->
->Additionally, implements an interface intended to be used with window.requestAnimationFrame or process.nextTick. If one of these is passed, it will be used to create a single async call following any number of synchronous calls. This mode is typically used to coalesce many synchronous events (such as multiple model events) into a single async event. Like component.bind(), will no longer call back once the component is destroyed, which avoids possible bugs and memory leaks.
-
-
-> `component.destroy()`
-
-
-
-> `shallowCopy = model.getCopy([path])`
-> * `path` *(optional)* Path of object to get
-> * `shallowCopy` Shallow copy of current value, going only one level deep when returning an object or array
-
-> `deepCopy = model.getDeepCopy([path])`
-> * `path` *(optional)* Path of object to get
-> * `deepCopy` Deep copy of current value
+```js
+app.component('user-icon', class UserIcon {
+  static singleton = true;
+  getInitials(fullName) {
+    return fullName.split(' ').map(name => name[0]).join('');
+  }
+});
+```

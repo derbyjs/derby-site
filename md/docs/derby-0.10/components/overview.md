@@ -1,18 +1,18 @@
 # Overview
 
-Components are the building blocks of Derby applications. A component is a view associated with a controller class. The [view](views) is implemented as a Derby template and the controller is implemented as a JavaScript [class or constructor function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript). Derby creates an instance of the controller class each time it renders the component view.
+Components are the building blocks of Derby applications. A component is a view associated with a controller class. The [view](views) is implemented as a Derby template and the controller is implemented as a JavaScript [class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) or [constructor function](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object-oriented_JS). Derby creates an instance of the controller class each time it renders the component view.
 
 
 ## Reuse and organization
 
-Components are reusable UI pieces, similar to custom HTML elements. In addition, they are the recommended way to structure complex applications as modular parts with clear inputs and outputs. Even if only used in a single place, each significant unit of UI functionality should be its own component.
+Components are reusable UI pieces, similar to custom HTML elements. In addition, they are the recommended way to structure complex applications as modular parts with clear inputs and outputs. Each significant unit of UI functionality should be its own component.
 
 Components can be rendered on the server and the client, so the same code can produce static HTML, server-rendered dynamic applications, and client-rendered applications.
 
 
 ## Encapsulation
 
-Each component has a scoped model in its own namespace. Data or references to the component's parent are passed in via view attributes. If you're familiar with it, this structure is similar to the Model View ViewModel (MVVM) pattern—a component's scoped model is essentially a ViewModel.
+Each component has a scoped model in its own namespace. Data or references to the component's parent are passed in via view attributes. If you're familiar with it, this structure is similar to the [Model-View-ViewModel (MVVM) pattern](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel)—a component's scoped model is a ViewModel.
 
 
 ## Tabs Example
@@ -77,7 +77,7 @@ class TabsData {
   selectedIndex: number = 0;
 }
 class Tabs extends Component<TabsData> {
-  static view = __dirname;
+  static view = __dirname + '/tabs.html';
   static DataConstructor = TabsData;
   selectedIndex = this.model.at('selectedIndex');
 

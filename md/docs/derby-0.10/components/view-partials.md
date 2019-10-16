@@ -1,6 +1,6 @@
 # View partials
 
-A component is created by associating a controller with a view, this page goes into more detail about how view partials relate to components. For more general concepts see the [template syntax](../views/template-syntax) documentation.
+This page goes into more detail about how view partials relate to components. For more general concepts, see the [template syntax](../views/template-syntax) documentation.
 
 While a component's controller is associated with a single view, it can contain sub-views defined as view partials. Components can also accept other views passed in as attributes.
 
@@ -20,13 +20,9 @@ By default a view partial inherits the scope where it is instantiated.
 A view partial associated with a component follows the [component scope](scope) rules. A view partial used inside a component will inherit the scope of the component.
 
 ### extend
-It is possible to override another component's functionality while preserving it's view.
-You can do this with the `extend` keyword, your component must implement the view functions defined by the extended component.
-This can be done with prototypical inheritance and then overriding any functions you want to customize.
+It is possible to override another component's functionality while preserving its view. You can do this with the `extend` keyword.
 
-> Example: [extending components](https://codepen.io/enjalot/pen/OPorGB?editors=101)
-
-> *Note - This example is using [derby-standalone](https://github.com/derbyjs/derby-standalone) which has a slightly different syntax for defining templates at the moment.*
+<p class="codepen" data-height="200" data-theme-id="0" data-default-tab="result" data-user="nateps" data-slug-hash="OJJXRQb"></p>
 
 
 ### import
