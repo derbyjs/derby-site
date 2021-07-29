@@ -1,7 +1,7 @@
 # Component lifecycle
 
 
-Components are defined by writing a view template in HTML and a JavaScript controller class. Calling `app.component(MyComponent)` registers the view and controller with a Derb app. After that, an instance of the component class is created whenever its view is rendered.
+Components are defined by writing a view template in HTML and a JavaScript controller class. Calling `app.component(MyComponent)` registers the view and controller with a Derby app. After that, an instance of the component class is created whenever its view is rendered.
 
 
 ## Rendering
