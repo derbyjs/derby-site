@@ -9,9 +9,10 @@ var publicDir = path.join(__dirname, '/../../public');
 var expressApp = module.exports = express()
   .use(favicon(path.join(publicDir, '/images/favicon.ico')))
   .use(express.static(publicDir))
-  .use(site)
-  .use(error)
+  .use(site);
 
 expressApp.all('*', function(req, res, next) {
   next('404: ' + req.url);
 });
+
+expressApp.use(error);
