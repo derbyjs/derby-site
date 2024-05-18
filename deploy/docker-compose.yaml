@@ -16,7 +16,7 @@ services:
       - derbyjs_overlay
 
   derby_site:
-    image: derbyjs/derby-site:2019-10-15
+    image: derbyjs/derby-site:2024-05-17
     deploy:
       replicas: 2
       update_config:
@@ -25,9 +25,9 @@ services:
       labels: &derby_site_labels
         traefik.enable: "true"
         traefik.docker.network: derbyjs_derbyjs_overlay
-        traefik.frontend.rule: PathPrefix:/
-        traefik.port: "4000"
-        traefik.priority: "100"
+        traefik.http.routers.derby-site.rule: Host(`derbyjs.com`) || Host(`www.derbyjs.com`) || Path(`/robots.txt`)
+        traefik.http.services.derby-site.loadbalancer.server.port: 4000
+        traefik.priority: 100
     ports:
       - "4000:4000"
     labels: *derby_site_labels
@@ -35,7 +35,7 @@ services:
       - derbyjs_overlay
 
   derby_examples:
-    image: derbyjs/derby-examples:2018-07-11
+    image: derbyjs/derby-examples:2024-05-17
     deploy:
       replicas: 1
       update_config:
@@ -44,24 +44,43 @@ services:
       labels: &derby_examples_labels
         traefik.enable: "true"
         traefik.docker.network: derbyjs_derbyjs_overlay
-        traefik.charts.frontend.rule: Host:charts.derbyjs.com
-        traefik.charts.port: "8001"
-        traefik.chat.frontend.rule: Host:chat.derbyjs.com
-        traefik.chat.port: "8002"
-        traefik.codemirror.frontend.rule: Host:codemirror.derbyjs.com
-        traefik.codemirror.port: "8003"
-        traefik.directory.frontend.rule: Host:directory.derbyjs.com
-        traefik.directory.port: "8004"
-        traefik.hello.frontend.rule: Host:hello.derbyjs.com
-        traefik.hello.port: "8005"
-        traefik.sink.frontend.rule: Host:sink.derbyjs.com
-        traefik.sink.port: "8006"
-        traefik.todos.frontend.rule: Host:todos.derbyjs.com
-        traefik.todos.port: "8007"
-        traefik.widgets.frontend.rule: Host:widgets.derbyjs.com
-        traefik.widgets.port: "8008"
-        traefik.render.frontend.rule: Host:render.derbyjs.com
-        traefik.render.port: "8009"
+
+        traefik.http.routers.charts.rule: Host(`charts.derbyjs.com`)
+        traefik.http.routers.charts.service: charts
+        traefik.http.services.charts.loadbalancer.server.port: 8001
+
+        traefik.http.routers.chat.rule: Host(`chat.derbyjs.com`)
+        traefik.http.routers.chat.service: chat
+        traefik.http.services.chat.loadbalancer.server.port: 8002
+
+        traefik.http.routers.codemirror.rule: Host(`codemirror.derbyjs.com`)
+        traefik.http.routers.codemirror.service: codemirror
+        traefik.http.services.codemirror.loadbalancer.server.port: 8003
+
+        traefik.http.routers.directory.rule: Host(`directory.derbyjs.com`)
+        traefik.http.routers.directory.service: directory
+        traefik.http.services.directory.loadbalancer.server.port: 8004
+
+        traefik.http.routers.hello.rule: Host(`hello.derbyjs.com`)
+        traefik.http.routers.hello.service: hello
+        traefik.http.services.hello.loadbalancer.server.port: 8005
+
+        traefik.http.routers.sink.rule: Host(`sink.derbyjs.com`)
+        traefik.http.routers.sink.service: sink
+        traefik.http.services.sink.loadbalancer.server.port: 8006
+
+        traefik.http.routers.todos.rule: Host(`todos.derbyjs.com`)
+        traefik.http.routers.todos.service: todos
+        traefik.http.services.todos.loadbalancer.server.port: 8007
+
+        traefik.http.routers.widgets.rule: Host(`widgets.derbyjs.com`)
+        traefik.http.routers.widgets.service: widgets
+        traefik.http.services.widgets.loadbalancer.server.port: 8008
+
+        traefik.http.routers.render.rule: Host(`render.derbyjs.com`)
+        traefik.http.routers.render.service: render
+        traefik.http.services.render.loadbalancer.server.port: 8009
+
     ports:
       - "8001:8001"
       - "8002:8002"
@@ -83,7 +102,7 @@ services:
       - derbyjs_overlay
 
   traefik:
-    image: traefik:1.6-alpine
+    image: traefik:v2.11
     deploy:
       replicas: 2
       update_config:
@@ -97,9 +116,9 @@ services:
       - --api=true
       - --ping=true
       - --ping.entrypoint=http
-      - --docker
-      - --docker.exposedbydefault=false
-      - --docker.swarmmode=${SWARM_MODE}
+      - --providers.docker
+      - --providers.docker.exposedbydefault=false
+      - --providers.docker.swarmmode=${SWARM_MODE}
     networks:
       - derbyjs_overlay
 
