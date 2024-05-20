@@ -76,10 +76,11 @@ To build the DerbyJS Site, clone this repo locally as described above.
 
 Build a docker image with a tag containing today's date, push to Docker Hub, and cleanup the local copy of the image:
 ```
-docker build . --tag "derbyjs/derby-site:$(date +%Y-%m-%d)"
+docker build --platform linux/amd64 . --tag "derbyjs/derby-site:$(date +%Y-%m-%d)"
 docker push "derbyjs/derby-site:$(date +%Y-%m-%d)"
 docker rmi "derbyjs/derby-site:$(date +%Y-%m-%d)"
 ```
+
 
 Next, update the deployed tag specified in [/deploy/docker.compose.yaml](https://github.com/derbyjs/derby-site/blob/master/deploy/docker-compose.yaml). The tag is defined in `services: derbysite: image: derbyjs/derby-site:YYYY-MM-DD`, and it should be updated to the current date. Commit and push your changes to GitHub.
 

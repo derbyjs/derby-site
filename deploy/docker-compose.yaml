@@ -16,7 +16,7 @@ services:
       - derbyjs_overlay
 
   derby_site:
-    image: derbyjs/derby-site:2024-05-17
+    image: derbyjs/derby-site:2024-05-20
     deploy:
       replicas: 2
       update_config:
@@ -35,7 +35,7 @@ services:
       - derbyjs_overlay
 
   derby_examples:
-    image: derbyjs/derby-examples:2024-05-17
+    image: derbyjs/derby-examples:2024-05-20
     deploy:
       replicas: 1
       update_config:
