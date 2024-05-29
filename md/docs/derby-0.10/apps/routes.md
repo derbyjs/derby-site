@@ -10,7 +10,7 @@ Routes map URL patterns to actions. Derby routes are powered by [Express](https:
 >
 > `app.del ( routePattern, callback(page, model, params, next) )`
 >
-> * `pattern`: A string containing a literal URL, an Express route pattern, or a regular expression. See [Express's routing documentation](https://expressjs.com/guide/routing.html) for more info.
+> * `routePattern`: A string containing a literal URL, an Express route pattern, or a regular expression. See [Express's routing documentation](https://expressjs.com/guide/routing.html) for more info. Derby also supports transitional routes which can be passed in as an object with two string properties, `from` and `to`.
 >
 > * `callback`: Function invoked when a request for a URL matching the appropriate HTTP method and pattern is received. Note that this function is called both on the server and the client.
 >
