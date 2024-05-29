@@ -31,7 +31,7 @@ It is possible to override another component's functionality while preserving it
 If you just want to reuse a view partial the `import` keyword is probably more appropriate. See the [namespaces and files](../views/namespaces-and-files#structuring-views-in-multiple-files) documentation for more details.
 
 
-## Programatic view management
+## Programmatic view management
 
 > `view = this.getView(name)`
 > * `name` the name of the view
@@ -52,9 +52,9 @@ Derby components are tracked in the DOM with an HTML comment tag. This allows co
 
 ## Debugging
 
-A relatively quick way to inspect a component for debugging is to find it's comment in the browser's DOM inspector.
-In modern browsers clicking on the comment allows you to reference it in the console with `$0`.
-Once you have a reference to the comment tag you can access it's controller with `$0.$component` and it's model data with `$0.$component.model.get()`
+A relatively quick way to inspect a component for debugging is to find its comment in the browser's DOM inspector.
+In modern browsers, clicking on the comment allows you to reference it in the console with `$0`.
+Once you have a reference to the comment tag, you can access its controller with `$0.$component` and its model data with `$0.$component.model.get()`
 
 <img src="/images/docs/charts-debug.png">
 
