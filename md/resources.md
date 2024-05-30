@@ -1,30 +1,7 @@
 ## Community
 
-[Google Groups](https://groups.google.com/group/derbyjs)
-Mailing list
-
-[Gitter Chat](https://gitter.im/derbyjs/derby)
-GitHub chat for derby community
-
-[Stackoverflow DerbyJS tag](https://stackoverflow.com/questions/tagged/derbyjs)
-Best place for questions
-
-[Stackoverflow Chat (Ru)](https://chat.stackoverflow.com/rooms/41934/derbyjs-ru)
-Бла бла бла
-
 [Github Issues](https://github.com/derbyjs/derby/issues)
 Submit a problem
-
-[Lever YouTube](https://www.youtube.com/user/LeverApp)
-Lever uses derby in production and puts out some tutorial and meetup videos about Derby and ShareJS
-
-[Twitter](https://twitter.com/derbyjs)
-
-IRC
-derbyjs on [freenode.net](https://freenode.net)
-
-[Habrahabr.ru](https://habrahabr.ru/hub/derbyjs/)
-Habr Derby Hub
 
 
 ### Modules
@@ -88,8 +65,6 @@ This site
 
 Derby components from [ile](https://github.com/ile/)
 
-https://d-passport.herokuapp.com/
-[d-passport](https://github.com/ile/d-passport)
 
 ## Projects in production
 

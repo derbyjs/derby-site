@@ -2,6 +2,8 @@ derby-site
 =============
 The [derbyjs.com](//derbyjs.com/) site, built with Derby.
 
+The docs in this repo are deprecated. Up-to-date docs are now maintained in the [main derby repo's docs directory](https://github.com/derbyjs/derby/tree/master/docs) and are automatically deployed to GitHub Pages at [derbyjs.github.io/derby/](https://derbyjs.github.io/derby/).
+
 Installation
 ------------
 
