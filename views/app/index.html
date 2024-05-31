@@ -23,11 +23,19 @@
           <view is="{{$render.ns}}:sidebar" optional></view>
         </div>
         <div class="col-md-9 main">
+          {{if String.prototype.startsWith.call($render.ns, 'docs:')}}
+            <div class="warning">
+              <b>⚠️ Deprecated</b> &mdash; These docs are no longer updated.<br>
+              Visit the new docs at <a href="https://derbyjs.github.io/derby/" style="font-weight: bold;">derbyjs.github.io/derby/</a> instead!
+            </div>
+          {{/if}}
           <view is="{{$render.ns}}"></view>
           {{if _page.links[$render.ns]}}
             <a class="btn btn-outline btn-lg next" href="{{this}}">Next&nbsp; &#10132;</a>
           {{/if}}
-          <a class="edit-on-github" href="{{gitHubEditLink($render.url)}}">Edit on GitHub</a>
+          {{if !String.prototype.startsWith.call($render.ns, 'docs:')}}
+            <a class="edit-on-github" href="{{gitHubEditLink($render.url)}}">Edit on GitHub</a>
+          {{/if}}
         <view is="main-footer"></view>
         </div>
     </div>
@@ -53,14 +61,10 @@
       <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
         <ul class="nav navbar-nav">
           <view is="nav-link" href="/started">Get started</view>
-          <view is="nav-link" href="/docs/derby-0.10">Docs</view>
+          <view is="nav-link" href="https://derbyjs.github.io/derby/">Docs</view>
           <view is="nav-link" href="/resources">Resources</view>
         </ul>
       </nav>
-      <div class="navbar-search-container">
-        <script async src="https://cse.google.com/cse.js?cx=011470309218197930356:xg9bmk4xhsg"></script>
-        <div class="gcse-searchbox-only"></div>
-      </div>
     </div>
   </div>
 
@@ -83,10 +87,6 @@
         </ul>
       </div>
       <ul class="bs-docs-footer-links muted">
-        <li><a href="https://groups.google.com/forum/#!forum/derbyjs" target="_blank">Google Group</a></li>
-        <li>&middot;</li>
-        <li><a href="https://gitter.im/derbyjs/derby" target="_blank">Gitter chat</a></li>
-        <li>&middot;</li>
         <li><a href="https://github.com/derbyjs/derby" target="_blank">GitHub</a></li>
         <li>&middot;</li>
         <li><a href="https://github.com/derbyjs/derby/issues?state=open" target="_blank">Issues</a></li>
