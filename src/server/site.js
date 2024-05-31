@@ -58,7 +58,7 @@ expressApp.get('/docs/derby-0.6/?*', function(req, res, next) {
 });
 
 expressApp.get('/docs', function(req, res, next) {
-  res.redirect('https://derbyjs.github.io/derby/');
+  res.redirect(301, 'https://derbyjs.github.io/derby/');
 });
 
 var outlineData = require('./outline').generate(app);
